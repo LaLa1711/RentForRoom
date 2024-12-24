@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="QLNhaTroModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="tbAlbum">
+    <Key>
+      <PropertyRef Name="IDAlbum" />
+    </Key>
+    <Property Name="IDAlbum" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IDPhong" Type="int" />
+    <Property Name="TieuDe" Type="nvarchar" MaxLength="150" />
+    <Property Name="HinhAnh" Type="varchar" MaxLength="200" />
+    <Property Name="Hide" Type="bit" />
+  </EntityType>
+  <EntityType Name="tbBanner">
+    <Key>
+      <PropertyRef Name="IDBanner" />
+    </Key>
+    <Property Name="IDBanner" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TieuDe" Type="nvarchar" MaxLength="150" />
+    <Property Name="NoiDung" Type="nvarchar" MaxLength="300" />
+    <Property Name="HinhBanner" Type="varchar" MaxLength="200" />
+    <Property Name="Hide" Type="bit" />
+  </EntityType>
+  <EntityType Name="tbChiTietPhong">
+    <Key>
+      <PropertyRef Name="IDPhong" />
+    </Key>
+    <Property Name="IDPhong" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MaTaiKhoan" Type="int" />
+    <Property Name="TieuDe" Type="nvarchar" MaxLength="150" />
+    <Property Name="DiaChi" Type="nvarchar" MaxLength="150" />
+    <Property Name="IDPhuong" Type="int" />
+    <Property Name="IDQuan" Type="int" />
+    <Property Name="IDTP" Type="int" />
+    <Property Name="GiaThue" Type="float" />
+    <Property Name="MoTa" Type="nvarchar" MaxLength="300" />
+    <Property Name="LinkBai" Type="varchar" MaxLength="300" />
+    <Property Name="GioGiac" Type="nvarchar" MaxLength="150" />
+    <Property Name="LinkMap" Type="varchar" MaxLength="300" />
+    <Property Name="TienDien" Type="float" />
+    <Property Name="TienNuoc" Type="float" />
+    <Property Name="TienDichVụ" Type="float" />
+    <Property Name="CuaSoBanCong" Type="bit" />
+    <Property Name="WC" Type="bit" />
+    <Property Name="KeBep" Type="bit" />
+    <Property Name="MayLanh" Type="int" />
+    <Property Name="Giuong" Type="int" />
+    <Property Name="TuDo" Type="int" />
+    <Property Name="Nem" Type="int" />
+    <Property Name="TuLanh" Type="int" />
+    <Property Name="BanGhe" Type="int" />
+    <Property Name="MayGiat" Type="bit" />
+    <Property Name="Sofa" Type="int" />
+    <Property Name="SoPhongNgu" Type="int" />
+    <Property Name="Thang" Type="bit" />
+    <Property Name="PhuongTien" Type="nvarchar" MaxLength="150" />
+    <Property Name="ThuCung" Type="bit" />
+    <Property Name="TienCoc" Type="bit" />
+    <Property Name="Hide" Type="bit" />
+    <Property Name="NoiBat" Type="bit" />
+    <Property Name="TrangThaiXuLy" Type="bit" />
+  </EntityType>
+  <EntityType Name="tbDatLich">
+    <Key>
+      <PropertyRef Name="IDDatLich" />
+    </Key>
+    <Property Name="IDDatLich" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IDPhong" Type="int" />
+    <Property Name="SoNguoiO" Type="int" />
+    <Property Name="SoLuongXe" Type="int" />
+    <Property Name="NgayXemPhong" Type="date" />
+    <Property Name="NgayChuyenVao" Type="date" />
+    <Property Name="GhiChu" Type="nvarchar(max)" />
+    <Property Name="ThuCung" Type="bit" />
+    <Property Name="HoTen" Type="nvarchar" MaxLength="150" />
+    <Property Name="SDT" Type="varchar" MaxLength="11" />
+    <Property Name="Email" Type="nvarchar" MaxLength="150" />
+    <Property Name="Hide" Type="bit" />
+  </EntityType>
+  <EntityType Name="tbGioiThieu">
+    <Key>
+      <PropertyRef Name="IDGioiThieu" />
+    </Key>
+    <Property Name="IDGioiThieu" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TieuDe" Type="nvarchar" MaxLength="150" />
+    <Property Name="NoiDung" Type="nvarchar(max)" />
+    <Property Name="HinhAnh" Type="varchar" MaxLength="200" />
+    <Property Name="TieuDeDanhSach" Type="nvarchar" MaxLength="150" />
+    <Property Name="NoiDungDanhSach" Type="nvarchar" MaxLength="150" />
+    <Property Name="Hide" Type="bit" />
+  </EntityType>
+  <EntityType Name="tbQuanHuyen">
+    <Key>
+      <PropertyRef Name="IDQuan" />
+    </Key>
+    <Property Name="IDTP" Type="int" />
+    <Property Name="TenQuan" Type="nvarchar" MaxLength="150" />
+    <Property Name="IDQuan" Type="int" Nullable="false" />
+    <Property Name="Hide" Type="bit" />
+  </EntityType>
+  <EntityType Name="tbQuyen">
+    <Key>
+      <PropertyRef Name="IDQuyen" />
+    </Key>
+    <Property Name="IDQuyen" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TenQuyen" Type="nvarchar" MaxLength="150" />
+    <Property Name="Hide" Type="bit" />
+  </EntityType>
+  <EntityType Name="tbTinhThanhPho">
+    <Key>
+      <PropertyRef Name="IDTP" />
+    </Key>
+    <Property Name="IDTP" Type="int" Nullable="false" />
+    <Property Name="TenTP" Type="nvarchar" MaxLength="150" />
+    <Property Name="Hide" Type="bit" />
+  </EntityType>
+  <EntityType Name="tbUser">
+    <Key>
+      <PropertyRef Name="IDUser" />
+    </Key>
+    <Property Name="IDUser" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MaTaiKhoan" Type="int" />
+    <Property Name="Role" Type="int" />
+    <Property Name="SDT" Type="nvarchar" MaxLength="150" />
+    <Property Name="MatKhau" Type="varchar" MaxLength="50" />
+    <Property Name="HoTen" Type="nvarchar" MaxLength="150" />
+    <Property Name="Gmail" Type="nvarchar" MaxLength="150" />
+    <Property Name="HinhAnh" Type="varchar" MaxLength="200" />
+    <Property Name="Hide" Type="bit" />
+  </EntityType>
+  <EntityType Name="tbXaPhuong">
+    <Key>
+      <PropertyRef Name="IDPhuong" />
+    </Key>
+    <Property Name="IDQuan" Type="int" />
+    <Property Name="TenPhuong" Type="nvarchar" MaxLength="150" />
+    <Property Name="IDPhuong" Type="int" Nullable="false" />
+    <Property Name="Hide" Type="bit" />
+  </EntityType>
+  <EntityContainer Name="QLNhaTroModelStoreContainer">
+    <EntitySet Name="tbAlbum" EntityType="Self.tbAlbum" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbBanner" EntityType="Self.tbBanner" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbChiTietPhong" EntityType="Self.tbChiTietPhong" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbDatLich" EntityType="Self.tbDatLich" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbGioiThieu" EntityType="Self.tbGioiThieu" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbQuanHuyen" EntityType="Self.tbQuanHuyen" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbQuyen" EntityType="Self.tbQuyen" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbTinhThanhPho" EntityType="Self.tbTinhThanhPho" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbUser" EntityType="Self.tbUser" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbXaPhuong" EntityType="Self.tbXaPhuong" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

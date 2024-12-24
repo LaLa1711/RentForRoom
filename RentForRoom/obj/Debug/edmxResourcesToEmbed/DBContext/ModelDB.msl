@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="QLNhaTroModelStoreContainer" CdmEntityContainer="QLNhaTroEntities">
+    <EntitySetMapping Name="tbGioiThieux">
+      <EntityTypeMapping TypeName="QLNhaTroModel.tbGioiThieu">
+        <MappingFragment StoreEntitySet="tbGioiThieu">
+          <ScalarProperty Name="IDGioiThieu" ColumnName="IDGioiThieu" />
+          <ScalarProperty Name="TieuDe" ColumnName="TieuDe" />
+          <ScalarProperty Name="NoiDung" ColumnName="NoiDung" />
+          <ScalarProperty Name="HinhAnh" ColumnName="HinhAnh" />
+          <ScalarProperty Name="TieuDeDanhSach" ColumnName="TieuDeDanhSach" />
+          <ScalarProperty Name="NoiDungDanhSach" ColumnName="NoiDungDanhSach" />
+          <ScalarProperty Name="Hide" ColumnName="Hide" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbQuanHuyens">
+      <EntityTypeMapping TypeName="QLNhaTroModel.tbQuanHuyen">
+        <MappingFragment StoreEntitySet="tbQuanHuyen">
+          <ScalarProperty Name="Hide" ColumnName="Hide" />
+          <ScalarProperty Name="IDQuan" ColumnName="IDQuan" />
+          <ScalarProperty Name="TenQuan" ColumnName="TenQuan" />
+          <ScalarProperty Name="IDTP" ColumnName="IDTP" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbTinhThanhPhoes">
+      <EntityTypeMapping TypeName="QLNhaTroModel.tbTinhThanhPho">
+        <MappingFragment StoreEntitySet="tbTinhThanhPho">
+          <ScalarProperty Name="Hide" ColumnName="Hide" />
+          <ScalarProperty Name="TenTP" ColumnName="TenTP" />
+          <ScalarProperty Name="IDTP" ColumnName="IDTP" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbXaPhuongs">
+      <EntityTypeMapping TypeName="QLNhaTroModel.tbXaPhuong">
+        <MappingFragment StoreEntitySet="tbXaPhuong">
+          <ScalarProperty Name="Hide" ColumnName="Hide" />
+          <ScalarProperty Name="IDPhuong" ColumnName="IDPhuong" />
+          <ScalarProperty Name="TenPhuong" ColumnName="TenPhuong" />
+          <ScalarProperty Name="IDQuan" ColumnName="IDQuan" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbQuyens">
+      <EntityTypeMapping TypeName="QLNhaTroModel.tbQuyen">
+        <MappingFragment StoreEntitySet="tbQuyen">
+          <ScalarProperty Name="Hide" ColumnName="Hide" />
+          <ScalarProperty Name="TenQuyen" ColumnName="TenQuyen" />
+          <ScalarProperty Name="IDQuyen" ColumnName="IDQuyen" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbUsers">
+      <EntityTypeMapping TypeName="QLNhaTroModel.tbUser">
+        <MappingFragment StoreEntitySet="tbUser">
+          <ScalarProperty Name="Hide" ColumnName="Hide" />
+          <ScalarProperty Name="HinhAnh" ColumnName="HinhAnh" />
+          <ScalarProperty Name="Gmail" ColumnName="Gmail" />
+          <ScalarProperty Name="HoTen" ColumnName="HoTen" />
+          <ScalarProperty Name="MatKhau" ColumnName="MatKhau" />
+          <ScalarProperty Name="SDT" ColumnName="SDT" />
+          <ScalarProperty Name="Role" ColumnName="Role" />
+          <ScalarProperty Name="MaTaiKhoan" ColumnName="MaTaiKhoan" />
+          <ScalarProperty Name="IDUser" ColumnName="IDUser" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbBanners">
+      <EntityTypeMapping TypeName="QLNhaTroModel.tbBanner">
+        <MappingFragment StoreEntitySet="tbBanner">
+          <ScalarProperty Name="Hide" ColumnName="Hide" />
+          <ScalarProperty Name="HinhBanner" ColumnName="HinhBanner" />
+          <ScalarProperty Name="NoiDung" ColumnName="NoiDung" />
+          <ScalarProperty Name="TieuDe" ColumnName="TieuDe" />
+          <ScalarProperty Name="IDBanner" ColumnName="IDBanner" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbAlbums">
+      <EntityTypeMapping TypeName="QLNhaTroModel.tbAlbum">
+        <MappingFragment StoreEntitySet="tbAlbum">
+          <ScalarProperty Name="Hide" ColumnName="Hide" />
+          <ScalarProperty Name="HinhAnh" ColumnName="HinhAnh" />
+          <ScalarProperty Name="TieuDe" ColumnName="TieuDe" />
+          <ScalarProperty Name="IDPhong" ColumnName="IDPhong" />
+          <ScalarProperty Name="IDAlbum" ColumnName="IDAlbum" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbDatLiches">
+      <EntityTypeMapping TypeName="QLNhaTroModel.tbDatLich">
+        <MappingFragment StoreEntitySet="tbDatLich">
+          <ScalarProperty Name="Hide" ColumnName="Hide" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="SDT" ColumnName="SDT" />
+          <ScalarProperty Name="HoTen" ColumnName="HoTen" />
+          <ScalarProperty Name="ThuCung" ColumnName="ThuCung" />
+          <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+          <ScalarProperty Name="NgayChuyenVao" ColumnName="NgayChuyenVao" />
+          <ScalarProperty Name="NgayXemPhong" ColumnName="NgayXemPhong" />
+          <ScalarProperty Name="SoLuongXe" ColumnName="SoLuongXe" />
+          <ScalarProperty Name="SoNguoiO" ColumnName="SoNguoiO" />
+          <ScalarProperty Name="IDPhong" ColumnName="IDPhong" />
+          <ScalarProperty Name="IDDatLich" ColumnName="IDDatLich" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbChiTietPhongs">
+      <EntityTypeMapping TypeName="QLNhaTroModel.tbChiTietPhong">
+        <MappingFragment StoreEntitySet="tbChiTietPhong">
+          <ScalarProperty Name="TrangThaiXuLy" ColumnName="TrangThaiXuLy" />
+          <ScalarProperty Name="NoiBat" ColumnName="NoiBat" />
+          <ScalarProperty Name="Hide" ColumnName="Hide" />
+          <ScalarProperty Name="TienCoc" ColumnName="TienCoc" />
+          <ScalarProperty Name="ThuCung" ColumnName="ThuCung" />
+          <ScalarProperty Name="PhuongTien" ColumnName="PhuongTien" />
+          <ScalarProperty Name="Thang" ColumnName="Thang" />
+          <ScalarProperty Name="SoPhongNgu" ColumnName="SoPhongNgu" />
+          <ScalarProperty Name="Sofa" ColumnName="Sofa" />
+          <ScalarProperty Name="MayGiat" ColumnName="MayGiat" />
+          <ScalarProperty Name="BanGhe" ColumnName="BanGhe" />
+          <ScalarProperty Name="TuLanh" ColumnName="TuLanh" />
+          <ScalarProperty Name="Nem" ColumnName="Nem" />
+          <ScalarProperty Name="TuDo" ColumnName="TuDo" />
+          <ScalarProperty Name="Giuong" ColumnName="Giuong" />
+          <ScalarProperty Name="MayLanh" ColumnName="MayLanh" />
+          <ScalarProperty Name="KeBep" ColumnName="KeBep" />
+          <ScalarProperty Name="WC" ColumnName="WC" />
+          <ScalarProperty Name="CuaSoBanCong" ColumnName="CuaSoBanCong" />
+          <ScalarProperty Name="TienDichVụ" ColumnName="TienDichVụ" />
+          <ScalarProperty Name="TienNuoc" ColumnName="TienNuoc" />
+          <ScalarProperty Name="TienDien" ColumnName="TienDien" />
+          <ScalarProperty Name="LinkMap" ColumnName="LinkMap" />
+          <ScalarProperty Name="GioGiac" ColumnName="GioGiac" />
+          <ScalarProperty Name="LinkBai" ColumnName="LinkBai" />
+          <ScalarProperty Name="MoTa" ColumnName="MoTa" />
+          <ScalarProperty Name="GiaThue" ColumnName="GiaThue" />
+          <ScalarProperty Name="IDTP" ColumnName="IDTP" />
+          <ScalarProperty Name="IDQuan" ColumnName="IDQuan" />
+          <ScalarProperty Name="IDPhuong" ColumnName="IDPhuong" />
+          <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+          <ScalarProperty Name="TieuDe" ColumnName="TieuDe" />
+          <ScalarProperty Name="MaTaiKhoan" ColumnName="MaTaiKhoan" />
+          <ScalarProperty Name="IDPhong" ColumnName="IDPhong" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

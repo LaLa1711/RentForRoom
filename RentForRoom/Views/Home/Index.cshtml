@@ -1,0 +1,1093 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_Layout_Main.cshtml";
+}
+@Html.Action("Index", "Banner")
+@*<section class="banner-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="banner-content">
+                    <h1>ĐẾN VỚI LALAHOME.VN</h1>
+                    <p>Nền tảng ký gửi, hợp tác kd phòng trọ, chdv  đầu tiên tại VN.</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="banner-search">
+                    <div class="tab-content" id="bannerTabContent">
+                        <div class="tab-pane fade show active" id="buy_property" role="tabpanel" aria-labelledby="buy-property">
+                            <div class="banner-tab-property">
+                                <form name="frmsearchroom" id="frmsearchroom" action="tim-kiem" method="get">
+                                    <div class="show-list">
+                                        <div class="row">
+                                            <div class="col-lg-11 col-10">
+                                                <div class="review-form">
+                                                    <input id="key" name="k" value="" type="text" class="form-control" placeholder="Nhập từ khóa, tên đường, quận....">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-1 col-2">
+                                                <div class="review-form">
+                                                    <div class="banner-property-grid">
+                                                        <button type="button" id="toggle-filters" class="btn-default">
+                                                            <span><i class="fa fa-fw fa-sliders"></i></span>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-lg-12 col-12">
+                                                    <div class="additional-filters" style="display: none;">
+                                                        <div class="row">
+                                                            <div class="col-lg-2 col-6" style="display: none;">
+                                                                <div class="review-form">
+                                                                    <select id="City" name="c" class="select" data-minimum-results-for-search="Infinity">
+                                                                        <option value="">Tỉnh/Thành</option>
+                                                                        <option selected value="79">Hồ Chí Minh</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-2 col-6">
+                                                                <div class="review-form">
+                                                                    <select id="District" name="d" class="select">
+                                                                        <option value="">Quận/Huyện</option>
+                                                                        <option value="760">Quận 1</option>
+                                                                        <option value="789">Quận 2</option>
+                                                                        <option value="770">Quận 3</option>
+                                                                        <option value="773">Quận 4</option>
+                                                                        <option value="774">Quận 5</option>
+                                                                        <option value="775">Quận 6</option>
+                                                                        <option value="778">Quận 7</option>
+                                                                        <option value="776">Quận 8</option>
+                                                                        <option value="771">Quận 10</option>
+                                                                        <option value="772">Quận 11</option>
+                                                                        <option value="761">Quận 12</option>
+                                                                        <option value="764">Quận Gò Vấp</option>
+                                                                        <option value="765">Quận Bình Thạnh</option>
+                                                                        <option value="766">Quận Tân Bình</option>
+                                                                        <option value="767">Quận Tân Phú</option>
+                                                                        <option value="768">Quận Phú Nhuận</option>
+                                                                        <option value="769">Thành phố Thủ Đức</option>
+                                                                        <option value="777">Quận Bình Tân</option>
+                                                                        <option value="783">Huyện Củ Chi</option>
+                                                                        <option value="784">Huyện Hóc Môn</option>
+                                                                        <option value="785">Huyện Bình Chánh</option>
+                                                                        <option value="786">Huyện Nhà Bè</option>
+                                                                        <option value="787">Huyện Cần Giờ</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-2 col-6">
+                                                                <div class="review-form">
+                                                                    <select id="Ward" name="w" class="select">
+                                                                        <option value="">Xã/Phường</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-2 col-6">
+                                                                <div class="review-form">
+                                                                    <select class="select" id="price" name="p" data-minimum-results-for-search="Infinity">
+                                                                        <option value="">Khoảng giá</option>
+                                                                        <option value="1">Dưới 3 triệu</option>
+                                                                        <option value="2">Từ 3tr đến 5tr</option>
+                                                                        <option value="3">Từ 5tr đến 7tr</option>
+                                                                        <option value="4">trên 7 triệu</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-2 col-6">
+                                                                <div class="review-form">
+                                                                    <select class="select" id="protype" name="kp">
+                                                                        <option value="">Kiểu phòng</option>
+                                                                        <option value="1">Gường ký túc xá</option>
+                                                                        <option value="2">Phòng trọ</option>
+                                                                        <option value="3">Căn hộ duplex</option>
+                                                                        <option value="4">Căn hộ mini</option>
+                                                                        <option value="6">Nhà nguyên căn</option>
+                                                                        <option value="7">Căn hộ 1 phòng ngủ</option>
+                                                                        <option value="8">Căn hộ 2 phòng ngủ</option>
+                                                                        <option value="9">Mặt bằng</option>
+                                                                        <option value="11">Sleep box</option>
+                                                                        <option value="12">Căn hộ 3 phòng ngủ</option>
+                                                                        <option value="13">Chung cư cao tầng</option>
+                                                                        <option value="14">Sàn văn phòng</option>
+                                                                        <option value="19">Khác</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-2 col-6">
+                                                                <div class="review-form">
+                                                                    <select class="select" id="status" name="st" data-minimum-results-for-search="Infinity">
+                                                                        <option value="">Trạng thái</option>
+                                                                        <option value="1">Nổi bật</option>
+                                                                        <option value="2">Phòng trống</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-2 col-6">
+                                                                <div class="review-form">
+                                                                    <div class="banner-property-grid">
+                                                                        <input type="hidden" id="ref" name="ref" value="">
+                                                                        <button class="btn-primary btn-search ">
+                                                                            <span><i class="fa fa-fw fa-search"></i> TÌM PHÒNG</span>
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>*@
+
+<section class="howit-work d-none d-md-block">
+    <div class="container">
+        <div class="section-heading text-center">
+            <h2>Giá Trị Cốt Lõi</h2>
+            <div class="sec-line">
+                <span class="sec-line1"></span>
+                <span class="sec-line2"></span>
+            </div>
+            <p> LaLaHome.vn - Nền tảng ký gửi, hợp tác kd phòng trọ, căn hộ dịch vụ,nhà nguyên căn. </p>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-4 col-md-6">
+                <div class="howit-work-card">
+                    <div class="work-card-icon">
+                        <span>
+                            <img src="/Content/img/work-icon-1.svg" alt="icon">
+                        </span>
+                    </div>
+                    <h4>KẾT NỐI</h4>
+                    <p>Tạo môi trường và công cụ kết nối thuận tiện các mắt xích trong mô hình cho thuê bao gồm: chủ nhà, khách thuê, môi giới.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="howit-work-card">
+                    <div class="work-card-icon">
+                        <span class="bg-red">
+                            <img src="/Content/img/work-icon-2.svg" alt="icon">
+                        </span>
+                    </div>
+                    <h4>HỢP TÁC</h4>
+                    <p>Thúc đẩy việc hợp tác các môi quan hệ, nguồn lực để tạo ra kết quả chung trên nguyên tắc: rõ ràng, minh bạch, công bằng.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="howit-work-card">
+                    <div class="work-card-icon">
+                        <span class="bg-green">
+                            <img src="/Content/img/work-icon-3.svg" alt="icon">
+                        </span>
+                    </div>
+                    <h4>PHÁT TRIỂN</h4>
+                    <p>Kiến tạo cộng đồng cùng chung đam mê yêu nghề, liên tục học tập và phát triển trong lĩnh vực kinh doanh đầu tư bất động sản.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@Html.Action("Index", "Phong")
+@*<section class="feature-property-sec">
+    <div class="container">
+        <div class="section-heading text-center">
+            <h2>HÀNG NGÀN PHÒNG ĐẸP GIÁ TỐT</h2>
+            <div class="sec-line">
+                <span class="sec-line1"></span>
+                <span class="sec-line2"></span>
+            </div>
+            <p>LaLaHome là cầu nối giúp bạn tiếp cận đến hàng ngàn phòng đẹp, giá tốt đa dạng phân khúc</p>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="pro-home">
+                    <div class="row">
+
+                        <div class="col-md-3 col-12">
+                            <div class="slider-col">
+                                <div class="product-custom">
+                                    <div class="profile-widget">
+                                        <a href="thue-phong-quan-go-vap/phong-63109" class="property-img">
+                                            <div class="doc-img" style="background-image:url(upload//data/news/63109675fa80ce7080.webp)">
+                                                <div class="product-amount" style="display:none">
+                                                    <span>5.3 triệu <small>/Tháng</small></span>
+                                                </div>
+                                                <div class="feature-rating ">
+                                                    <div>
+                                                        <div class="featured is--green">
+                                                            <span><i class="fa fa-fw fa-circle"></i> Còn phòng</span>
+                                                        </div>
+                                                        <div class="new-featured item__hot">
+                                                            <span><i class="animated infinite rubberBand">HOT</i> Nổi bật</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <div class="pro-content">
+                                            <h3 class="title">
+                                                <a href="thue-phong-quan-go-vap/phong-63109">
+                                                    Thuê Căn hộ mini Nguyễn Văn Công Phường 03  Quận Gò Vấp N11105
+                                                </a>
+                                            </h3>
+                                            <p><i class="fa fa-fw fa-map-marker"></i> 165, Nguyễn Văn Công, Phường 03, Quận Gò Vấp, Hồ Chí Minh</p>
+                                            <p class="price-mb"><span>5.3 triệu <small>/Tháng</small></span></p>
+                                            <ul class="d-flex details">
+                                                <li>
+                                                    <i class="fa fa-fw fa-home"></i>
+                                                    Căn hộ mini
+                                                </li>
+                                                <li>
+                                                    <i class="fa fa-fw fa-clock-o"></i>
+                                                    2 tiếng
+                                                </li>
+                                            </ul>
+                                            <div class="q-action">
+                                                <button type="button" class="btn btn-success btnbooking" data-item="{&quot;RoomId&quot;:63109,&quot;PropCode&quot;:&quot;&quot;,&quot;PropAvatar&quot;:&quot;\/data\/news\/63109675fa80ce7080.webp&quot;,&quot;IsEmpty&quot;:1,&quot;IsHot&quot;:1,&quot;PropPrice&quot;:5300000,&quot;updated_at&quot;:&quot;2024-12-17 10:30:30&quot;,&quot;PropType&quot;:4,&quot;PropTypeName&quot;:&quot;C\u0103n h\u1ed9 mini&quot;,&quot;PropName&quot;:&quot;Cho thu\u00ea ph\u00f2ng 175\/4\/14, Nguy\u1ec5n V\u0103n C\u00f4ng, Ph\u01b0\u1eddng 03, Qu\u1eadn G\u00f2 V\u1ea5p, H\u1ed3 Ch\u00ed Minh N11105 P80375&quot;,&quot;ElectricityPrice&quot;:null,&quot;ElectricityUnit&quot;:null,&quot;WaterPrice&quot;:null,&quot;WaterUnit&quot;:null,&quot;AreaSEOUrl&quot;:&quot;quan-go-vap&quot;,&quot;PropAddress&quot;:&quot;165, Nguy\u1ec5n V\u0103n C\u00f4ng, Ph\u01b0\u1eddng 03, Qu\u1eadn G\u00f2 V\u1ea5p, H\u1ed3 Ch\u00ed Minh&quot;,&quot;v_house_street&quot;:&quot;Nguy\u1ec5n V\u0103n C\u00f4ng&quot;,&quot;v_house_ward_name&quot;:&quot;Ph\u01b0\u1eddng 03&quot;,&quot;v_house_district_name&quot;:&quot;Qu\u1eadn G\u00f2 V\u1ea5p&quot;,&quot;v_house_id&quot;:11105}" data-bs-toggle="modal" data-bs-target="#make-an-appointment">
+                                                    Đặt Lịch Hẹn
+                                                </button>
+                                                <button type="button" class="btn btn-danger btnfollow" data-item="{&quot;RoomId&quot;:63109,&quot;PropCode&quot;:&quot;&quot;,&quot;PropAvatar&quot;:&quot;\/data\/news\/63109675fa80ce7080.webp&quot;,&quot;IsEmpty&quot;:1,&quot;IsHot&quot;:1,&quot;PropPrice&quot;:5300000,&quot;updated_at&quot;:&quot;2024-12-17 10:30:30&quot;,&quot;PropType&quot;:4,&quot;PropTypeName&quot;:&quot;C\u0103n h\u1ed9 mini&quot;,&quot;PropName&quot;:&quot;Cho thu\u00ea ph\u00f2ng 175\/4\/14, Nguy\u1ec5n V\u0103n C\u00f4ng, Ph\u01b0\u1eddng 03, Qu\u1eadn G\u00f2 V\u1ea5p, H\u1ed3 Ch\u00ed Minh N11105 P80375&quot;,&quot;ElectricityPrice&quot;:null,&quot;ElectricityUnit&quot;:null,&quot;WaterPrice&quot;:null,&quot;WaterUnit&quot;:null,&quot;AreaSEOUrl&quot;:&quot;quan-go-vap&quot;,&quot;PropAddress&quot;:&quot;165, Nguy\u1ec5n V\u0103n C\u00f4ng, Ph\u01b0\u1eddng 03, Qu\u1eadn G\u00f2 V\u1ea5p, H\u1ed3 Ch\u00ed Minh&quot;,&quot;v_house_street&quot;:&quot;Nguy\u1ec5n V\u0103n C\u00f4ng&quot;,&quot;v_house_ward_name&quot;:&quot;Ph\u01b0\u1eddng 03&quot;,&quot;v_house_district_name&quot;:&quot;Qu\u1eadn G\u00f2 V\u1ea5p&quot;,&quot;v_house_id&quot;:11105}" data-bs-toggle="modal" data-bs-target="#care-about">
+                                                    Quan tâm
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 col-12">
+                            <div class="slider-col">
+                                <div class="product-custom">
+                                    <div class="profile-widget">
+                                        <a href="thue-phong-quan-go-vap/phong-63108" class="property-img">
+                                            <div class="doc-img" style="background-image:url(upload//data/news/63108675fa536bdb10.webp)">
+                                                <div class="product-amount" style="display:none">
+                                                    <span>5.8 triệu <small>/Tháng</small></span>
+                                                </div>
+                                                <div class="feature-rating ">
+                                                    <div>
+                                                        <div class="featured is--green">
+                                                            <span><i class="fa fa-fw fa-circle"></i> Còn phòng</span>
+                                                        </div>
+                                                        <div class="new-featured item__hot">
+                                                            <span><i class="animated infinite rubberBand">HOT</i> Nổi bật</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <div class="pro-content">
+                                            <h3 class="title">
+                                                <a href="thue-phong-quan-go-vap/phong-63108">
+                                                    Thuê Căn hộ mini  Phường 8  Quận Gò Vấp N5192
+                                                </a>
+                                            </h3>
+                                            <p><i class="fa fa-fw fa-map-marker"></i> 143 LÊ VĂN THỌ, P8 , QUẬN GÒ VẤP</p>
+                                            <p class="price-mb"><span>5.8 triệu <small>/Tháng</small></span></p>
+                                            <ul class="d-flex details">
+                                                <li>
+                                                    <i class="fa fa-fw fa-home"></i>
+                                                    Căn hộ mini
+                                                </li>
+                                                <li>
+                                                    <i class="fa fa-fw fa-clock-o"></i>
+                                                    2 tiếng
+                                                </li>
+                                            </ul>
+                                            <div class="q-action">
+                                                <button type="button" class="btn btn-success btnbooking" data-item="{&quot;RoomId&quot;:63108,&quot;PropCode&quot;:&quot;&quot;,&quot;PropAvatar&quot;:&quot;\/data\/news\/63108675fa536bdb10.webp&quot;,&quot;IsEmpty&quot;:1,&quot;IsHot&quot;:1,&quot;PropPrice&quot;:5800000,&quot;updated_at&quot;:&quot;2024-12-17 10:30:04&quot;,&quot;PropType&quot;:4,&quot;PropTypeName&quot;:&quot;C\u0103n h\u1ed9 mini&quot;,&quot;PropName&quot;:&quot;CHO THU\u00ca PH\u00d2NG L\u00ca V\u0102N TH\u1ecc, P8 , QU\u1eacN G\u00d2 V\u1ea4P\/B\u1eafc CTTA\/ N5192, ID: 163- NG\u1eccC H\u00c2N&quot;,&quot;ElectricityPrice&quot;:null,&quot;ElectricityUnit&quot;:null,&quot;WaterPrice&quot;:null,&quot;WaterUnit&quot;:null,&quot;AreaSEOUrl&quot;:&quot;quan-go-vap&quot;,&quot;PropAddress&quot;:&quot;143 L\u00ca V\u0102N TH\u1ecc, P8 , QU\u1eacN G\u00d2 V\u1ea4P&quot;,&quot;v_house_street&quot;:&quot;&quot;,&quot;v_house_ward_name&quot;:&quot;Ph\u01b0\u1eddng 8&quot;,&quot;v_house_district_name&quot;:&quot;Qu\u1eadn G\u00f2 V\u1ea5p&quot;,&quot;v_house_id&quot;:5192}" data-bs-toggle="modal" data-bs-target="#make-an-appointment">
+                                                    Đặt Lịch Hẹn
+                                                </button>
+                                                <button type="button" class="btn btn-danger btnfollow" data-item="{&quot;RoomId&quot;:63108,&quot;PropCode&quot;:&quot;&quot;,&quot;PropAvatar&quot;:&quot;\/data\/news\/63108675fa536bdb10.webp&quot;,&quot;IsEmpty&quot;:1,&quot;IsHot&quot;:1,&quot;PropPrice&quot;:5800000,&quot;updated_at&quot;:&quot;2024-12-17 10:30:04&quot;,&quot;PropType&quot;:4,&quot;PropTypeName&quot;:&quot;C\u0103n h\u1ed9 mini&quot;,&quot;PropName&quot;:&quot;CHO THU\u00ca PH\u00d2NG L\u00ca V\u0102N TH\u1ecc, P8 , QU\u1eacN G\u00d2 V\u1ea4P\/B\u1eafc CTTA\/ N5192, ID: 163- NG\u1eccC H\u00c2N&quot;,&quot;ElectricityPrice&quot;:null,&quot;ElectricityUnit&quot;:null,&quot;WaterPrice&quot;:null,&quot;WaterUnit&quot;:null,&quot;AreaSEOUrl&quot;:&quot;quan-go-vap&quot;,&quot;PropAddress&quot;:&quot;143 L\u00ca V\u0102N TH\u1ecc, P8 , QU\u1eacN G\u00d2 V\u1ea4P&quot;,&quot;v_house_street&quot;:&quot;&quot;,&quot;v_house_ward_name&quot;:&quot;Ph\u01b0\u1eddng 8&quot;,&quot;v_house_district_name&quot;:&quot;Qu\u1eadn G\u00f2 V\u1ea5p&quot;,&quot;v_house_id&quot;:5192}" data-bs-toggle="modal" data-bs-target="#care-about">
+                                                    Quan tâm
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 col-12">
+                            <div class="slider-col">
+                                <div class="product-custom">
+                                    <div class="profile-widget">
+                                        <a href="thue-phong-quan-tan-phu/phong-63114" class="property-img">
+                                            <div class="doc-img" style="background-image:url(upload//data/news/63114675fac74af6b6.webp)">
+                                                <div class="product-amount" style="display:none">
+                                                    <span>4.5 triệu <small>/Tháng</small></span>
+                                                </div>
+                                                <div class="feature-rating ">
+                                                    <div>
+                                                        <div class="featured is--green">
+                                                            <span><i class="fa fa-fw fa-circle"></i> Còn phòng</span>
+                                                        </div>
+                                                        <div class="new-featured item__hot">
+                                                            <span><i class="animated infinite rubberBand">HOT</i> Nổi bật</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <div class="pro-content">
+                                            <h3 class="title">
+                                                <a href="thue-phong-quan-tan-phu/phong-63114">
+                                                    Thuê Căn hộ mini Lũy Bán Bích Phường Tân Thới Hòa  Quận Tân Phú N11099
+                                                </a>
+                                            </h3>
+                                            <p><i class="fa fa-fw fa-map-marker"></i> 141, Lũy Bán Bích, Phường Tân Thới Hòa, Quận Tân Phú, Hồ Chí Minh</p>
+                                            <p class="price-mb"><span>4.5 triệu <small>/Tháng</small></span></p>
+                                            <ul class="d-flex details">
+                                                <li>
+                                                    <i class="fa fa-fw fa-home"></i>
+                                                    Căn hộ mini
+                                                </li>
+                                                <li>
+                                                    <i class="fa fa-fw fa-clock-o"></i>
+                                                    2 tiếng
+                                                </li>
+                                            </ul>
+                                            <div class="q-action">
+                                                <button type="button" class="btn btn-success btnbooking" data-item="{&quot;RoomId&quot;:63114,&quot;PropCode&quot;:&quot;&quot;,&quot;PropAvatar&quot;:&quot;\/data\/news\/63114675fac74af6b6.webp&quot;,&quot;IsEmpty&quot;:1,&quot;IsHot&quot;:1,&quot;PropPrice&quot;:4500000,&quot;updated_at&quot;:&quot;2024-12-17 10:28:25&quot;,&quot;PropType&quot;:4,&quot;PropTypeName&quot;:&quot;C\u0103n h\u1ed9 mini&quot;,&quot;PropName&quot;:&quot;Cho thu\u00ea ph\u00f2ng 151\/48, L\u0169y B\u00e1n B\u00edch, Ph\u01b0\u1eddng T\u00e2n Th\u1edbi H\u00f2a, Qu\u1eadn T\u00e2n Ph\u00fa, H\u1ed3 Ch\u00ed Minh N11099 P80377&quot;,&quot;ElectricityPrice&quot;:null,&quot;ElectricityUnit&quot;:null,&quot;WaterPrice&quot;:null,&quot;WaterUnit&quot;:null,&quot;AreaSEOUrl&quot;:&quot;quan-tan-phu&quot;,&quot;PropAddress&quot;:&quot;141, L\u0169y B\u00e1n B\u00edch, Ph\u01b0\u1eddng T\u00e2n Th\u1edbi H\u00f2a, Qu\u1eadn T\u00e2n Ph\u00fa, H\u1ed3 Ch\u00ed Minh&quot;,&quot;v_house_street&quot;:&quot;L\u0169y B\u00e1n B\u00edch&quot;,&quot;v_house_ward_name&quot;:&quot;Ph\u01b0\u1eddng T\u00e2n Th\u1edbi H\u00f2a&quot;,&quot;v_house_district_name&quot;:&quot;Qu\u1eadn T\u00e2n Ph\u00fa&quot;,&quot;v_house_id&quot;:11099}" data-bs-toggle="modal" data-bs-target="#make-an-appointment">
+                                                    Đặt Lịch Hẹn
+                                                </button>
+                                                <button type="button" class="btn btn-danger btnfollow" data-item="{&quot;RoomId&quot;:63114,&quot;PropCode&quot;:&quot;&quot;,&quot;PropAvatar&quot;:&quot;\/data\/news\/63114675fac74af6b6.webp&quot;,&quot;IsEmpty&quot;:1,&quot;IsHot&quot;:1,&quot;PropPrice&quot;:4500000,&quot;updated_at&quot;:&quot;2024-12-17 10:28:25&quot;,&quot;PropType&quot;:4,&quot;PropTypeName&quot;:&quot;C\u0103n h\u1ed9 mini&quot;,&quot;PropName&quot;:&quot;Cho thu\u00ea ph\u00f2ng 151\/48, L\u0169y B\u00e1n B\u00edch, Ph\u01b0\u1eddng T\u00e2n Th\u1edbi H\u00f2a, Qu\u1eadn T\u00e2n Ph\u00fa, H\u1ed3 Ch\u00ed Minh N11099 P80377&quot;,&quot;ElectricityPrice&quot;:null,&quot;ElectricityUnit&quot;:null,&quot;WaterPrice&quot;:null,&quot;WaterUnit&quot;:null,&quot;AreaSEOUrl&quot;:&quot;quan-tan-phu&quot;,&quot;PropAddress&quot;:&quot;141, L\u0169y B\u00e1n B\u00edch, Ph\u01b0\u1eddng T\u00e2n Th\u1edbi H\u00f2a, Qu\u1eadn T\u00e2n Ph\u00fa, H\u1ed3 Ch\u00ed Minh&quot;,&quot;v_house_street&quot;:&quot;L\u0169y B\u00e1n B\u00edch&quot;,&quot;v_house_ward_name&quot;:&quot;Ph\u01b0\u1eddng T\u00e2n Th\u1edbi H\u00f2a&quot;,&quot;v_house_district_name&quot;:&quot;Qu\u1eadn T\u00e2n Ph\u00fa&quot;,&quot;v_house_id&quot;:11099}" data-bs-toggle="modal" data-bs-target="#care-about">
+                                                    Quan tâm
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 col-12">
+                            <div class="slider-col">
+                                <div class="product-custom">
+                                    <div class="profile-widget">
+                                        <a href="thue-phong-quan-tan-phu/phong-63115" class="property-img">
+                                            <div class="doc-img" style="background-image:url(upload//data/news/63115675fad8bed1aa.webp)">
+                                                <div class="product-amount" style="display:none">
+                                                    <span>4.8 triệu <small>/Tháng</small></span>
+                                                </div>
+                                                <div class="feature-rating ">
+                                                    <div>
+                                                        <div class="featured is--green">
+                                                            <span><i class="fa fa-fw fa-circle"></i> Còn phòng</span>
+                                                        </div>
+                                                        <div class="new-featured item__hot">
+                                                            <span><i class="animated infinite rubberBand">HOT</i> Nổi bật</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <div class="pro-content">
+                                            <h3 class="title">
+                                                <a href="thue-phong-quan-tan-phu/phong-63115">
+                                                    Thuê Căn hộ mini Lũy Bán Bích Phường Tân Thới Hòa  Quận Tân Phú N11099
+                                                </a>
+                                            </h3>
+                                            <p><i class="fa fa-fw fa-map-marker"></i> 141, Lũy Bán Bích, Phường Tân Thới Hòa, Quận Tân Phú, Hồ Chí Minh</p>
+                                            <p class="price-mb"><span>4.8 triệu <small>/Tháng</small></span></p>
+                                            <ul class="d-flex details">
+                                                <li>
+                                                    <i class="fa fa-fw fa-home"></i>
+                                                    Căn hộ mini
+                                                </li>
+                                                <li>
+                                                    <i class="fa fa-fw fa-clock-o"></i>
+                                                    2 tiếng
+                                                </li>
+                                            </ul>
+                                            <div class="q-action">
+                                                <button type="button" class="btn btn-success btnbooking" data-item="{&quot;RoomId&quot;:63115,&quot;PropCode&quot;:&quot;&quot;,&quot;PropAvatar&quot;:&quot;\/data\/news\/63115675fad8bed1aa.webp&quot;,&quot;IsEmpty&quot;:1,&quot;IsHot&quot;:1,&quot;PropPrice&quot;:4800000,&quot;updated_at&quot;:&quot;2024-12-17 10:28:22&quot;,&quot;PropType&quot;:4,&quot;PropTypeName&quot;:&quot;C\u0103n h\u1ed9 mini&quot;,&quot;PropName&quot;:&quot;Cho thu\u00ea ph\u00f2ng 151\/48, L\u0169y B\u00e1n B\u00edch, Ph\u01b0\u1eddng T\u00e2n Th\u1edbi H\u00f2a, Qu\u1eadn T\u00e2n Ph\u00fa, H\u1ed3 Ch\u00ed Minh N11099 P80378&quot;,&quot;ElectricityPrice&quot;:null,&quot;ElectricityUnit&quot;:null,&quot;WaterPrice&quot;:null,&quot;WaterUnit&quot;:null,&quot;AreaSEOUrl&quot;:&quot;quan-tan-phu&quot;,&quot;PropAddress&quot;:&quot;141, L\u0169y B\u00e1n B\u00edch, Ph\u01b0\u1eddng T\u00e2n Th\u1edbi H\u00f2a, Qu\u1eadn T\u00e2n Ph\u00fa, H\u1ed3 Ch\u00ed Minh&quot;,&quot;v_house_street&quot;:&quot;L\u0169y B\u00e1n B\u00edch&quot;,&quot;v_house_ward_name&quot;:&quot;Ph\u01b0\u1eddng T\u00e2n Th\u1edbi H\u00f2a&quot;,&quot;v_house_district_name&quot;:&quot;Qu\u1eadn T\u00e2n Ph\u00fa&quot;,&quot;v_house_id&quot;:11099}" data-bs-toggle="modal" data-bs-target="#make-an-appointment">
+                                                    Đặt Lịch Hẹn
+                                                </button>
+                                                <button type="button" class="btn btn-danger btnfollow" data-item="{&quot;RoomId&quot;:63115,&quot;PropCode&quot;:&quot;&quot;,&quot;PropAvatar&quot;:&quot;\/data\/news\/63115675fad8bed1aa.webp&quot;,&quot;IsEmpty&quot;:1,&quot;IsHot&quot;:1,&quot;PropPrice&quot;:4800000,&quot;updated_at&quot;:&quot;2024-12-17 10:28:22&quot;,&quot;PropType&quot;:4,&quot;PropTypeName&quot;:&quot;C\u0103n h\u1ed9 mini&quot;,&quot;PropName&quot;:&quot;Cho thu\u00ea ph\u00f2ng 151\/48, L\u0169y B\u00e1n B\u00edch, Ph\u01b0\u1eddng T\u00e2n Th\u1edbi H\u00f2a, Qu\u1eadn T\u00e2n Ph\u00fa, H\u1ed3 Ch\u00ed Minh N11099 P80378&quot;,&quot;ElectricityPrice&quot;:null,&quot;ElectricityUnit&quot;:null,&quot;WaterPrice&quot;:null,&quot;WaterUnit&quot;:null,&quot;AreaSEOUrl&quot;:&quot;quan-tan-phu&quot;,&quot;PropAddress&quot;:&quot;141, L\u0169y B\u00e1n B\u00edch, Ph\u01b0\u1eddng T\u00e2n Th\u1edbi H\u00f2a, Qu\u1eadn T\u00e2n Ph\u00fa, H\u1ed3 Ch\u00ed Minh&quot;,&quot;v_house_street&quot;:&quot;L\u0169y B\u00e1n B\u00edch&quot;,&quot;v_house_ward_name&quot;:&quot;Ph\u01b0\u1eddng T\u00e2n Th\u1edbi H\u00f2a&quot;,&quot;v_house_district_name&quot;:&quot;Qu\u1eadn T\u00e2n Ph\u00fa&quot;,&quot;v_house_id&quot;:11099}" data-bs-toggle="modal" data-bs-target="#care-about">
+                                                    Quan tâm
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 col-12">
+                            <div class="slider-col">
+                                <div class="product-custom">
+                                    <div class="profile-widget">
+                                        <a href="thue-phong-quan-go-vap/phong-63117" class="property-img">
+                                            <div class="doc-img" style="background-image:url(upload//data/news/63117675fb03001418.webp)">
+                                                <div class="product-amount" style="display:none">
+                                                    <span>3.5 triệu <small>/Tháng</small></span>
+                                                </div>
+                                                <div class="feature-rating ">
+                                                    <div>
+                                                        <div class="featured is--green">
+                                                            <span><i class="fa fa-fw fa-circle"></i> Còn phòng</span>
+                                                        </div>
+                                                        <div class="new-featured item__hot">
+                                                            <span><i class="animated infinite rubberBand">HOT</i> Nổi bật</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <div class="pro-content">
+                                            <h3 class="title">
+                                                <a href="thue-phong-quan-go-vap/phong-63117">
+                                                    Thuê Căn hộ mini  Phường 14  Quận Gò Vấp N2001
+                                                </a>
+                                            </h3>
+                                            <p><i class="fa fa-fw fa-map-marker"></i> 75 Đường Số 59, P14, Gò Vấp</p>
+                                            <p class="price-mb"><span>3.5 triệu <small>/Tháng</small></span></p>
+                                            <ul class="d-flex details">
+                                                <li>
+                                                    <i class="fa fa-fw fa-home"></i>
+                                                    Căn hộ mini
+                                                </li>
+                                                <li>
+                                                    <i class="fa fa-fw fa-clock-o"></i>
+                                                    2 tiếng
+                                                </li>
+                                            </ul>
+                                            <div class="q-action">
+                                                <button type="button" class="btn btn-success btnbooking" data-item="{&quot;RoomId&quot;:63117,&quot;PropCode&quot;:&quot;&quot;,&quot;PropAvatar&quot;:&quot;\/data\/news\/63117675fb03001418.webp&quot;,&quot;IsEmpty&quot;:1,&quot;IsHot&quot;:1,&quot;PropPrice&quot;:3500000,&quot;updated_at&quot;:&quot;2024-12-17 10:27:10&quot;,&quot;PropType&quot;:4,&quot;PropTypeName&quot;:&quot;C\u0103n h\u1ed9 mini&quot;,&quot;PropName&quot;:&quot;Cho Thu\u00ea Ph\u00f2ng \u0110\u01b0\u1eddng S\u1ed1 59, Q. G\u00f2 V\u1ea5p - \/B\u1eafc CTTA\/ - N2001- ID: 788,1165 - Mr. Th\u00f4ng,TRANG N2001 P80380&quot;,&quot;ElectricityPrice&quot;:null,&quot;ElectricityUnit&quot;:null,&quot;WaterPrice&quot;:null,&quot;WaterUnit&quot;:null,&quot;AreaSEOUrl&quot;:&quot;quan-go-vap&quot;,&quot;PropAddress&quot;:&quot;75 \u0110\u01b0\u1eddng S\u1ed1 59, P14, G\u00f2 V\u1ea5p&quot;,&quot;v_house_street&quot;:&quot;&quot;,&quot;v_house_ward_name&quot;:&quot;Ph\u01b0\u1eddng 14&quot;,&quot;v_house_district_name&quot;:&quot;Qu\u1eadn G\u00f2 V\u1ea5p&quot;,&quot;v_house_id&quot;:2001}" data-bs-toggle="modal" data-bs-target="#make-an-appointment">
+                                                    Đặt Lịch Hẹn
+                                                </button>
+                                                <button type="button" class="btn btn-danger btnfollow" data-item="{&quot;RoomId&quot;:63117,&quot;PropCode&quot;:&quot;&quot;,&quot;PropAvatar&quot;:&quot;\/data\/news\/63117675fb03001418.webp&quot;,&quot;IsEmpty&quot;:1,&quot;IsHot&quot;:1,&quot;PropPrice&quot;:3500000,&quot;updated_at&quot;:&quot;2024-12-17 10:27:10&quot;,&quot;PropType&quot;:4,&quot;PropTypeName&quot;:&quot;C\u0103n h\u1ed9 mini&quot;,&quot;PropName&quot;:&quot;Cho Thu\u00ea Ph\u00f2ng \u0110\u01b0\u1eddng S\u1ed1 59, Q. G\u00f2 V\u1ea5p - \/B\u1eafc CTTA\/ - N2001- ID: 788,1165 - Mr. Th\u00f4ng,TRANG N2001 P80380&quot;,&quot;ElectricityPrice&quot;:null,&quot;ElectricityUnit&quot;:null,&quot;WaterPrice&quot;:null,&quot;WaterUnit&quot;:null,&quot;AreaSEOUrl&quot;:&quot;quan-go-vap&quot;,&quot;PropAddress&quot;:&quot;75 \u0110\u01b0\u1eddng S\u1ed1 59, P14, G\u00f2 V\u1ea5p&quot;,&quot;v_house_street&quot;:&quot;&quot;,&quot;v_house_ward_name&quot;:&quot;Ph\u01b0\u1eddng 14&quot;,&quot;v_house_district_name&quot;:&quot;Qu\u1eadn G\u00f2 V\u1ea5p&quot;,&quot;v_house_id&quot;:2001}" data-bs-toggle="modal" data-bs-target="#care-about">
+                                                    Quan tâm
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 col-12">
+                            <div class="slider-col">
+                                <div class="product-custom">
+                                    <div class="profile-widget">
+                                        <a href="thue-phong-quan-go-vap/phong-63119" class="property-img">
+                                            <div class="doc-img" style="background-image:url(upload//data/news/63119675fb4609b98e.webp)">
+                                                <div class="product-amount" style="display:none">
+                                                    <span>3.5 triệu <small>/Tháng</small></span>
+                                                </div>
+                                                <div class="feature-rating ">
+                                                    <div>
+                                                        <div class="featured is--green">
+                                                            <span><i class="fa fa-fw fa-circle"></i> Còn phòng</span>
+                                                        </div>
+                                                        <div class="new-featured item__hot">
+                                                            <span><i class="animated infinite rubberBand">HOT</i> Nổi bật</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <div class="pro-content">
+                                            <h3 class="title">
+                                                <a href="thue-phong-quan-go-vap/phong-63119">
+                                                    Thuê Căn hộ mini  Phường 05  Quận Gò Vấp N6863
+                                                </a>
+                                            </h3>
+                                            <p><i class="fa fa-fw fa-map-marker"></i> 166 Đường số 20, P.5, Gò Vấp</p>
+                                            <p class="price-mb"><span>3.5 triệu <small>/Tháng</small></span></p>
+                                            <ul class="d-flex details">
+                                                <li>
+                                                    <i class="fa fa-fw fa-home"></i>
+                                                    Căn hộ mini
+                                                </li>
+                                                <li>
+                                                    <i class="fa fa-fw fa-clock-o"></i>
+                                                    2 tiếng
+                                                </li>
+                                            </ul>
+                                            <div class="q-action">
+                                                <button type="button" class="btn btn-success btnbooking" data-item="{&quot;RoomId&quot;:63119,&quot;PropCode&quot;:&quot;&quot;,&quot;PropAvatar&quot;:&quot;\/data\/news\/63119675fb4609b98e.webp&quot;,&quot;IsEmpty&quot;:1,&quot;IsHot&quot;:1,&quot;PropPrice&quot;:3500000,&quot;updated_at&quot;:&quot;2024-12-17 10:26:53&quot;,&quot;PropType&quot;:4,&quot;PropTypeName&quot;:&quot;C\u0103n h\u1ed9 mini&quot;,&quot;PropName&quot;:&quot;Cho Thu\u00ea Ph\u00f2ng \u0110\u01b0\u1eddng s\u1ed1 20, Qu\u1eadn G\u00f2 V\u1ea5p, \/NUPTA\/ N6863, ID: 2336 - anh T\u00e0i N6863 P80382&quot;,&quot;ElectricityPrice&quot;:null,&quot;ElectricityUnit&quot;:null,&quot;WaterPrice&quot;:null,&quot;WaterUnit&quot;:null,&quot;AreaSEOUrl&quot;:&quot;quan-go-vap&quot;,&quot;PropAddress&quot;:&quot;166 \u0110\u01b0\u1eddng s\u1ed1 20, P.5, G\u00f2 V\u1ea5p&quot;,&quot;v_house_street&quot;:&quot;&quot;,&quot;v_house_ward_name&quot;:&quot;Ph\u01b0\u1eddng 05&quot;,&quot;v_house_district_name&quot;:&quot;Qu\u1eadn G\u00f2 V\u1ea5p&quot;,&quot;v_house_id&quot;:6863}" data-bs-toggle="modal" data-bs-target="#make-an-appointment">
+                                                    Đặt Lịch Hẹn
+                                                </button>
+                                                <button type="button" class="btn btn-danger btnfollow" data-item="{&quot;RoomId&quot;:63119,&quot;PropCode&quot;:&quot;&quot;,&quot;PropAvatar&quot;:&quot;\/data\/news\/63119675fb4609b98e.webp&quot;,&quot;IsEmpty&quot;:1,&quot;IsHot&quot;:1,&quot;PropPrice&quot;:3500000,&quot;updated_at&quot;:&quot;2024-12-17 10:26:53&quot;,&quot;PropType&quot;:4,&quot;PropTypeName&quot;:&quot;C\u0103n h\u1ed9 mini&quot;,&quot;PropName&quot;:&quot;Cho Thu\u00ea Ph\u00f2ng \u0110\u01b0\u1eddng s\u1ed1 20, Qu\u1eadn G\u00f2 V\u1ea5p, \/NUPTA\/ N6863, ID: 2336 - anh T\u00e0i N6863 P80382&quot;,&quot;ElectricityPrice&quot;:null,&quot;ElectricityUnit&quot;:null,&quot;WaterPrice&quot;:null,&quot;WaterUnit&quot;:null,&quot;AreaSEOUrl&quot;:&quot;quan-go-vap&quot;,&quot;PropAddress&quot;:&quot;166 \u0110\u01b0\u1eddng s\u1ed1 20, P.5, G\u00f2 V\u1ea5p&quot;,&quot;v_house_street&quot;:&quot;&quot;,&quot;v_house_ward_name&quot;:&quot;Ph\u01b0\u1eddng 05&quot;,&quot;v_house_district_name&quot;:&quot;Qu\u1eadn G\u00f2 V\u1ea5p&quot;,&quot;v_house_id&quot;:6863}" data-bs-toggle="modal" data-bs-target="#care-about">
+                                                    Quan tâm
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 col-12">
+                            <div class="slider-col">
+                                <div class="product-custom">
+                                    <div class="profile-widget">
+                                        <a href="thue-phong-quan-tan-phu/phong-63123" class="property-img">
+                                            <div class="doc-img" style="background-image:url(upload//data/news/63123675fc49a4c429.webp)">
+                                                <div class="product-amount" style="display:none">
+                                                    <span>5.3 triệu <small>/Tháng</small></span>
+                                                </div>
+                                                <div class="feature-rating ">
+                                                    <div>
+                                                        <div class="featured is--green">
+                                                            <span><i class="fa fa-fw fa-circle"></i> Còn phòng</span>
+                                                        </div>
+                                                        <div class="new-featured item__hot">
+                                                            <span><i class="animated infinite rubberBand">HOT</i> Nổi bật</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <div class="pro-content">
+                                            <h3 class="title">
+                                                <a href="thue-phong-quan-tan-phu/phong-63123">
+                                                    Thuê Căn hộ mini Đàm Thận Huy Phường Tân Quý  Quận Tân Phú N11089
+                                                </a>
+                                            </h3>
+                                            <p><i class="fa fa-fw fa-map-marker"></i> 2, Đàm Thận Huy, Phường Tân Quý, Quận Tân Phú, Hồ Chí Minh</p>
+                                            <p class="price-mb"><span>5.3 triệu <small>/Tháng</small></span></p>
+                                            <ul class="d-flex details">
+                                                <li>
+                                                    <i class="fa fa-fw fa-home"></i>
+                                                    Căn hộ mini
+                                                </li>
+                                                <li>
+                                                    <i class="fa fa-fw fa-clock-o"></i>
+                                                    2 tiếng
+                                                </li>
+                                            </ul>
+                                            <div class="q-action">
+                                                <button type="button" class="btn btn-success btnbooking" data-item="{&quot;RoomId&quot;:63123,&quot;PropCode&quot;:&quot;&quot;,&quot;PropAvatar&quot;:&quot;\/data\/news\/63123675fc49a4c429.webp&quot;,&quot;IsEmpty&quot;:1,&quot;IsHot&quot;:1,&quot;PropPrice&quot;:5300000,&quot;updated_at&quot;:&quot;2024-12-17 10:26:43&quot;,&quot;PropType&quot;:4,&quot;PropTypeName&quot;:&quot;C\u0103n h\u1ed9 mini&quot;,&quot;PropName&quot;:&quot;Cho thu\u00ea ph\u00f2ng 12, \u0110\u00e0m Th\u1eadn Huy, Ph\u01b0\u1eddng T\u00e2n Qu\u00fd, Qu\u1eadn T\u00e2n Ph\u00fa, H\u1ed3 Ch\u00ed Minh N11089 P80386&quot;,&quot;ElectricityPrice&quot;:null,&quot;ElectricityUnit&quot;:null,&quot;WaterPrice&quot;:null,&quot;WaterUnit&quot;:null,&quot;AreaSEOUrl&quot;:&quot;quan-tan-phu&quot;,&quot;PropAddress&quot;:&quot;2, \u0110\u00e0m Th\u1eadn Huy, Ph\u01b0\u1eddng T\u00e2n Qu\u00fd, Qu\u1eadn T\u00e2n Ph\u00fa, H\u1ed3 Ch\u00ed Minh&quot;,&quot;v_house_street&quot;:&quot;\u0110\u00e0m Th\u1eadn Huy&quot;,&quot;v_house_ward_name&quot;:&quot;Ph\u01b0\u1eddng T\u00e2n Qu\u00fd&quot;,&quot;v_house_district_name&quot;:&quot;Qu\u1eadn T\u00e2n Ph\u00fa&quot;,&quot;v_house_id&quot;:11089}" data-bs-toggle="modal" data-bs-target="#make-an-appointment">
+                                                    Đặt Lịch Hẹn
+                                                </button>
+                                                <button type="button" class="btn btn-danger btnfollow" data-item="{&quot;RoomId&quot;:63123,&quot;PropCode&quot;:&quot;&quot;,&quot;PropAvatar&quot;:&quot;\/data\/news\/63123675fc49a4c429.webp&quot;,&quot;IsEmpty&quot;:1,&quot;IsHot&quot;:1,&quot;PropPrice&quot;:5300000,&quot;updated_at&quot;:&quot;2024-12-17 10:26:43&quot;,&quot;PropType&quot;:4,&quot;PropTypeName&quot;:&quot;C\u0103n h\u1ed9 mini&quot;,&quot;PropName&quot;:&quot;Cho thu\u00ea ph\u00f2ng 12, \u0110\u00e0m Th\u1eadn Huy, Ph\u01b0\u1eddng T\u00e2n Qu\u00fd, Qu\u1eadn T\u00e2n Ph\u00fa, H\u1ed3 Ch\u00ed Minh N11089 P80386&quot;,&quot;ElectricityPrice&quot;:null,&quot;ElectricityUnit&quot;:null,&quot;WaterPrice&quot;:null,&quot;WaterUnit&quot;:null,&quot;AreaSEOUrl&quot;:&quot;quan-tan-phu&quot;,&quot;PropAddress&quot;:&quot;2, \u0110\u00e0m Th\u1eadn Huy, Ph\u01b0\u1eddng T\u00e2n Qu\u00fd, Qu\u1eadn T\u00e2n Ph\u00fa, H\u1ed3 Ch\u00ed Minh&quot;,&quot;v_house_street&quot;:&quot;\u0110\u00e0m Th\u1eadn Huy&quot;,&quot;v_house_ward_name&quot;:&quot;Ph\u01b0\u1eddng T\u00e2n Qu\u00fd&quot;,&quot;v_house_district_name&quot;:&quot;Qu\u1eadn T\u00e2n Ph\u00fa&quot;,&quot;v_house_id&quot;:11089}" data-bs-toggle="modal" data-bs-target="#care-about">
+                                                    Quan tâm
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 col-12">
+                            <div class="slider-col">
+                                <div class="product-custom">
+                                    <div class="profile-widget">
+                                        <a href="thue-phong-quan-tan-binh/phong-62987" class="property-img">
+                                            <div class="doc-img" style="background-image:url(upload//data/news/62987675ac196a2520.webp)">
+                                                <div class="product-amount" style="display:none">
+                                                    <span>5.5 triệu <small>/Tháng</small></span>
+                                                </div>
+                                                <div class="feature-rating ">
+                                                    <div>
+                                                        <div class="featured is--green">
+                                                            <span><i class="fa fa-fw fa-circle"></i> Còn phòng</span>
+                                                        </div>
+                                                        <div class="new-featured item__hot">
+                                                            <span><i class="animated infinite rubberBand">HOT</i> Nổi bật</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <div class="pro-content">
+                                            <h3 class="title">
+                                                <a href="thue-phong-quan-tan-binh/phong-62987">
+                                                    Thuê Căn hộ mini Âu Cơ Phường 10  Quận Tân Bình N11094
+                                                </a>
+                                            </h3>
+                                            <p><i class="fa fa-fw fa-map-marker"></i> 390, Âu Cơ, Phường 10, Quận Tân Bình, Hồ Chí Minh</p>
+                                            <p class="price-mb"><span>5.5 triệu <small>/Tháng</small></span></p>
+                                            <ul class="d-flex details">
+                                                <li>
+                                                    <i class="fa fa-fw fa-home"></i>
+                                                    Căn hộ mini
+                                                </li>
+                                                <li>
+                                                    <i class="fa fa-fw fa-clock-o"></i>
+                                                    2 tiếng
+                                                </li>
+                                            </ul>
+                                            <div class="q-action">
+                                                <button type="button" class="btn btn-success btnbooking" data-item="{&quot;RoomId&quot;:62987,&quot;PropCode&quot;:&quot;&quot;,&quot;PropAvatar&quot;:&quot;\/data\/news\/62987675ac196a2520.webp&quot;,&quot;IsEmpty&quot;:1,&quot;IsHot&quot;:1,&quot;PropPrice&quot;:5500000,&quot;updated_at&quot;:&quot;2024-12-17 10:25:51&quot;,&quot;PropType&quot;:4,&quot;PropTypeName&quot;:&quot;C\u0103n h\u1ed9 mini&quot;,&quot;PropName&quot;:&quot;Cho thu\u00ea ph\u00f2ng 400, \u00c2u C\u01a1, Ph\u01b0\u1eddng 10, Qu\u1eadn T\u00e2n B\u00ecnh, H\u1ed3 Ch\u00ed Minh N11094 P80331&quot;,&quot;ElectricityPrice&quot;:null,&quot;ElectricityUnit&quot;:null,&quot;WaterPrice&quot;:null,&quot;WaterUnit&quot;:null,&quot;AreaSEOUrl&quot;:&quot;quan-tan-binh&quot;,&quot;PropAddress&quot;:&quot;390, \u00c2u C\u01a1, Ph\u01b0\u1eddng 10, Qu\u1eadn T\u00e2n B\u00ecnh, H\u1ed3 Ch\u00ed Minh&quot;,&quot;v_house_street&quot;:&quot;\u00c2u C\u01a1&quot;,&quot;v_house_ward_name&quot;:&quot;Ph\u01b0\u1eddng 10&quot;,&quot;v_house_district_name&quot;:&quot;Qu\u1eadn T\u00e2n B\u00ecnh&quot;,&quot;v_house_id&quot;:11094}" data-bs-toggle="modal" data-bs-target="#make-an-appointment">
+                                                    Đặt Lịch Hẹn
+                                                </button>
+                                                <button type="button" class="btn btn-danger btnfollow" data-item="{&quot;RoomId&quot;:62987,&quot;PropCode&quot;:&quot;&quot;,&quot;PropAvatar&quot;:&quot;\/data\/news\/62987675ac196a2520.webp&quot;,&quot;IsEmpty&quot;:1,&quot;IsHot&quot;:1,&quot;PropPrice&quot;:5500000,&quot;updated_at&quot;:&quot;2024-12-17 10:25:51&quot;,&quot;PropType&quot;:4,&quot;PropTypeName&quot;:&quot;C\u0103n h\u1ed9 mini&quot;,&quot;PropName&quot;:&quot;Cho thu\u00ea ph\u00f2ng 400, \u00c2u C\u01a1, Ph\u01b0\u1eddng 10, Qu\u1eadn T\u00e2n B\u00ecnh, H\u1ed3 Ch\u00ed Minh N11094 P80331&quot;,&quot;ElectricityPrice&quot;:null,&quot;ElectricityUnit&quot;:null,&quot;WaterPrice&quot;:null,&quot;WaterUnit&quot;:null,&quot;AreaSEOUrl&quot;:&quot;quan-tan-binh&quot;,&quot;PropAddress&quot;:&quot;390, \u00c2u C\u01a1, Ph\u01b0\u1eddng 10, Qu\u1eadn T\u00e2n B\u00ecnh, H\u1ed3 Ch\u00ed Minh&quot;,&quot;v_house_street&quot;:&quot;\u00c2u C\u01a1&quot;,&quot;v_house_ward_name&quot;:&quot;Ph\u01b0\u1eddng 10&quot;,&quot;v_house_district_name&quot;:&quot;Qu\u1eadn T\u00e2n B\u00ecnh&quot;,&quot;v_house_id&quot;:11094}" data-bs-toggle="modal" data-bs-target="#care-about">
+                                                    Quan tâm
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 col-12">
+                            <div class="slider-col">
+                                <div class="product-custom">
+                                    <div class="profile-widget">
+                                        <a href="thue-phong-quan-go-vap/phong-62993" class="property-img">
+                                            <div class="doc-img" style="background-image:url(upload//data/news/62993675acb0da12cc.webp)">
+                                                <div class="product-amount" style="display:none">
+                                                    <span>4.5 triệu <small>/Tháng</small></span>
+                                                </div>
+                                                <div class="feature-rating ">
+                                                    <div>
+                                                        <div class="featured is--green">
+                                                            <span><i class="fa fa-fw fa-circle"></i> Còn phòng</span>
+                                                        </div>
+                                                        <div class="new-featured item__hot">
+                                                            <span><i class="animated infinite rubberBand">HOT</i> Nổi bật</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <div class="pro-content">
+                                            <h3 class="title">
+                                                <a href="thue-phong-quan-go-vap/phong-62993">
+                                                    Thuê Căn hộ mini  Phường 11  Quận Gò Vấp N4776
+                                                </a>
+                                            </h3>
+                                            <p><i class="fa fa-fw fa-map-marker"></i> 369 Thống nhất, Phường 11, Quận Gò Vấp</p>
+                                            <p class="price-mb"><span>4.5 triệu <small>/Tháng</small></span></p>
+                                            <ul class="d-flex details">
+                                                <li>
+                                                    <i class="fa fa-fw fa-home"></i>
+                                                    Căn hộ mini
+                                                </li>
+                                                <li>
+                                                    <i class="fa fa-fw fa-clock-o"></i>
+                                                    2 tiếng
+                                                </li>
+                                            </ul>
+                                            <div class="q-action">
+                                                <button type="button" class="btn btn-success btnbooking" data-item="{&quot;RoomId&quot;:62993,&quot;PropCode&quot;:&quot;&quot;,&quot;PropAvatar&quot;:&quot;\/data\/news\/62993675acb0da12cc.webp&quot;,&quot;IsEmpty&quot;:1,&quot;IsHot&quot;:1,&quot;PropPrice&quot;:4500000,&quot;updated_at&quot;:&quot;2024-12-17 10:24:47&quot;,&quot;PropType&quot;:4,&quot;PropTypeName&quot;:&quot;C\u0103n h\u1ed9 mini&quot;,&quot;PropName&quot;:&quot;Cho thu\u00ea ph\u00f2ng Th\u1ed1ng Nh\u1ea5t, Qu\u1eadn G\u00f2 V\u1ea5p - \/B\u1eafc CTTA\/ \/HLHGV TA \/ - N4776 - ID: 1505 - CH\u1eca LOAN N4776 P80336&quot;,&quot;ElectricityPrice&quot;:null,&quot;ElectricityUnit&quot;:null,&quot;WaterPrice&quot;:null,&quot;WaterUnit&quot;:null,&quot;AreaSEOUrl&quot;:&quot;quan-go-vap&quot;,&quot;PropAddress&quot;:&quot;369 Th\u1ed1ng nh\u1ea5t, Ph\u01b0\u1eddng 11, Qu\u1eadn G\u00f2 V\u1ea5p&quot;,&quot;v_house_street&quot;:&quot;&quot;,&quot;v_house_ward_name&quot;:&quot;Ph\u01b0\u1eddng 11&quot;,&quot;v_house_district_name&quot;:&quot;Qu\u1eadn G\u00f2 V\u1ea5p&quot;,&quot;v_house_id&quot;:4776}" data-bs-toggle="modal" data-bs-target="#make-an-appointment">
+                                                    Đặt Lịch Hẹn
+                                                </button>
+                                                <button type="button" class="btn btn-danger btnfollow" data-item="{&quot;RoomId&quot;:62993,&quot;PropCode&quot;:&quot;&quot;,&quot;PropAvatar&quot;:&quot;\/data\/news\/62993675acb0da12cc.webp&quot;,&quot;IsEmpty&quot;:1,&quot;IsHot&quot;:1,&quot;PropPrice&quot;:4500000,&quot;updated_at&quot;:&quot;2024-12-17 10:24:47&quot;,&quot;PropType&quot;:4,&quot;PropTypeName&quot;:&quot;C\u0103n h\u1ed9 mini&quot;,&quot;PropName&quot;:&quot;Cho thu\u00ea ph\u00f2ng Th\u1ed1ng Nh\u1ea5t, Qu\u1eadn G\u00f2 V\u1ea5p - \/B\u1eafc CTTA\/ \/HLHGV TA \/ - N4776 - ID: 1505 - CH\u1eca LOAN N4776 P80336&quot;,&quot;ElectricityPrice&quot;:null,&quot;ElectricityUnit&quot;:null,&quot;WaterPrice&quot;:null,&quot;WaterUnit&quot;:null,&quot;AreaSEOUrl&quot;:&quot;quan-go-vap&quot;,&quot;PropAddress&quot;:&quot;369 Th\u1ed1ng nh\u1ea5t, Ph\u01b0\u1eddng 11, Qu\u1eadn G\u00f2 V\u1ea5p&quot;,&quot;v_house_street&quot;:&quot;&quot;,&quot;v_house_ward_name&quot;:&quot;Ph\u01b0\u1eddng 11&quot;,&quot;v_house_district_name&quot;:&quot;Qu\u1eadn G\u00f2 V\u1ea5p&quot;,&quot;v_house_id&quot;:4776}" data-bs-toggle="modal" data-bs-target="#care-about">
+                                                    Quan tâm
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 col-12">
+                            <div class="slider-col">
+                                <div class="product-custom">
+                                    <div class="profile-widget">
+                                        <a href="thue-phong-quan-tan-binh/phong-63035" class="property-img">
+                                            <div class="doc-img" style="background-image:url(upload//data/news/63035675bf760c6797.webp)">
+                                                <div class="product-amount" style="display:none">
+                                                    <span>5.8 triệu <small>/Tháng</small></span>
+                                                </div>
+                                                <div class="feature-rating ">
+                                                    <div>
+                                                        <div class="featured is--green">
+                                                            <span><i class="fa fa-fw fa-circle"></i> Còn phòng</span>
+                                                        </div>
+                                                        <div class="new-featured item__hot">
+                                                            <span><i class="animated infinite rubberBand">HOT</i> Nổi bật</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <div class="pro-content">
+                                            <h3 class="title">
+                                                <a href="thue-phong-quan-tan-binh/phong-63035">
+                                                    Thuê Căn hộ mini  Phường 05  Quận Tân Bình N1238
+                                                </a>
+                                            </h3>
+                                            <p><i class="fa fa-fw fa-map-marker"></i> 49 Lưu Nhân Chú, Phường 5, Tân Bình</p>
+                                            <p class="price-mb"><span>5.8 triệu <small>/Tháng</small></span></p>
+                                            <ul class="d-flex details">
+                                                <li>
+                                                    <i class="fa fa-fw fa-home"></i>
+                                                    Căn hộ mini
+                                                </li>
+                                                <li>
+                                                    <i class="fa fa-fw fa-clock-o"></i>
+                                                    2 tiếng
+                                                </li>
+                                            </ul>
+                                            <div class="q-action">
+                                                <button type="button" class="btn btn-success btnbooking" data-item="{&quot;RoomId&quot;:63035,&quot;PropCode&quot;:&quot;&quot;,&quot;PropAvatar&quot;:&quot;\/data\/news\/63035675bf760c6797.webp&quot;,&quot;IsEmpty&quot;:1,&quot;IsHot&quot;:1,&quot;PropPrice&quot;:5800000,&quot;updated_at&quot;:&quot;2024-12-17 10:24:03&quot;,&quot;PropType&quot;:4,&quot;PropTypeName&quot;:&quot;C\u0103n h\u1ed9 mini&quot;,&quot;PropName&quot;:&quot;Cho Thu\u00ea Ph\u00f2ng L\u01b0u Nh\u00e2n Ch\u00fa, Qu\u1eadn T\u00e2n B\u00ecnh - N1238 - ID:  1529,16 - \u0110\u1ee9c - Th\u1ea3o  N1238 P80343&quot;,&quot;ElectricityPrice&quot;:null,&quot;ElectricityUnit&quot;:null,&quot;WaterPrice&quot;:null,&quot;WaterUnit&quot;:null,&quot;AreaSEOUrl&quot;:&quot;quan-tan-binh&quot;,&quot;PropAddress&quot;:&quot;49 L\u01b0u Nh\u00e2n Ch\u00fa, Ph\u01b0\u1eddng 5, T\u00e2n B\u00ecnh&quot;,&quot;v_house_street&quot;:&quot;&quot;,&quot;v_house_ward_name&quot;:&quot;Ph\u01b0\u1eddng 05&quot;,&quot;v_house_district_name&quot;:&quot;Qu\u1eadn T\u00e2n B\u00ecnh&quot;,&quot;v_house_id&quot;:1238}" data-bs-toggle="modal" data-bs-target="#make-an-appointment">
+                                                    Đặt Lịch Hẹn
+                                                </button>
+                                                <button type="button" class="btn btn-danger btnfollow" data-item="{&quot;RoomId&quot;:63035,&quot;PropCode&quot;:&quot;&quot;,&quot;PropAvatar&quot;:&quot;\/data\/news\/63035675bf760c6797.webp&quot;,&quot;IsEmpty&quot;:1,&quot;IsHot&quot;:1,&quot;PropPrice&quot;:5800000,&quot;updated_at&quot;:&quot;2024-12-17 10:24:03&quot;,&quot;PropType&quot;:4,&quot;PropTypeName&quot;:&quot;C\u0103n h\u1ed9 mini&quot;,&quot;PropName&quot;:&quot;Cho Thu\u00ea Ph\u00f2ng L\u01b0u Nh\u00e2n Ch\u00fa, Qu\u1eadn T\u00e2n B\u00ecnh - N1238 - ID:  1529,16 - \u0110\u1ee9c - Th\u1ea3o  N1238 P80343&quot;,&quot;ElectricityPrice&quot;:null,&quot;ElectricityUnit&quot;:null,&quot;WaterPrice&quot;:null,&quot;WaterUnit&quot;:null,&quot;AreaSEOUrl&quot;:&quot;quan-tan-binh&quot;,&quot;PropAddress&quot;:&quot;49 L\u01b0u Nh\u00e2n Ch\u00fa, Ph\u01b0\u1eddng 5, T\u00e2n B\u00ecnh&quot;,&quot;v_house_street&quot;:&quot;&quot;,&quot;v_house_ward_name&quot;:&quot;Ph\u01b0\u1eddng 05&quot;,&quot;v_house_district_name&quot;:&quot;Qu\u1eadn T\u00e2n B\u00ecnh&quot;,&quot;v_house_id&quot;:1238}" data-bs-toggle="modal" data-bs-target="#care-about">
+                                                    Quan tâm
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 col-12">
+                            <div class="slider-col">
+                                <div class="product-custom">
+                                    <div class="profile-widget">
+                                        <a href="thue-phong-quan-tan-binh/phong-63036" class="property-img">
+                                            <div class="doc-img" style="background-image:url(upload//data/news/63036675bf85c7c77a.webp)">
+                                                <div class="product-amount" style="display:none">
+                                                    <span>5.8 triệu <small>/Tháng</small></span>
+                                                </div>
+                                                <div class="feature-rating ">
+                                                    <div>
+                                                        <div class="featured is--green">
+                                                            <span><i class="fa fa-fw fa-circle"></i> Còn phòng</span>
+                                                        </div>
+                                                        <div class="new-featured item__hot">
+                                                            <span><i class="animated infinite rubberBand">HOT</i> Nổi bật</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <div class="pro-content">
+                                            <h3 class="title">
+                                                <a href="thue-phong-quan-tan-binh/phong-63036">
+                                                    Thuê Căn hộ mini  Phường 12  Quận Tân Bình N4317
+                                                </a>
+                                            </h3>
+                                            <p><i class="fa fa-fw fa-map-marker"></i> 1 Hoàng Kế Viêm , Phường 12, Q. Tân Bình </p>
+                                            <p class="price-mb"><span>5.8 triệu <small>/Tháng</small></span></p>
+                                            <ul class="d-flex details">
+                                                <li>
+                                                    <i class="fa fa-fw fa-home"></i>
+                                                    Căn hộ mini
+                                                </li>
+                                                <li>
+                                                    <i class="fa fa-fw fa-clock-o"></i>
+                                                    2 tiếng
+                                                </li>
+                                            </ul>
+                                            <div class="q-action">
+                                                <button type="button" class="btn btn-success btnbooking" data-item="{&quot;RoomId&quot;:63036,&quot;PropCode&quot;:&quot;&quot;,&quot;PropAvatar&quot;:&quot;\/data\/news\/63036675bf85c7c77a.webp&quot;,&quot;IsEmpty&quot;:1,&quot;IsHot&quot;:1,&quot;PropPrice&quot;:5800000,&quot;updated_at&quot;:&quot;2024-12-17 10:23:59&quot;,&quot;PropType&quot;:4,&quot;PropTypeName&quot;:&quot;C\u0103n h\u1ed9 mini&quot;,&quot;PropName&quot;:&quot;Cho Thu\u00ea Ph\u00f2ng Ho\u00e0ng K\u1ebf Vi\u00eam, T\u00e2n B\u00ecnh - \/T\u00e2y CTTA\/ \/CHDV TL TA\/ - N4317- ID: 1529 - Th\u1ea3o N4317 P80344&quot;,&quot;ElectricityPrice&quot;:null,&quot;ElectricityUnit&quot;:null,&quot;WaterPrice&quot;:null,&quot;WaterUnit&quot;:null,&quot;AreaSEOUrl&quot;:&quot;quan-tan-binh&quot;,&quot;PropAddress&quot;:&quot;1 Ho\u00e0ng K\u1ebf Vi\u00eam , Ph\u01b0\u1eddng 12, Q. T\u00e2n B\u00ecnh &quot;,&quot;v_house_street&quot;:&quot;&quot;,&quot;v_house_ward_name&quot;:&quot;Ph\u01b0\u1eddng 12&quot;,&quot;v_house_district_name&quot;:&quot;Qu\u1eadn T\u00e2n B\u00ecnh&quot;,&quot;v_house_id&quot;:4317}" data-bs-toggle="modal" data-bs-target="#make-an-appointment">
+                                                    Đặt Lịch Hẹn
+                                                </button>
+                                                <button type="button" class="btn btn-danger btnfollow" data-item="{&quot;RoomId&quot;:63036,&quot;PropCode&quot;:&quot;&quot;,&quot;PropAvatar&quot;:&quot;\/data\/news\/63036675bf85c7c77a.webp&quot;,&quot;IsEmpty&quot;:1,&quot;IsHot&quot;:1,&quot;PropPrice&quot;:5800000,&quot;updated_at&quot;:&quot;2024-12-17 10:23:59&quot;,&quot;PropType&quot;:4,&quot;PropTypeName&quot;:&quot;C\u0103n h\u1ed9 mini&quot;,&quot;PropName&quot;:&quot;Cho Thu\u00ea Ph\u00f2ng Ho\u00e0ng K\u1ebf Vi\u00eam, T\u00e2n B\u00ecnh - \/T\u00e2y CTTA\/ \/CHDV TL TA\/ - N4317- ID: 1529 - Th\u1ea3o N4317 P80344&quot;,&quot;ElectricityPrice&quot;:null,&quot;ElectricityUnit&quot;:null,&quot;WaterPrice&quot;:null,&quot;WaterUnit&quot;:null,&quot;AreaSEOUrl&quot;:&quot;quan-tan-binh&quot;,&quot;PropAddress&quot;:&quot;1 Ho\u00e0ng K\u1ebf Vi\u00eam , Ph\u01b0\u1eddng 12, Q. T\u00e2n B\u00ecnh &quot;,&quot;v_house_street&quot;:&quot;&quot;,&quot;v_house_ward_name&quot;:&quot;Ph\u01b0\u1eddng 12&quot;,&quot;v_house_district_name&quot;:&quot;Qu\u1eadn T\u00e2n B\u00ecnh&quot;,&quot;v_house_id&quot;:4317}" data-bs-toggle="modal" data-bs-target="#care-about">
+                                                    Quan tâm
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 col-12">
+                            <div class="slider-col">
+                                <div class="product-custom">
+                                    <div class="profile-widget">
+                                        <a href="thue-phong-quan-tan-binh/phong-63039" class="property-img">
+                                            <div class="doc-img" style="background-image:url(upload//data/news/63039675bfc2608826.webp)">
+                                                <div class="product-amount" style="display:none">
+                                                    <span>7 triệu <small>/Tháng</small></span>
+                                                </div>
+                                                <div class="feature-rating ">
+                                                    <div>
+                                                        <div class="featured is--green">
+                                                            <span><i class="fa fa-fw fa-circle"></i> Còn phòng</span>
+                                                        </div>
+                                                        <div class="new-featured item__hot">
+                                                            <span><i class="animated infinite rubberBand">HOT</i> Nổi bật</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <div class="pro-content">
+                                            <h3 class="title">
+                                                <a href="thue-phong-quan-tan-binh/phong-63039">
+                                                    Thuê Căn hộ mini  Hoàng Văn Thụ Phường 04  Quận Tân Bình N11027
+                                                </a>
+                                            </h3>
+                                            <p><i class="fa fa-fw fa-map-marker"></i> 330,  Hoàng Văn Thụ, Phường 04, Quận Tân Bình, Hồ Chí Minh</p>
+                                            <p class="price-mb"><span>7 triệu <small>/Tháng</small></span></p>
+                                            <ul class="d-flex details">
+                                                <li>
+                                                    <i class="fa fa-fw fa-home"></i>
+                                                    Căn hộ mini
+                                                </li>
+                                                <li>
+                                                    <i class="fa fa-fw fa-clock-o"></i>
+                                                    2 tiếng
+                                                </li>
+                                            </ul>
+                                            <div class="q-action">
+                                                <button type="button" class="btn btn-success btnbooking" data-item="{&quot;RoomId&quot;:63039,&quot;PropCode&quot;:&quot;&quot;,&quot;PropAvatar&quot;:&quot;\/data\/news\/63039675bfc2608826.webp&quot;,&quot;IsEmpty&quot;:1,&quot;IsHot&quot;:1,&quot;PropPrice&quot;:7000000,&quot;updated_at&quot;:&quot;2024-12-17 10:23:55&quot;,&quot;PropType&quot;:4,&quot;PropTypeName&quot;:&quot;C\u0103n h\u1ed9 mini&quot;,&quot;PropName&quot;:&quot;Cho thu\u00ea ph\u00f2ng 340\/6C,  Ho\u00e0ng V\u0103n Th\u1ee5, Ph\u01b0\u1eddng 04, Qu\u1eadn T\u00e2n B\u00ecnh, H\u1ed3 Ch\u00ed Minh N11027 P80344&quot;,&quot;ElectricityPrice&quot;:null,&quot;ElectricityUnit&quot;:null,&quot;WaterPrice&quot;:null,&quot;WaterUnit&quot;:null,&quot;AreaSEOUrl&quot;:&quot;quan-tan-binh&quot;,&quot;PropAddress&quot;:&quot;330,  Ho\u00e0ng V\u0103n Th\u1ee5, Ph\u01b0\u1eddng 04, Qu\u1eadn T\u00e2n B\u00ecnh, H\u1ed3 Ch\u00ed Minh&quot;,&quot;v_house_street&quot;:&quot; Ho\u00e0ng V\u0103n Th\u1ee5&quot;,&quot;v_house_ward_name&quot;:&quot;Ph\u01b0\u1eddng 04&quot;,&quot;v_house_district_name&quot;:&quot;Qu\u1eadn T\u00e2n B\u00ecnh&quot;,&quot;v_house_id&quot;:11027}" data-bs-toggle="modal" data-bs-target="#make-an-appointment">
+                                                    Đặt Lịch Hẹn
+                                                </button>
+                                                <button type="button" class="btn btn-danger btnfollow" data-item="{&quot;RoomId&quot;:63039,&quot;PropCode&quot;:&quot;&quot;,&quot;PropAvatar&quot;:&quot;\/data\/news\/63039675bfc2608826.webp&quot;,&quot;IsEmpty&quot;:1,&quot;IsHot&quot;:1,&quot;PropPrice&quot;:7000000,&quot;updated_at&quot;:&quot;2024-12-17 10:23:55&quot;,&quot;PropType&quot;:4,&quot;PropTypeName&quot;:&quot;C\u0103n h\u1ed9 mini&quot;,&quot;PropName&quot;:&quot;Cho thu\u00ea ph\u00f2ng 340\/6C,  Ho\u00e0ng V\u0103n Th\u1ee5, Ph\u01b0\u1eddng 04, Qu\u1eadn T\u00e2n B\u00ecnh, H\u1ed3 Ch\u00ed Minh N11027 P80344&quot;,&quot;ElectricityPrice&quot;:null,&quot;ElectricityUnit&quot;:null,&quot;WaterPrice&quot;:null,&quot;WaterUnit&quot;:null,&quot;AreaSEOUrl&quot;:&quot;quan-tan-binh&quot;,&quot;PropAddress&quot;:&quot;330,  Ho\u00e0ng V\u0103n Th\u1ee5, Ph\u01b0\u1eddng 04, Qu\u1eadn T\u00e2n B\u00ecnh, H\u1ed3 Ch\u00ed Minh&quot;,&quot;v_house_street&quot;:&quot; Ho\u00e0ng V\u0103n Th\u1ee5&quot;,&quot;v_house_ward_name&quot;:&quot;Ph\u01b0\u1eddng 04&quot;,&quot;v_house_district_name&quot;:&quot;Qu\u1eadn T\u00e2n B\u00ecnh&quot;,&quot;v_house_id&quot;:11027}" data-bs-toggle="modal" data-bs-target="#care-about">
+                                                    Quan tâm
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="view-property-btn d-flex justify-content-center">
+                    <a href="phong-cho-thue-tai-ho-chi-minh" class="btn-primary">XEM TẤT CẢ 25,224 PHÒNG</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bg-imgs">
+        <img src="/Content/img/price-bg.png" class="bg-01" alt="icon">
+        <img src="/Content/img/blue-circle.svg" class="bg-02" alt="icon">
+        <img src="/Content/img/red-circle.svg" class="bg-03" alt="icon">
+    </div>
+</section>*@
+
+<section class="cities-list-sec">
+    <div class="container">
+        <div class="section-heading">
+            <h2>Dạo Quanh Sài Gòn</h2>
+            <div class="sec-line">
+                <span class="sec-line1"></span>
+                <span class="sec-line2"></span>
+            </div>
+            <p>Khui vực nổi bật, Giá Rẻ, Đẹp, Gần Trung Tâm</p>
+        </div>
+        <div class="row">
+            <div class="col-12 col-lg-12">
+                <div class="partners-slider owl-carousel">
+                    <div class="city-first-card">
+                        <div class="city-list">
+                            <div class="city-img">
+                                <img src="/Content/img/city-1.jpg" alt="City">
+                            </div>
+                            <div class="city-name ">
+                                <h5>Hồ Chí Minh</h5>
+                                <p>300 Phòng</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="main-property-sec">
+    <div class="container">
+        <div class="partners-sec">
+            <div class="section-heading text-center">
+                <h2>ĐỐI TÁC TIÊU BIỂU</h2>
+                <div class="sec-line">
+                    <span class="sec-line1"></span>
+                    <span class="sec-line2"></span>
+                </div>
+                <p>Với sự hỗ trợ của đội ngũ chuyên viên tư vấn giàu kinh nghiệm giúp quý khách đạt được các mục tiêu cho sự phát triển và mở rộng thị trường kinh doanh</p>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="partners-slider owl-carousel">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- đặt lịch hẹn -->
+@Html.Action("Index", "DatLichHen")
+@*<div class="modal fade" id="make-an-appointment" tabindex="-1" aria-labelledby="make-an-appointment">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="make-an-appointmentTitle">NHẬP THÔNG TIN ĐẶT LỊCH HẸN</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="frmbooking" name="frmbooking" novalidate="novalidate" class="cons-contact-form2">
+                    <input type="hidden" name="roomid" id="roomid" value="">
+                    <input type="hidden" name="District" id="District" value="">
+                    <input type="hidden" name="roomurl" id="roomurl" value="thue-phong-">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="room-info">
+                                <img class="pro-img" src="" alt="Phòng ">
+                                <h3 class="pro-name">Phòng </h3>
+                                <p class="price"><b>GIÁ THUÊ PHÒNG: </b><b class="pro-price"></b> <span>/ tháng</span></p>
+                                <p class="pro-addres"><b>Địa chỉ:</b></p>
+                                <div class="row" style="display:none">
+                                    <div class="col-lg-9">
+                                        <p><b class="pro-ElectricityPrice">Giá điện:</b> </p>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <p><b class="pro-WaterPrice">Giá nước:</b> </p>
+                                    </div>
+                                </div>
+                                <p><i><b>Ghi chú:</b> giá điện, nước có thể tăng hoặc giảm tùy theo thời giá</i></p>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="row">
+                                <div class="col-lg-6 col-6">
+                                    <div class="form-group">
+                                        <label>Họ tên </label>
+                                        <input required type="text" name="CustomerName" id="CustomerName" class="form-control" placeholder="Nhập tên của bạn">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-6">
+                                    <div class="form-group">
+                                        <label>Điện thoại </label>
+                                        <input required type="number" name="CustomerPhone" id="CustomerPhone" class="form-control" placeholder="Nhập tên số điện thoại">
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-4">
+                                    <div class="form-group">
+                                        <label>Số người ở </label>
+                                        <select class="select" style="width: 100%;" name="SlotTotal" id="SlotTotal" data-minimum-results-for-search="Infinity">
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">6</option>
+                                            <option value="7">7</option>
+                                            <option value="8">8</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-4">
+                                    <div class="form-group">
+                                        <label>Số lượng xe</label>
+                                        <select required class="select" name="VehicleTotal" id="VehicleTotal" data-minimum-results-for-search="Infinity">
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">6</option>
+                                            <option value="7">7</option>
+                                            <option value="8">8</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-4">
+                                    <div class="form-group">
+                                        <label>Nuôi thú cưng</label>
+                                        <select class="select" name="Pet" id="Pet" data-minimum-results-for-search="Infinity">
+                                            <option value="Không">Không</option>
+                                            <option value="Có">Có</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-6">
+                                    <div class="form-group">
+                                        <label>Ngày dự kiến chuyển vào ở</label>
+                                        <input required type="text" class="form-control date" name="EntryDate" id="EntryDate" value="2024-12-17">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-6" style="display:none">
+                                    <div class="form-group">
+                                        <label>Thời gian thuê</label>
+                                        <select class="select" name="RentalTerm" id="RentalTerm">
+                                            <option value="6 tháng">6 tháng</option>
+                                            <option value="12 tháng">12 tháng</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-6">
+                                    <div class="form-group">
+                                        <label>Ngày hẹn xem phòng</label>
+                                        <input required type="text" class="form-control datetime" name="AppointmentDate" id="AppointmentDate" value="2024-12-17 12:52:49">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-6" style="display:none">
+                                    <div class="form-group">
+                                        <label>ZP dẫn đề xuất</label>
+                                        <input type="text" class="form-control" name="ZPAdvise" id="ZPAdvise">
+                                    </div>
+                                </div>
+                                <div class="col-lg12 col-12">
+                                    <div class="form-group">
+                                        <label>Ghi chú thêm</label>
+                                        <textarea class="form-control" rows="9" name="CustomerNotes" id="CustomerNotes"></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12 col-12">
+                                    <button type="button" class="btn btn-block btn-success btn-save">
+                                        XÁC NHẬN ĐẶT LỊCH XEM
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>*@
+<!-- quan tâm phòng -->
+<div class="modal fade" id="care-about" tabindex="-1" aria-labelledby="care-about">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="care-aboutTitle">QUAN TÂM PHÒNG</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="frmfollow" name="frmfollow" novalidate="novalidate" class="cons-contact-form2">
+                    <input type="hidden" name="roomid" id="roomid" value="">
+                    <input type="hidden" name="District" id="District" value="">
+                    <input type="hidden" name="roomurl" id="roomurl" value="thue-phong-">
+                    <div class="row">
+                        <div class="col-lg-6 col-6">
+                            <div class="form-group">
+                                <label>Họ và tên </label>
+                                <input required type="text" name="name" id="name" class="form-control" placeholder="Nhập tên của bạn">
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-6">
+                            <div class="form-group">
+                                <label>Điện thoại </label>
+                                <input required type="number" name="phone" id="phone" class="form-control" placeholder="Nhập tên số điện thoại">
+                            </div>
+                        </div>
+                        <div class="col-lg12 col-12">
+                            <div class="form-group">
+                                <label>Ghi chú thêm</label>
+                                <textarea class="form-control" name="note" id="note" rows="10" placeholder="Nhập ghi chú nếu có..."></textarea>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 col-12">
+                            <button type="button" class="btn btn-block btn-success btn-save">
+                                GỬI THÔNG TIN
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
