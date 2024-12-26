@@ -159,6 +159,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\PhongController.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\XemPhongController.cs" />
     <Compile Include="DBContext\ModelDB.Context.cs">
       <AutoGen>True</AutoGen>
@@ -3131,6 +3132,8 @@
     <Content Include="Views\Phong\Index.cshtml" />
     <Content Include="Views\DatLichHen\Index.cshtml" />
     <Content Include="Views\XemPhong\Index.cshtml" />
+    <Content Include="Views\Search\Index.cshtml" />
+    <Content Include="Views\Search\SearchResults.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

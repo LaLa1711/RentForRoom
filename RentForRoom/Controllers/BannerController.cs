@@ -27,7 +27,9 @@ namespace RentForRoom.Controllers
                               HinhBanner = ab.HinhBanner,
                               Hide = (bool)ab.Hide,
                           })).FirstOrDefault();
+               
                 return PartialView(ban);
+
             }
             catch (Exception ex)
             {

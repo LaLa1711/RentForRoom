@@ -1,149 +1,19 @@
 ﻿@model RentForRoom.Models.BannerModel
 
-<section class="banner-section" style="background: url(@Model.HinhBanner)">
+<section class="banner-section background-nhat" style="background: linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.1)), url( @Model.HinhBanner ); background-size: cover; background-repeat: no-repeat; background-position: center; "
+
+         
+         >
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
                 <div class="banner-content">
-                    <h1>@Model.TieuDe</h1>
+                    <h1 style="text-shadow: 4px 3px 6px rgba(0, 0, 0, 0.5);">@Model.TieuDe</h1>
                     @Html.Raw(Model.NoiDung)
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="banner-search">
-                    <div class="tab-content" id="bannerTabContent">
-                        <div class="tab-pane fade show active" id="buy_property" role="tabpanel" aria-labelledby="buy-property">
-                            <div class="banner-tab-property">
-                                <form name="frmsearchroom" id="frmsearchroom" action="tim-kiem" method="get">
-                                    <div class="show-list">
-                                        <div class="row">
-                                            <div class="col-lg-11 col-10">
-                                                <div class="review-form">
-                                                    <input id="key" name="k" value="" type="text" class="form-control" placeholder="Nhập từ khóa, tên đường, quận....">
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-1 col-2">
-                                                <div class="review-form">
-                                                    <div class="banner-property-grid">
-                                                        <button type="button" id="toggle-filters" class="btn-default">
-                                                            <span><i class="fa fa-fw fa-sliders"></i></span>
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-lg-12 col-12">
-                                                    <div class="additional-filters" style="display: none;">
-                                                        <div class="row">
-                                                            <div class="col-lg-2 col-6" style="display: none;">
-                                                                <div class="review-form">
-                                                                    <select id="City" name="c" class="select" data-minimum-results-for-search="Infinity">
-                                                                        <option value="">Tỉnh/Thành</option>
-                                                                        <option selected value="79">Hồ Chí Minh</option>
-                                                                    </select>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-lg-2 col-6">
-                                                                <div class="review-form">
-                                                                    <select id="District" name="d" class="select">
-                                                                        <option value="">Quận/Huyện</option>
-                                                                        <option value="760">Quận 1</option>
-                                                                        <option value="789">Quận 2</option>
-                                                                        <option value="770">Quận 3</option>
-                                                                        <option value="773">Quận 4</option>
-                                                                        <option value="774">Quận 5</option>
-                                                                        <option value="775">Quận 6</option>
-                                                                        <option value="778">Quận 7</option>
-                                                                        <option value="776">Quận 8</option>
-                                                                        <option value="771">Quận 10</option>
-                                                                        <option value="772">Quận 11</option>
-                                                                        <option value="761">Quận 12</option>
-                                                                        <option value="764">Quận Gò Vấp</option>
-                                                                        <option value="765">Quận Bình Thạnh</option>
-                                                                        <option value="766">Quận Tân Bình</option>
-                                                                        <option value="767">Quận Tân Phú</option>
-                                                                        <option value="768">Quận Phú Nhuận</option>
-                                                                        <option value="769">Thành phố Thủ Đức</option>
-                                                                        <option value="777">Quận Bình Tân</option>
-                                                                        <option value="783">Huyện Củ Chi</option>
-                                                                        <option value="784">Huyện Hóc Môn</option>
-                                                                        <option value="785">Huyện Bình Chánh</option>
-                                                                        <option value="786">Huyện Nhà Bè</option>
-                                                                        <option value="787">Huyện Cần Giờ</option>
-                                                                    </select>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-lg-2 col-6">
-                                                                <div class="review-form">
-                                                                    <select id="Ward" name="w" class="select">
-                                                                        <option value="">Xã/Phường</option>
-                                                                    </select>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-lg-2 col-6">
-                                                                <div class="review-form">
-                                                                    <select class="select" id="price" name="p" data-minimum-results-for-search="Infinity">
-                                                                        <option value="">Khoảng giá</option>
-                                                                        <option value="1">Dưới 3 triệu</option>
-                                                                        <option value="2">Từ 3tr đến 5tr</option>
-                                                                        <option value="3">Từ 5tr đến 7tr</option>
-                                                                        <option value="4">trên 7 triệu</option>
-                                                                    </select>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-lg-2 col-6">
-                                                                <div class="review-form">
-                                                                    <select class="select" id="protype" name="kp">
-                                                                        <option value="">Kiểu phòng</option>
-                                                                        <option value="1">Gường ký túc xá</option>
-                                                                        <option value="2">Phòng trọ</option>
-                                                                        <option value="3">Căn hộ duplex</option>
-                                                                        <option value="4">Căn hộ mini</option>
-                                                                        <option value="6">Nhà nguyên căn</option>
-                                                                        <option value="7">Căn hộ 1 phòng ngủ</option>
-                                                                        <option value="8">Căn hộ 2 phòng ngủ</option>
-                                                                        <option value="9">Mặt bằng</option>
-                                                                        <option value="11">Sleep box</option>
-                                                                        <option value="12">Căn hộ 3 phòng ngủ</option>
-                                                                        <option value="13">Chung cư cao tầng</option>
-                                                                        <option value="14">Sàn văn phòng</option>
-                                                                        <option value="19">Khác</option>
-                                                                    </select>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-lg-2 col-6">
-                                                                <div class="review-form">
-                                                                    <select class="select" id="status" name="st" data-minimum-results-for-search="Infinity">
-                                                                        <option value="">Trạng thái</option>
-                                                                        <option value="1">Nổi bật</option>
-                                                                        <option value="2">Phòng trống</option>
-                                                                    </select>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-lg-2 col-6">
-                                                                <div class="review-form">
-                                                                    <div class="banner-property-grid">
-                                                                        <input type="hidden" id="ref" name="ref" value="">
-                                                                        <button class="btn-primary btn-search ">
-                                                                            <span><i class="fa fa-fw fa-search"></i> TÌM PHÒNG</span>
-                                                                        </button>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        @Html.Action("Index", "Search")
     </div>
 </section>
+

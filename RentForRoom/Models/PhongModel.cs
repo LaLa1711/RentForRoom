@@ -41,5 +41,6 @@ namespace RentForRoom.Models
         public Nullable<bool> TienCoc { get; set; }
         public Nullable<bool> Hide { get; set; }
         public Nullable<bool> NoiBat { get; set; }
+        public Nullable<bool> TrangThaiXuLy { get; set; }
     }
 }
