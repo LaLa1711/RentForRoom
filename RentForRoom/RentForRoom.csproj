@@ -139,6 +139,8 @@
     <Compile Include="App_Start\Processing.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\HDatLichesController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ADatLichesController.cs" />
     <Compile Include="Areas\Admin\Controllers\ATaiKhoanController.cs" />
     <Compile Include="Areas\Admin\Controllers\HAlbumsController .cs" />
     <Compile Include="Areas\Admin\Controllers\AAlbumsController.cs" />
@@ -210,6 +212,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AlbumModel.cs" />
+    <Compile Include="Models\APhongModel.cs" />
     <Compile Include="Models\BannerModel.cs" />
     <Compile Include="Models\ChiTietPhongModel.cs" />
     <Compile Include="Models\DatLichModel.cs" />
@@ -3100,6 +3103,14 @@
     <Content Include="Areas\Admin\Views\ATaiKhoan\UpdateUserProfile.cshtml" />
     <Content Include="Areas\Admin\Views\HTaiKhoan\Index.cshtml" />
     <Content Include="Areas\Admin\Views\HTaiKhoan\UpdateUserProfile.cshtml" />
+    <Content Include="Areas\Admin\Views\ADatLiches\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\ADatLiches\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\ADatLiches\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\ADatLiches\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\HDatLiches\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\HDatLiches\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\HDatLiches\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\HDatLiches\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

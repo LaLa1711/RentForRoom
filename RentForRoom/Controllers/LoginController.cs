@@ -93,6 +93,7 @@ namespace RentForRoom.Controllers
                     Gmail = tbTTin.Gmail,
                     MatKhau = tbTTin.MatKhau,
                     Role = tbTTin.Role,
+                    HinhAnh = "/content/img/avatarfb.jpg",
                     Hide = true,
                 };
                 db.tbUsers.Add(Register);
@@ -126,6 +127,7 @@ namespace RentForRoom.Controllers
                     MatKhau = obj.MatKhau,
                     SDT = obj.SDT,
                     Role = obj.Role,
+                    HinhAnh = "/content/img/avatarfb.jpg",
                     Hide = obj.Hide
                 };
                 db.tbUsers.Add(user);

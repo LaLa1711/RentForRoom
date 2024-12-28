@@ -204,9 +204,14 @@
                 </ul>-->
                 <!-- End Messages Dropdown Items -->
                 <!--</li>--><!-- End Messages Nav -->
+                @if (Session["UserEmail"] == null)
+                {
+                    Response.Redirect("/Home/Index");
+                    return;
+                }
 
                 <li class="nav-item dropdown pe-3">
-                    @{
+                    @*@{
                         if (Session["UserEmail"] == null)
                         {
                             Response.Redirect("/Home/Index");
@@ -217,55 +222,55 @@
                             {
                                 Session["HinhAnh"] = "/content/img/avatarfb.jpg";
                             }
-                            if (@Session["HoTen"] == null)
+                            if (Session["HoTen"] == null)
                             {
                                 Session["HoTen"] = "Người dùng";
                             }
                         }
-                    }
-                        <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-                            <img src="@Session["HinhAnh"]" alt="Profile" class="rounded-circle">
+                    }*@
+                    <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+                        <img src="@Session["HinhAnh"]" alt="Profile" class="rounded-circle">
 
-                            <span class="d-none d-md-block dropdown-toggle ps-2" style="color:#333; font-weight:bold;">@Session["HoTen"].ToString()</span>
-                        </a>
+                        <span class="d-none d-md-block dropdown-toggle ps-2" style="color:#333; font-weight:bold;">@Session["HoTen"].ToString()</span>
+                    </a>
 
 
-                        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
-                            <li class="dropdown-header">
-                                <h6 style="font-weight:bold;">@Session["HoTen"].ToString()</h6>
-                                <h8>Mã TK: @Session["MaTaiKhoan"].ToString()</h8>
-                            </li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li>
-                                <a class="dropdown-item d-flex align-items-center" href="/Admin/ATaiKhoan/Index">
-                                    <i class="bi bi-person"></i>
-                                    <span>Thông Tin Cá Nhân</span>
-                                </a>
-                            </li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
+                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+                        <li class="dropdown-header">
+                            <h6 style="font-weight:bold;">@Session["HoTen"].ToString()</h6>
+                            <h8>Mã TK: @Session["MaTaiKhoan"].ToString()</h8>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center" href="/Admin/ATaiKhoan/Index">
+                                <i class="bi bi-person"></i>
+                                <span>Thông Tin Cá Nhân</span>
+                            </a>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
 
-                            <li>
-                                <a class="dropdown-item d-flex align-items-center" href="/Admin/ATaiKhoan/UpdateUserProfile">
-                                    <i class="bi bi-gear"></i>
-                                    <span>Tài Khoản Đăng Nhập</span>
-                                </a>
-                            </li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center" href="/Admin/ATaiKhoan/UpdateUserProfile">
+                                <i class="bi bi-gear"></i>
+                                <span>Tài Khoản Đăng Nhập</span>
+                            </a>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
 
-                            <li>
-                                <a class="dropdown-item d-flex align-items-center" href="/Admin/Home/Logout">
-                                    <i class="bi bi-box-arrow-right"></i>
-                                    <span>Thoát</span>
-                                </a>
-                            </li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center" href="/Admin/Home/Logout">
+                                <i class="bi bi-box-arrow-right"></i>
+                                <span>Thoát</span>
+                            </a>
+                        </li>
 
-                        </ul>
+                    </ul>
                     <!-- End Profile Dropdown Items -->
                 </li><!-- End Profile Nav -->
 
@@ -470,26 +475,26 @@
                 </a>
                 <ul id="nav-XYZ" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                     <li>
-                        <a href="/Admin/ALichSuGiaoDiches">
+                        <a href="/Admin/ADatLiches">
                             <i class="bi bi-circle"></i><span>Xem/Chỉnh Sửa</span>
                         </a>
                     </li>
                     <li>
-                        <a href="/Admin/ALichSuGiaoDiches/Create">
+                        <a href="/Admin/ADatLiches/Create">
                             <i class="bi bi-circle"></i><span>Thêm mới</span>
                         </a>
                     </li>
                 </ul>
 
             </li><!-- End xyz Nav -->
-            <li class="nav-item">
+            @*<li class="nav-item">
                 <a class="nav-link collapsed" data-bs-target="#nav-TAI" data-bs-toggle="collapse" href="#">
                     <i class="bi bi-file-ruled-fill"></i><span>Thống Kê</span><i class="bi bi-chevron-down ms-auto"></i>
                 </a>
                 <ul id="nav-TAI" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                     <li>
-                        <a href="/Admin/AThongKeMaus">
-                            <i class="bi bi-circle"></i><span>Top Người Hiến Máu</span>
+                        <a href="/Admin/ADatLiches">
+                            <i class="bi bi-circle"></i><span>Danh Sách Đặt Lịch</span>
                         </a>
                     </li>
                     <li>
@@ -499,7 +504,7 @@
                     </li>
                 </ul>
 
-            </li><!-- End xyz Nav -->
+            </li>*@<!-- End xyz Nav -->
             <li class="nav-item">
                 <a class="nav-link collapsed" data-bs-target="#icons-nav" data-bs-toggle="collapse" href="#">
                     <i class="ri-admin-line"></i><span>Thông Tin ADMIN</span><i class="bi bi-chevron-down ms-auto"></i>
@@ -520,54 +525,54 @@
             </li><!-- End Icons Nav -->
             <!--<li class="nav-heading">Pages</li>
 
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="users-profile.html">
-            <i class="bi bi-person"></i>
-            <span>Profile</span>
-        </a>
-    </li>-->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="users-profile.html">
+                    <i class="bi bi-person"></i>
+                    <span>Profile</span>
+                </a>
+            </li>-->
             <!-- End Profile Page Nav -->
             <!--<li class="nav-item">
-        <a class="nav-link collapsed" href="pages-faq.html">
-            <i class="bi bi-question-circle"></i>
-            <span>F.A.Q</span>
-        </a>
-    </li>-->
+                <a class="nav-link collapsed" href="pages-faq.html">
+                    <i class="bi bi-question-circle"></i>
+                    <span>F.A.Q</span>
+                </a>
+            </li>-->
             <!-- End F.A.Q Page Nav -->
             <!--<li class="nav-item">
-        <a class="nav-link collapsed" href="pages-contact.html">
-            <i class="bi bi-envelope"></i>
-            <span>Contact</span>
-        </a>
-    </li>-->
+                <a class="nav-link collapsed" href="pages-contact.html">
+                    <i class="bi bi-envelope"></i>
+                    <span>Contact</span>
+                </a>
+            </li>-->
             <!-- End Contact Page Nav -->
             <!--<li class="nav-item">
-        <a class="nav-link collapsed" href="pages-register.html">
-            <i class="bi bi-card-list"></i>
-            <span>Register</span>
-        </a>
-    </li>-->
+                <a class="nav-link collapsed" href="pages-register.html">
+                    <i class="bi bi-card-list"></i>
+                    <span>Register</span>
+                </a>
+            </li>-->
             <!-- End Register Page Nav -->
             <!--<li class="nav-item">
-        <a class="nav-link collapsed" href="pages-login.html">
-            <i class="bi bi-box-arrow-in-right"></i>
-            <span>Login</span>
-        </a>
-    </li>-->
+                <a class="nav-link collapsed" href="pages-login.html">
+                    <i class="bi bi-box-arrow-in-right"></i>
+                    <span>Login</span>
+                </a>
+            </li>-->
             <!-- End Login Page Nav -->
             <!--<li class="nav-item">
-        <a class="nav-link collapsed" href="pages-error-404.html">
-            <i class="bi bi-dash-circle"></i>
-            <span>Error 404</span>
-        </a>
-    </li>-->
+                <a class="nav-link collapsed" href="pages-error-404.html">
+                    <i class="bi bi-dash-circle"></i>
+                    <span>Error 404</span>
+                </a>
+            </li>-->
             <!-- End Error 404 Page Nav -->
             <!--<li class="nav-item">
-        <a class="nav-link collapsed" href="pages-blank.html">
-            <i class="bi bi-file-earmark"></i>
-            <span>Blank</span>
-        </a>
-    </li>-->
+                <a class="nav-link collapsed" href="pages-blank.html">
+                    <i class="bi bi-file-earmark"></i>
+                    <span>Blank</span>
+                </a>
+            </li>-->
             <!-- End Blank Page Nav -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="/Admin/Home/Logout">

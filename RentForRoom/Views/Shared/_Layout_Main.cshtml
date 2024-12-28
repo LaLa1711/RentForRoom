@@ -25,6 +25,9 @@ LaLaHome đặt mình làm cầu nối giữa chủ nhà, người thuê, và c�
     <link href="/Content/css/select2.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/Content/css/animate.min.css">
     <link rel="stylesheet" href="/Content/css/style.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
+
 </head>
 <body>
     <div class="main-wrapper">
@@ -239,7 +242,7 @@ LaLaHome đặt mình làm cầu nối giữa chủ nhà, người thuê, và c�
                                             <li><b>&#10031; Email: </b>abc123@gmail.com</li>
                                         </ul>
                                     </div>
-                                    <div class="social-links">
+                                    @*<div class="social-links">
                                         <h4>Kết nối với chúng tôi</h4>
                                         <ul>
                                             <li>
@@ -255,7 +258,7 @@ LaLaHome đặt mình làm cầu nối giữa chủ nhà, người thuê, và c�
                                                 <a href=""><img src="/Content/zl.webp" alt="zl"></a>
                                             </li>
                                         </ul>
-                                    </div>
+                                    </div>*@
                                 </div>
                             </div>
                         </div>
@@ -414,56 +417,56 @@ LaLaHome đặt mình làm cầu nối giữa chủ nhà, người thuê, và c�
             $('#frmfollow #roomurl').val('thue-phong-' + dataItem['AreaSEOUrl'] + '/phong-' + dataItem['RoomId']);
         });
         //đặt lịch hẹn
-        var frmbooking = $('#frmbooking');
-        frmbooking.find('.btn-save').on('click', function (e) {
-            e.preventDefault();
-            var CustomerPhone = frmbooking.find('#CustomerPhone').val();
-            if (!validatePhoneNumber(CustomerPhone)) {
-                alert('Số điện thoại không hợp lệ.');
-                return;
-            }
-            if (frmbooking.valid()) {
-                var data = {
-                    roomid: frmbooking.find('#roomid').val(),
-                    District: frmbooking.find('#District').val(),
-                    roomurl: frmbooking.find('#roomurl').val(),
-                    CustomerPhone: CustomerPhone,
-                    CustomerName: frmbooking.find('#CustomerName').val(),
-                    SlotTotal: frmbooking.find('#SlotTotal').val(),
-                    VehicleTotal: frmbooking.find('#VehicleTotal').val(),
-                    Pet: frmbooking.find('#Pet').val(),
-                    EntryDate: frmbooking.find('#EntryDate').val(),
-                    AppointmentDate: frmbooking.find('#AppointmentDate').val(),
-                    ZPAdvise: frmbooking.find('#ZPAdvise').val(),
-                    CustomerNotes: frmbooking.find('#CustomerNotes').val(),
-                    RentalTerm: frmbooking.find('#RentalTerm').val(),
-                };
+        //var frmbooking = $('#frmbooking');
+        //frmbooking.find('.btn-save').on('click', function (e) {
+        //    e.preventDefault();
+        //    var SDT = frmbooking.find('#SDT').val();
+        //    if (!validatePhoneNumber(SDT)) {
+        //        alert('Số điện thoại không hợp lệ.');
+        //        return;
+        //    }
+        //    if (frmbooking.valid()) {
+        //        var data = {
+        //            roomid: frmbooking.find('#roomid').val(),
+        //            District: frmbooking.find('#District').val(),
+        //            roomurl: frmbooking.find('#roomurl').val(),
+        //            SDT: SDT,
+        //            HoTen: frmbooking.find('#HoTen').val(),
+        //            SoNguoiO: frmbooking.find('#SoNguoiO').val(),
+        //            SoLuongXe: frmbooking.find('#SoLuongXe').val(),
+        //            ThuCung: frmbooking.find('#ThuCung').val(),
+        //            NgayChuyenVao: frmbooking.find('#NgayChuyenVao').val(),
+        //            NgayXemPhong: frmbooking.find('#NgayXemPhong').val(),
+        //            ZPAdvise: frmbooking.find('#ZPAdvise').val(),
+        //            GhiChu: frmbooking.find('#GhiChu').val(),
+        //            RentalTerm: frmbooking.find('#RentalTerm').val(),
+        //        };
 
-                if (data != null) {
-                    $.ajax({
-                        url: 'misc/add-booking',
-                        type: 'POST',
-                        data: JSON.stringify(data),
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                        },
-                        contentType: "application/json",  // Sửa lại đúng content type
-                        success: function (result) {
-                            if (result != null && result['Success']) {
-                                alert('Đặt lịch hẹn thành công.');
-                                $('#make-an-appointment').modal('hide');
-                            } else {
-                                alert('Đã có lỗi! vui lòng thử lại.');
-                                $('#make-an-appointment').modal('hide');
-                            }
-                        },
-                        error: function (e) {
-                            console.log(e);
-                        }
-                    });
-                }
-            }
-        });
+        //        if (data != null) {
+        //            $.ajax({
+        //                url: '/DatLichHen/SaveBooking',
+        //                type: 'POST',
+        //                data: JSON.stringify(data),
+        //                headers: {
+        //                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        //                },
+        //                contentType: "application/json",  // Sửa lại đúng content type
+        //                success: function (result) {
+        //                    if (result != null && result['Success']) {
+        //                        alert('Đặt lịch hẹn thành công.');
+        //                        $('#make-an-appointment').modal('hide');
+        //                    } else {
+        //                        alert('Đã có lỗi! vui lòng thử lại.');
+        //                        $('#make-an-appointment').modal('hide');
+        //                    }
+        //                },
+        //                error: function (e) {
+        //                    console.log(e);
+        //                }
+        //            });
+        //        }
+        //    }
+        //});
 
         //quan tâm phòng
         var frmfollow = $('#frmfollow');

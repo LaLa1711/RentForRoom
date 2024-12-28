@@ -27,7 +27,7 @@
                                 <div class="slider-col">
                                     <div class="product-custom">
                                         <div class="profile-widget">
-                                            <a class="property-img btnbooking"  data-item='{
+                                            @*<a class="property-img btnbooking"  data-item='{
                                                             "RoomId": "@item.IDPhong",
                                                             "PropCode": "",
                                                             "PropAvatar": "@item.HinhAnh",
@@ -71,7 +71,7 @@
                                                             "v_house_id": 5192
                                                         }'
                                                         data-bs-toggle="modal"
-                                                        data-bs-target="#make-an-appointment">
+                                                        data-bs-target="#make-an-appointment"> </a>*@
                                                 <div class="doc-img" style="background-image:url(@item.HinhAnh)">
                                                     <div class="product-amount" style="display:none">
                                                         <span>@(@item.GiaThue / 1000000) <small>triệu/tháng</small></span>
@@ -100,10 +100,10 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </a>
+                                            
                                             <div class="pro-content">
                                                 <h3 class="title">
-                                                   <a  class="btnbooking" data-item='{
+                                                    @*<a class="btnbooking" data-item='{
                                                                 "RoomId": "@item.IDPhong",
                                                                 "PropCode": "",
                                                                 "PropAvatar": "@item.HinhAnh",
@@ -145,11 +145,11 @@
                                                                 "v_house_district_name": "Quận Gò Vấp",
                                                                 "v_house_id": 5192
                                                             }'
-                                                            data-bs-toggle="modal"
-                                                            data-bs-target="#make-an-appointment">
-                                                        @item.TieuDe
-                                                    </a>
+                                                       data-bs-toggle="modal"
+                                                       data-bs-target="#make-an-appointment">
 
+                                                    </a>*@
+                                                    @item.TieuDe
                                                 </h3>
                                                 <p>
                                                     <i class="fa fa-fw fa-map-marker"></i>
@@ -160,7 +160,7 @@
                                                     @{
                                                         string a = Html.Action("GetThanhPhoName", "Phong", new { id = item.IDTP }).ToString();
                                                         string b = Html.Action("GetQuanHuyenName", "Phong", new { id = item.IDQuan }).ToString();
-                                                        string c = Html.Action("GetPhuongXaName", "Phong", new { id = item.IDPhong }).ToString();
+                                                        string c = Html.Action("GetPhuongXaName", "Phong", new { id = item.IDPhuong }).ToString();
                                                     }
 
                                                 </p>

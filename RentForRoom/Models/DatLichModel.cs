@@ -9,9 +9,10 @@ namespace RentForRoom.Models
     {
         public int IDDatLich { get; set; }
         public Nullable<int> IDPhong { get; set; }
+        public Nullable<int> MaTaiKhoan { get; set; }
         public Nullable<int> SoNguoiO { get; set; }
         public Nullable<int> SoLuongXe { get; set; }
-        public Nullable<System.DateTime> NgayXemPhong { get; set; }
+        public string NgayXemPhong { get; set; }
         public string GhiChu { get; set; }
         public Nullable<System.DateTime> NgayChuyenVao { get; set; }
         public string HoTen { get; set; }
@@ -19,6 +20,7 @@ namespace RentForRoom.Models
         public string Email { get; set; }
         public Nullable<bool> ThuCung { get; set; }
         public Nullable<bool> Hide { get; set; }
+        public Nullable<bool> ThoiHanThue { get; set; }
         public string TieuDe { get; set; }
         public string DiaChi { get; set; }
         public Nullable<int> IDPhuong { get; set; }

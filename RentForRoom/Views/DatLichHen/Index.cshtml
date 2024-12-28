@@ -10,8 +10,7 @@
             </div>
             <div class="modal-body">
                 <form id="frmbooking" name="frmbooking" novalidate="novalidate" class="cons-contact-form2">
-                    <input type="hidden" name="roomid" id="roomid" value="">
-                    @*<input type="hidden" name="District" id="District" value="">*@
+                    <input type="hidden" name="roomid" id="roomid" value="" readonly>
                     <input type="hidden" name="roomurl" id="roomurl" value="thue-phong-">
                     <div class="row">
                         <div class="col-lg-6">
@@ -96,9 +95,15 @@
                                 <hr />
                             </div>
                         </div>
-                        
+
                         <div class="col-lg-6">
                             <div class="row">
+                                <div class="col-lg-12 col-12">
+                                    <div class="form-group">
+                                        <label>Email:</label>
+                                        <input type="text" class="form-control" name="Email" id="Email" required>
+                                    </div>
+                                </div>
                                 <div class="col-lg-6 col-6">
                                     <div class="form-group">
                                         <label>Họ tên </label>
@@ -129,7 +134,7 @@
                                 <div class="col-lg-4 col-4">
                                     <div class="form-group">
                                         <label>Số lượng xe</label>
-                                        <select required class="select" name="SoLuongXe" id="SoLuongXe" data-minimum-results-for-search="Infinity" required>
+                                        <select required class="select" name="SoLuongXe" id="SoLuongXe" data-minimum-results-for-search="Infinity">
                                             <option value="1">1</option>
                                             <option value="2">2</option>
                                             <option value="3">3</option>
@@ -152,31 +157,26 @@
                                 </div>
                                 <div class="col-lg-6 col-6">
                                     <div class="form-group">
-                                        <label>Ngày dự kiến chuyển vào ở</label>
-                                        <input required type="text" class="form-control date" name="NgayChuyenVao" id="NgayChuyenVao" value="2024-12-17" required>
+                                        <label for="inputDate">Ngày dự kiến chuyển vào ở</label>
+                                        <input required type="text" class="form-control" name="NgayChuyenVao" id="NgayChuyenVao" value="">
                                     </div>
                                 </div>
-                                <div class="col-lg-6 col-6" style="display:none">
-                                    <div class="form-group">
-                                        <label>Thời gian thuê</label>
-                                        <select class="select" name="RentalTerm" id="RentalTerm">
-                                            <option value="6 tháng">6 tháng</option>
-                                            <option value="12 tháng">12 tháng</option>
-                                        </select>
-                                    </div>
-                                </div>
+                                @*<div class="col-lg-6 col-6" >
+                                        <div class="form-group">
+                                            <label>Thời gian thuê</label>
+                                            <select class="select" name="ThoiHanThue" id="ThoiHanThue" data-minimum-results-for-search="Infinity">
+                                                <option value="false">6 tháng</option>
+                                                <option value="true">12 tháng</option>
+                                            </select>
+                                        </div>
+                                    </div>*@
                                 <div class="col-lg-6 col-6">
                                     <div class="form-group">
-                                        <label>Ngày hẹn xem phòng</label>
-                                        <input required type="text" class="form-control datetime" name="NgayXemPhong" id="NgayXemPhong" value="2024-12-17 12:52:49" required>
+                                        <label for="inputDate">Ngày hẹn xem phòng</label>
+                                        <input required type="text" class="form-control" name="NgayXemPhong" id="NgayXemPhong" value="">
                                     </div>
                                 </div>
-                                <div class="col-lg-6 col-6" style="display:none">
-                                    <div class="form-group">
-                                        <label>ZP dẫn đề xuất</label>
-                                        <input type="text" class="form-control" name="ZPAdvise" id="ZPAdvise">
-                                    </div>
-                                </div>
+
                                 <div class="col-lg12 col-12">
                                     <div class="form-group">
                                         <label>Ghi chú thêm</label>
@@ -184,7 +184,7 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-12 col-12">
-                                    <button type="button" class="btn btn-block btn-success btn-save">
+                                    <button type="button" class="btn btn-block btn-success btn-save" @*onclick="submitForm()"*@>
                                         XÁC NHẬN ĐẶT LỊCH XEM
                                     </button>
                                 </div>
@@ -197,241 +197,150 @@
     </div>
 </div>
 
-
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <script>
-    // Lấy giá trị từ class 'pro-WC'
-    //const wcValue = document.querySelector('.pro-WC').textContent.trim();
-
-    //// Kiểm tra và hiển thị kết quả
-    //if (wcValue === "true") {
-    //    document.getElementById('result').textContent = "chung";
-    //} else if (wcValue === "false") {
-    //    document.getElementById('result').textContent = "riêng";
-    //}
-
-
-
-    //const dp = document.querySelector('.pro-DP').textContent.trim();
-
-    //// Kiểm tra và hiển thị kết quả
-    //if (dp === "null") {
-    //    document.getElementById('result1').textContent = "Thường";
-    //}
-    //else if (dp === "true") {
-    //    document.getElementById('result1').textContent = "Cửa sổ";
-    //} else if (dp === "false") {
-    //    document.getElementById('result1').textContent = "Ban Công";
-    //}
-
-    //const kb = document.querySelector('.pro-KB').textContent.trim();
-
-    //// Kiểm tra và hiển thị kết quả
-    //if (kb === "true") {
-    //    document.getElementById('result2').textContent = "chung";
-    //} else if (kb === "false") {
-    //    document.getElementById('result2').textContent = "riêng";
-    //}
-
-    //const t = document.querySelector('.pro-Thang').textContent.trim();
-
-    //const resultText = t === "true" ? "bộ" : "máy";
-    //document.getElementById('result3').textContent = resultText;
-    // Kiểm tra và hiển thị kết quả
-    //if (t === "true") {
-    //    document.getElementById('result3').textContent = "bộ";
-    //} else if (t === "false") {
-    //    document.getElementById('result3').textContent = "máy";
-    //}
-
-    //$('.product').click(function () {
-    //    // Lấy giá trị true/false từ thuộc tính 'data-thang' của sản phẩm đã được click
-    //    const thangValueFromProduct = $(this).data('thang');  // true hoặc false
-
-    //    // Gán giá trị vào class 'pro-Thang'
-    //    $('#frmbooking .pro-Thang').text(thangValueFromProduct);  // Cập nhật giá trị
-
-    //    // Lấy giá trị mới từ class 'pro-Thang' và hiển thị kết quả
-    //    const thangValue = $('#frmbooking .pro-Thang').text().trim();
-
-    //    // So sánh và hiển thị kết quả
-    //    if (thangValue === "true") {
-    //        $('#result3').html("bộ");
-    //    } else if (thangValue === "false") {
-    //        $('#result3').html("máy");
-    //    }
-    //});
-
-
-    //const mg = document.querySelector('.pro-MG').textContent.trim();
-
-    //// Kiểm tra và hiển thị kết quả
-    //if (mg === "true") {
-    //    document.getElementById('result4').textContent = "chung";
-    //} else if (mg === "false") {
-    //    document.getElementById('result4').textContent = "riêng";
-    //}
-
-    //const tc = document.querySelector('.pro-TC').textContent.trim();
-
-    //// Kiểm tra và hiển thị kết quả
-    //if (tc === "false") {
-    //    document.getElementById('result5').textContent = "được nuôi";
-    //} else if (tc === "true") {
-    //    document.getElementById('result5').textContent = "không được";
-    //}
-
-
-
+    flatpickr("#NgayXemPhong", {
+        enableTime: true,
+        noCalendar: false,
+        dateFormat: "Y-m-d H:i",
+        time_24hr: true // Sử dụng kiểu giờ 24
+    });
+    flatpickr("#NgayChuyenVao", {
+        enableTime: true,
+        noCalendar: false,
+        dateFormat: "Y-m-d",
+        time_24hr: true // Sử dụng kiểu giờ 24
+    });
 </script>
-
-
-<!-- CSS cho hiệu ứng rung -->
-<!-- Hiệu ứng EROR -->
-<div id="hashtag-effect" class="hashtag-effect" style="display: none;">EROR</div>
-
-<!-- CSS cho hiệu ứng EROR và rung -->
-<style>
-    .shake {
-        animation: shake 0.6s;
-        animation-iteration-count: 3;
-    }
-
-    @@keyframes shake {
-        0%, 100% {
-            transform: translateX(0);
-        }
-
-        25% {
-            transform: translateX(-5px);
-        }
-
-        75% {
-            transform: translateX(5px);
-        }
-    }
-
-    .hashtag-effect {
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        font-size: 100px;
-        font-weight: bold;
-        color: red;
-        opacity: 0;
-        animation: pulse 1.5s infinite;
-    }
-
-    @@keyframes pulse {
-        0%, 100% {
-            opacity: 0;
-        }
-
-        50% {
-            opacity: 1;
-        }
-    }
-</style>
-
-
-<script src="~/Scripts/jquery-3.4.1.js"></script>
 <script>
-    function Show() {
-        const contact = {
-            //SoNguoiO = ab.SoNguoiO,
-            //NgayXemPhong = ab.NgayXemPhong,
-            //GhiChu = ab.GhiChu,
-            //NgayChuyenVao = ab.NgayChuyenVao,
-            //HoTen = ab.HoTen,
-            //SDT = ab.SDT,
-            //Email = ab.Email,
-            //Hide = (bool)ab.Hide,
-            SoNguoiO: "",
-            NgayXemPhong: "",
-            NgayChuyenVao: "",
-            GhiChu: "",
-            HoTen: "",
-            SDT: "",
-            Email: "",
-        };
-        contact.SoNguoiO = $("#SoNguoiO").val();
-        contact.NgayXemPhong = $("#NgayXemPhong").val();
-        contact.NgayChuyenVao = $("#NgayChuyenVao").val();
-        contact.GhiChu = $("#GhiChu").val();
-        contact.HoTen = $("#HoTen").val();
-        contact.SDT = $("#SDT").val();
-        contact.Email = $("#Email").val();
-        $.ajax({
-            type: 'POST',
-            url: '/DatLichHen/GetJson',
-            data: { obj: contact },
-            success: function (data) {
-                if (data.SDT != null) {
-                    alert("Thực hiện thành công!");
-                    //pháo hoa
-                    fireConfetti();
-                    //xóa dữ liệu
-                    $("#SoNguoiO").val("");
-                    $("#NgayXemPhong").val("");
-                    $("#NgayChuyenVao").val("");
-                    $("#GhiChu").val("");
-                    $("#HoTen").val("");
-                    $("#SDT").val("");
-                    $("#Email").val("");
-                    hideHashtagEffect();
-                }
-                else {
-                    //alert("Thực hiện không thành công!");
-                    displayHashtagEffect("Thực hiện không thành công!"); // Hiển thị EROR khi có lỗi
+    document.addEventListener('DOMContentLoaded', function () {
+        const inputNgayChuyenVao = document.getElementById('NgayChuyenVao');
+        const today = new Date();
+        const formattedDate = today.toISOString().split('T')[0];
 
-                }
+        // Gán giá trị vào input
+        inputNgayChuyenVao.value = formattedDate;
+    });
+
+    document.addEventListener('DOMContentLoaded', function () {
+        // Lấy input với ID NgayXemPhong
+        const inputNgayXemPhong = document.getElementById('NgayXemPhong');
+
+        // Lấy ngày giờ hiện tại
+        const now = new Date();
+
+        // Định dạng ngày giờ theo yyyy-MM-ddTHH:mm
+        const formattedDateTime = now.toISOString().slice(0, 16);
+
+        // Gán giá trị vào input
+        inputNgayXemPhong.value = formattedDateTime;
+    });
+    function submitForm() {
+        const datetime = document.getElementById('NgayXemPhong').value;
+        if (!datetime) {
+            alert("Vui lòng chọn ngày giờ!");
+            return;
+        }
+    }
+    function validatePhoneNumber(number) {
+        var regex = /^[0-9]{10}$/; // Kiểm tra số điện thoại có đúng 10 chữ số
+        return regex.test(number);
+    }
+
+
+
+    var frmbooking = $('#frmbooking');
+    frmbooking.validate({
+        rules: {
+            SDT: {
+                required: true,
+                minlength: 10,
+                maxlength: 10,
+                digits: true
             },
-            error: function (ex) {
-                //alert("Khong thể thực hiện");
-                displayHashtagEffect("Khong thể thực hiện"); // Hiển thị EROR khi có lỗi
-
+            HoTen: {
+                required: true
+            },
+            // Thêm các quy tắc kiểm tra khác cho các trường
+        },
+        messages: {
+            SDT: {
+                required: "Vui lòng nhập số điện thoại.",
+                minlength: "Số điện thoại phải có 10 chữ số.",
+                maxlength: "Số điện thoại không quá 10 chữ số.",
+                digits: "Số điện thoại chỉ được phép chứa chữ số."
+            },
+            HoTen: {
+                required: "Vui lòng nhập họ tên."
             }
-        });
-        return false;
-    }
-    function XacNhan() {
-        let cf = confirm("Bạn có chắc thực hiện???");
-        if (cf) {
-            Show();
+            // Thêm thông báo lỗi cho các trường khác nếu cần
         }
-        return false;
-    }
-    // Hàm tạo pháo hoa
-    function fireConfetti() {
-        confetti({
-            particleCount: 100,
-            spread: 70,
-            origin: { y: 0.6 }
-        });
-    }
+    });
+    frmbooking.find('.btn-save').on('click', function (e) {
+        e.preventDefault();
 
-    // Hàm hiển thị EROR
-    function displayHashtagEffect(message) {
-        $("#hashtag-effect").text("EROR").show();
-        applyShakeEffect(); // Thêm hiệu ứng rung vào form
-        setTimeout(() => {
-            $("#hashtag-effect").fadeOut(1000);
-        }, 2000);
-    }
+        // Lấy số điện thoại từ form
+        var SDT = frmbooking.find('#SDT').val();
+        var IDPhong = frmbooking.find('#roomid').val();
+        /*var NgayXemPhong = booking.NgayXemPhong.ToString("yyyy-MM-ddTHH:mm");*/
 
-    // Hàm ẩn EROR
-    function hideHashtagEffect() {
-        $("#hashtag-effect").fadeOut(1000); // Ẩn EROR
-    }
+        // Kiểm tra số điện thoại hợp lệ
+        if (!validatePhoneNumber(SDT)) {
+            alert('Số điện thoại không hợp lệ.');
+            return;
+        }
 
-    // Hàm thêm hiệu ứng rung vào form
-    function applyShakeEffect() {
-        const form = document.querySelector("form[name='c-form']");
-        form.classList.add("shake");
+        // Kiểm tra xem form có hợp lệ hay không
+        if (frmbooking.valid()) {
+            // Tạo đối tượng dữ liệu để gửi lên server
+            var data = {
+                IDPhong: IDPhong,
+                District: frmbooking.find('#District').val(),
+                roomurl: frmbooking.find('#roomurl').val(),
+                SDT: SDT,
+                HoTen: frmbooking.find('#HoTen').val(),
+                SoNguoiO: frmbooking.find('#SoNguoiO').val(),
+                SoLuongXe: frmbooking.find('#SoLuongXe').val(),
+                ThuCung: frmbooking.find('#ThuCung').val(),
+                NgayChuyenVao: frmbooking.find('#NgayChuyenVao').val(),
+                NgayXemPhong: frmbooking.find('#NgayXemPhong').val(),
+                Email: frmbooking.find('#Email').val(),
+                GhiChu: frmbooking.find('#GhiChu').val(),
+                /*ThoiHanThue: frmbooking.find('#ThoiHanThue').val(),*/
+            };
 
-        // Loại bỏ lớp shake sau khi hiệu ứng kết thúc
-        setTimeout(() => {
-            form.classList.remove("shake");
-        }, 1800); // Thời gian khớp với animation trong CSS
-    }
+            // Gửi dữ liệu qua AJAX
+            $.ajax({
+                url: '/DatLichHen/SaveBooking',  // Đảm bảo URL đúng
+                type: 'POST',
+                data: JSON.stringify(data),  // Chuyển đổi dữ liệu thành JSON
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')  // Thêm CSRF token
+                },
+                contentType: "application/json",  // Sửa contentType thành application/json
+                success: function (result) {
+                    if (result != null && result.Success) {
+                        alert(result.Message); // Hiển thị thông báo từ server
+                        $('#make-an-appointment').modal('hide');
+                        frmbooking[0].reset();
+                    } else {
+                        alert(result.Message);
+                        $('#make-an-appointment').modal('hide');
+                    }
+                },
+                error: function (e) {
+                    console.log(e);  // In ra lỗi nếu có
+                    alert('Có lỗi xảy ra, vui lòng thử lại!');
+                }
+            });
+        }
+    });
+
+
+
+
 </script>
+
+

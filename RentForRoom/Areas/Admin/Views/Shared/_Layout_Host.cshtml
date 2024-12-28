@@ -204,10 +204,15 @@
                 </ul>-->
                 <!-- End Messages Dropdown Items -->
                 <!--</li>--><!-- End Messages Nav -->
+                  @if (Session["UserEmail"] == null)
+                  {
+                      Response.Redirect("/Home/Index");
+                      return;
+                  }
 
                 <li class="nav-item dropdown pe-3">
 
-                    @{
+                    @*@{
                         if (Session["UserEmail"] == null)
                         {
                             Response.Redirect("/Home/Index");
@@ -223,7 +228,7 @@
                                 Session["HoTen"] = "Người dùng";
                             }
                         }
-                    }
+                    }*@
                     <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
                         <img src="@Session["HinhAnh"]" alt="Profile" class="rounded-circle">
 
@@ -412,11 +417,11 @@
                     <i class="ri-server-fill"></i><span>Thông Tin Phòng</span><i class="bi bi-chevron-down ms-auto"></i>
                 </a>
                 <ul id="charts-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-                    <li>
+                    @*<li>
                         <a href="#" data-bs-toggle="collapse" onclick="toggleDropdown(this)">
                             <i class="bi bi-circle"></i><span>Thông Tin Chi Tiết</span><i class="bi bi-chevron-down ms-auto" style="font-size: 12px;"></i>
                         </a>
-                        <ul class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                        <ul class="nav-content collapse " data-bs-parent="#sidebar-nav">*@
                             <li>
                                 <a href="/Admin/HChiTietPhongs/Index" style="margin-left: 30px;">
                                     <i class="bi bi-circle-fill"></i><span>Xem/Chỉnh Sửa</span>
@@ -428,9 +433,9 @@
                                 </a>
                             </li>
 
-                        </ul>
-                    </li>
-                    <li>
+                        @*</ul>
+                    </li>*@
+                    @*<li>
                         <a href="#" data-bs-toggle="collapse" onclick="toggleDropdown(this)">
                             <i class="bi bi-circle"></i><span>Ablum Ảnh Các Phòng</span><i class="bi bi-chevron-down ms-auto" style="font-size: 12px;"></i>
                         </a>
@@ -447,7 +452,7 @@
                             </li>
 
                         </ul>
-                    </li>
+                    </li>*@
                 </ul>
             </li><!-- End Charts Nav -->
             @*<li class="nav-item">
@@ -475,19 +480,19 @@
                 </a>
                 <ul id="nav-XYZ" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                     <li>
-                        <a href="/Admin/ALichSuGiaoDiches">
+                        <a href="/Admin/HDatLiches">
                             <i class="bi bi-circle"></i><span>Xem/Chỉnh Sửa</span>
                         </a>
                     </li>
                     <li>
-                        <a href="/Admin/ALichSuGiaoDiches/Create">
+                        <a href="/Admin/HDatLiches/Create">
                             <i class="bi bi-circle"></i><span>Thêm mới</span>
                         </a>
                     </li>
                 </ul>
 
             </li><!-- End xyz Nav -->
-            <li class="nav-item">
+            <!--<li class="nav-item">
                 <a class="nav-link collapsed" data-bs-target="#nav-TAI" data-bs-toggle="collapse" href="#">
                     <i class="bi bi-file-ruled-fill"></i><span>Thống Kê</span><i class="bi bi-chevron-down ms-auto"></i>
                 </a>
@@ -504,7 +509,7 @@
                     </li>
                 </ul>
 
-            </li><!-- End xyz Nav -->
+            </li>--><!-- End xyz Nav -->
             <li class="nav-item">
                 <a class="nav-link collapsed" data-bs-target="#icons-nav" data-bs-toggle="collapse" href="#">
                     <i class="ri-admin-line"></i><span>Thông Tin Host</span><i class="bi bi-chevron-down ms-auto"></i>

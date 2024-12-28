@@ -78,17 +78,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="tbAlbums">
-      <EntityTypeMapping TypeName="QLNhaTroModel.tbAlbum">
-        <MappingFragment StoreEntitySet="tbAlbum">
-          <ScalarProperty Name="Hide" ColumnName="Hide" />
-          <ScalarProperty Name="HinhAnh" ColumnName="HinhAnh" />
-          <ScalarProperty Name="TieuDe" ColumnName="TieuDe" />
-          <ScalarProperty Name="IDPhong" ColumnName="IDPhong" />
-          <ScalarProperty Name="IDAlbum" ColumnName="IDAlbum" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="tbDatLiches">
       <EntityTypeMapping TypeName="QLNhaTroModel.tbDatLich">
         <MappingFragment StoreEntitySet="tbDatLich">
@@ -104,6 +93,17 @@
           <ScalarProperty Name="SoNguoiO" ColumnName="SoNguoiO" />
           <ScalarProperty Name="IDPhong" ColumnName="IDPhong" />
           <ScalarProperty Name="IDDatLich" ColumnName="IDDatLich" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbAlbums">
+      <EntityTypeMapping TypeName="QLNhaTroModel.tbAlbum">
+        <MappingFragment StoreEntitySet="tbAlbum">
+          <ScalarProperty Name="Hide" ColumnName="Hide" />
+          <ScalarProperty Name="HinhAnh" ColumnName="HinhAnh" />
+          <ScalarProperty Name="TieuDe" ColumnName="TieuDe" />
+          <ScalarProperty Name="IDPhong" ColumnName="IDPhong" />
+          <ScalarProperty Name="IDAlbum" ColumnName="IDAlbum" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

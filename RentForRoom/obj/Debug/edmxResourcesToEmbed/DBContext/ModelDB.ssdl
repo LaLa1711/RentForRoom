@@ -67,7 +67,7 @@
     <Property Name="IDPhong" Type="int" />
     <Property Name="SoNguoiO" Type="int" />
     <Property Name="SoLuongXe" Type="int" />
-    <Property Name="NgayXemPhong" Type="date" />
+    <Property Name="NgayXemPhong" Type="datetime" />
     <Property Name="NgayChuyenVao" Type="date" />
     <Property Name="GhiChu" Type="nvarchar(max)" />
     <Property Name="ThuCung" Type="bit" />

@@ -72,7 +72,7 @@
           <Property Name="IDPhong" Type="int" />
           <Property Name="SoNguoiO" Type="int" />
           <Property Name="SoLuongXe" Type="int" />
-          <Property Name="NgayXemPhong" Type="date" />
+          <Property Name="NgayXemPhong" Type="datetime" />
           <Property Name="NgayChuyenVao" Type="date" />
           <Property Name="GhiChu" Type="nvarchar(max)" />
           <Property Name="ThuCung" Type="bit" />
@@ -177,8 +177,8 @@
           <EntitySet Name="tbQuyens" EntityType="QLNhaTroModel.tbQuyen" />
           <EntitySet Name="tbUsers" EntityType="QLNhaTroModel.tbUser" />
           <EntitySet Name="tbBanners" EntityType="QLNhaTroModel.tbBanner" />
-          <EntitySet Name="tbAlbums" EntityType="QLNhaTroModel.tbAlbum" />
           <EntitySet Name="tbDatLiches" EntityType="QLNhaTroModel.tbDatLich" />
+          <EntitySet Name="tbAlbums" EntityType="QLNhaTroModel.tbAlbum" />
           <EntitySet Name="tbChiTietPhongs" EntityType="QLNhaTroModel.tbChiTietPhong" />
         </EntityContainer>
         <EntityType Name="tbQuanHuyen">
@@ -239,16 +239,6 @@
           <Property Name="HinhBanner" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="Hide" Type="Boolean" />
         </EntityType>
-        <EntityType Name="tbAlbum">
-          <Key>
-            <PropertyRef Name="IDAlbum" />
-          </Key>
-          <Property Name="IDAlbum" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="IDPhong" Type="Int32" />
-          <Property Name="TieuDe" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="HinhAnh" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="Hide" Type="Boolean" />
-        </EntityType>
         <EntityType Name="tbDatLich">
           <Key>
             <PropertyRef Name="IDDatLich" />
@@ -257,13 +247,23 @@
           <Property Name="IDPhong" Type="Int32" />
           <Property Name="SoNguoiO" Type="Int32" />
           <Property Name="SoLuongXe" Type="Int32" />
-          <Property Name="NgayXemPhong" Type="DateTime" Precision="0" />
+          <Property Name="NgayXemPhong" Type="DateTime" Precision="3" />
           <Property Name="NgayChuyenVao" Type="DateTime" Precision="0" />
           <Property Name="GhiChu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="ThuCung" Type="Boolean" />
           <Property Name="HoTen" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
           <Property Name="SDT" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
           <Property Name="Email" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Hide" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="tbAlbum">
+          <Key>
+            <PropertyRef Name="IDAlbum" />
+          </Key>
+          <Property Name="IDAlbum" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDPhong" Type="Int32" />
+          <Property Name="TieuDe" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="HinhAnh" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="Hide" Type="Boolean" />
         </EntityType>
         <EntityType Name="tbChiTietPhong">
@@ -388,17 +388,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="tbAlbums">
-            <EntityTypeMapping TypeName="QLNhaTroModel.tbAlbum">
-              <MappingFragment StoreEntitySet="tbAlbum">
-                <ScalarProperty Name="Hide" ColumnName="Hide" />
-                <ScalarProperty Name="HinhAnh" ColumnName="HinhAnh" />
-                <ScalarProperty Name="TieuDe" ColumnName="TieuDe" />
-                <ScalarProperty Name="IDPhong" ColumnName="IDPhong" />
-                <ScalarProperty Name="IDAlbum" ColumnName="IDAlbum" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="tbDatLiches">
             <EntityTypeMapping TypeName="QLNhaTroModel.tbDatLich">
               <MappingFragment StoreEntitySet="tbDatLich">
@@ -414,6 +403,17 @@
                 <ScalarProperty Name="SoNguoiO" ColumnName="SoNguoiO" />
                 <ScalarProperty Name="IDPhong" ColumnName="IDPhong" />
                 <ScalarProperty Name="IDDatLich" ColumnName="IDDatLich" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbAlbums">
+            <EntityTypeMapping TypeName="QLNhaTroModel.tbAlbum">
+              <MappingFragment StoreEntitySet="tbAlbum">
+                <ScalarProperty Name="Hide" ColumnName="Hide" />
+                <ScalarProperty Name="HinhAnh" ColumnName="HinhAnh" />
+                <ScalarProperty Name="TieuDe" ColumnName="TieuDe" />
+                <ScalarProperty Name="IDPhong" ColumnName="IDPhong" />
+                <ScalarProperty Name="IDAlbum" ColumnName="IDAlbum" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
