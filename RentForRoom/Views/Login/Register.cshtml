@@ -79,10 +79,17 @@
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
-        function validateEmailFormat(email) {
-        var emailPattern =  /^[a-zA-Z0-9._-]+@@[a-zA-Z0-9-]+\.[a-zA-Z]{3,3}$/;  // Định dạng: phải có @@gmail.com
-        return emailPattern.test(email);
-    }
+        //function validateEmailFormat(email) {
+        //var emailPattern =  /^[a-zA-Z0-9._-]+@@[a-zA-Z0-9-]+\.[a-zA-Z]{3,3}$/;  // Định dạng: phải có @@gmail.com
+        //return emailPattern.test(email);
+    //}
+    function validateEmailFormat(email) {
+    // Biểu thức chính quy để kiểm tra email hợp lệ
+    var emailPattern = /^[a-zA-Z0-9._%+-]+@@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    return emailPattern.test(email);
+}
+
+
 
     // Xử lý sự kiện khi người dùng nhập email
     $('#Username').on('input', function() {

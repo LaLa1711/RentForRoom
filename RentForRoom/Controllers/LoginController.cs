@@ -200,6 +200,7 @@ namespace RentForRoom.Controllers
                 Session["UserEmail"] = user.Gmail;
                 Session["MaTaiKhoan"] = user.MaTaiKhoan;
                 Session["HoTen"] = user.HoTen;
+                Session["Role"] = user.Role;
                 return RedirectToAction("Index", "HomeHost", new { area = "Admin" });
             }
             if (user.Role == 1)
@@ -208,6 +209,7 @@ namespace RentForRoom.Controllers
                 Session["UserEmail"] = user.Gmail;
                 Session["MaTaiKhoan"] = user.MaTaiKhoan;
                 Session["HoTen"] = user.HoTen;
+                Session["Role"] = user.Role;
                 return RedirectToAction("Index", "Home", new { area = "Admin" });
             }
             Session["HinhAnh"] = user.HinhAnh;

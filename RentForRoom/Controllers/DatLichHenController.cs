@@ -44,6 +44,32 @@ namespace RentForRoom.Controllers
             }
         }
         [HttpPost]
+        public JsonResult GetImages(int roomid)
+        {
+            using (var context = new QLNhaTroEntities())
+            {
+                // Truy vấn tất cả hình ảnh thuộc roomid
+                var images = context.tbAlbums
+                    .Where(p => p.IDPhong == roomid)
+                    .Select(p => p.HinhAnh) // Giả sử bạn lưu tên hình ảnh trong cột HinhAnh
+                    .ToList();
+
+                if (images.Any())
+                {
+                    // Trả về các hình ảnh (có thể cần thêm URL gốc nếu HinhAnh là tên file)
+                    return Json(new { success = true, images = images });
+                }
+                else
+                {
+                    return Json(new { success = false });
+                }
+            }
+        }
+
+
+
+
+        [HttpPost]
         public ActionResult Index(DatLichModel tbCon)
         {
             try
@@ -176,7 +202,7 @@ namespace RentForRoom.Controllers
             <p>Chủ nhà <strong>{host}</strong> sẽ liên hệ bạn trong thời gian sớm nhất.</p>
             <p>Bạn hãy chú ý điện thoại và đến đúng hẹn!</p>
             <p>Chúng tôi rất mong được đón tiếp bạn tại LaLaHome!</p>
-            <p>Liên hệ Hotline LaLaHome: 090.661.3087 nếu cần hỗ trợ. Xin cảm ơn!</p>";
+            <p><strong>Liên hệ Hotline LaLaHome: 090.661.3087 nếu cần hỗ trợ. Xin cảm ơn!</strong></p>";
 
                 AlternateView avHtml = AlternateView.CreateAlternateViewFromString(body, null, "text/html");
                 avHtml.LinkedResources.Add(inlineLogo);
@@ -251,7 +277,7 @@ namespace RentForRoom.Controllers
                 <p><strong>Thú cưng:</strong> {thucung}</p>
                 <p><strong>Ghi chú của khách:</strong> {ghichu}</p>
                 <p>Hãy liên hệ với họ để xác nhận lịch hẹn!</p>
-                <p>Chúng tôi rất mong được đón tiếp khách hàng của bạn tại LaLaHome!</p>";
+                <p><strong>Chúng tôi rất mong được đón tiếp khách hàng của bạn tại LaLaHome!</strong></p>";
 
                 AlternateView avHtml = AlternateView.CreateAlternateViewFromString(body, null, "text/html");
                 avHtml.LinkedResources.Add(inlineLogo);

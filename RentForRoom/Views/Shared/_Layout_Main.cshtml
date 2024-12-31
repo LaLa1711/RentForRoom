@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel="shortcut icon" href="assets/img/favicon.ico">
+    @*<link rel="shortcut icon" href="assets/img/favicon.ico">*@
     <link rel="apple-touch-icon" href="assets/img/favicon.png">
     <title>LaLaHome.vn </title>
     <meta name="description" content="LaLaHome.vn được thành lập vào năm 2024, là một startup trẻ, tiên phong trong lĩnh vực chuyển đổi số  ngành nghề kinh doanh nhà trọ, căn hộ dịch vụ tại Việt Nam.
@@ -27,6 +27,13 @@ LaLaHome đặt mình làm cầu nối giữa chủ nhà, người thuê, và c�
     <link rel="stylesheet" href="/Content/css/style.css">
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
+    <!-- Thêm CSS Slick -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
+
+    <!-- Thêm JS Slick -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
 
 </head>
 <body>
@@ -48,13 +55,13 @@ LaLaHome đặt mình làm cầu nối giữa chủ nhà, người thuê, và c�
                             </span>
                         </a>
                         <a href="/" class="navbar-brand logo">
-                            <img style="max-width: 130px;" src="/Content/img/Lala.jpg" @*alt="Zinland.vn "*@ class="img-fluid">
+                            <img style="max-width: 130px;" src="/Content/img/Lala.jpg" class="img-fluid">
                         </a>
                     </div>
                     <div class="main-menu-wrapper">
                         <div class="menu-header">
                             <a href="/" class="menu-logo">
-                                <img style="max-width: 106px;" src="/Content/img/Lala.jpg" @*alt="Zinland.vn "*@ class="img-fluid">
+                                <img style="max-width: 106px;" src="/Content/img/Lala.jpg"  class="img-fluid">
                             </a>
                             <a id="menu_close" class="menu-close" href="javascript:void(0);">
                                 <i class="fa fa-fw fa-close"></i>
@@ -64,18 +71,26 @@ LaLaHome đặt mình làm cầu nối giữa chủ nhà, người thuê, và c�
                             @*<li><a href="gioi-thieu">GIỚI THIỆU</a></li>
                             <li class="has-submenu">
                                 <a href="javascript:void(0);">LOẠI HÌNH <i class="fa fa-fw fa-angle-down"></i></a>
-                                <ul class="submenu"><li><a href="https://zinland.vn/tim-kiem?k=&c=79&d=&w=&p=&kp=4&st=&ref=">Căn hộ Studio</a></li><li><a href="https://zinland.vn/tim-kiem?k=&c=79&d=&w=&p=&kp=3&st=&ref=">Phòng có gác</a></li><li><a href="https://zinland.vn/tim-kiem?k=&c=79&d=&w=&p=&kp=6&st=&ref=">Nhà nguyên căn</a></li><li><a href="https://zinland.vn/tim-kiem?k=&c=79&d=&w=&p=&kp=11&st=&ref=">Ký túc xá - Sleep Box</a></li></ul>
-                            </li>
+                                </li>
                             <li><a href="hop-tac-moi-gioi">HỢP TÁC MÔI GIỚI</a></li>*@
                         </ul>
+                        @*@if (Session["UserEmail"] == null)
+                        {
+                            Response.Redirect("/Home/Index");
+                            return;
+                        }*@
                         <div class="u-action umb">
-
-                            @if (@Session["HoTen"] != null)
+                            @if (Session["UserEmail"] != null)
+                            {
+                                //Response.Redirect("/Home/Index");
+                                //return;
+                                //}
+                            @*@if (@Session["HoTen"] != null)
                             {
                                 if (@Session["HinhAnh"] == null)
                                 {
                                     Session["HinhAnh"] = "/content/img/avatarfb.jpg";
-                                }
+                                }*@
                                 <img src="@Session["HinhAnh"]" alt="Profile" class="feather-user-plus" style="border-radius: 50% !important; max-height: 36px; vertical-align: middle; ">
                                 <span class="feather-unlock">@Session["HoTen"].ToString()</span>
 
@@ -83,10 +98,20 @@ LaLaHome đặt mình làm cầu nối giữa chủ nhà, người thuê, và c�
                                 <hr />
                                 <ul>
                                     <li>
-                                        <a class="" href="/HomePage">
-                                            <i class="bi bi-person"></i>
-                                            <span>Thông Tin Cá Nhân</span>
-                                        </a>
+                                        @if (Session["Role"].ToString() == "1")
+                                        {
+                                            <a class="" href="/Admin/Home">
+                                                <i class="bi bi-person"></i>
+                                                <span>Xem Thông Tin Admin</span>
+                                            </a>
+                                        }
+                                        @if (Session["Role"].ToString() == "2")
+                                        {
+                                            <a class="" href="/Admin/HomeHost">
+                                                <i class="bi bi-person"></i>
+                                                <span>Xem Thông Tin Host</span>
+                                            </a>
+                                        }
                                     </li>
                                     <li>
                                         <a class="" href="/Login/Logout">
@@ -150,19 +175,20 @@ LaLaHome đặt mình làm cầu nối giữa chủ nhà, người thuê, và c�
 
                             <h4>CÔNG TY CỔ PHẨN GIẢI PHÁP THUÊ PHÒNG TRỰC TUYẾN LALAHOME</h4>
                             <ul>
-                                <li><b>✯ Điện thoại: </b>0987654321</li>
-                                <li><b>✯ Email: </b>abc123@gmail.com</li>
+                                <li><b>✯ Điện thoại: </b>0906613087</li>
+                                <li><b>✯ Email: </b>cqt17112003@gmail.com</li>
                                 <li><b>✯ Địa chỉ: </b>40 Trường Sa, P17, Bình Thạnh</li>
                             </ul>
                         </div>
                     </div>
-
-                    @if (@Session["HoTen"] != null)
+                    @if (Session["UserEmail"] != null)
+                    {
+                    @*@if (@Session["HoTen"] != null)
                     {
                         if (@Session["HinhAnh"] == null)
                         {
                             Session["HinhAnh"] = "/content/img/avatarfb.jpg";
-                        }
+                        }*@
                         <div class="nav header-navbar-rht">
                             <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
                                 <img src="@Session["HinhAnh"]" alt="Profile" class="rounded-circle" style="border-radius: 50% !important; max-height: 36px; vertical-align: middle; ">
@@ -180,10 +206,24 @@ LaLaHome đặt mình làm cầu nối giữa chủ nhà, người thuê, và c�
                                 </li>
 
                                 <li>
-                                    <a class="dropdown-item d-flex align-items-center justify-content-center" style="color:blue"  href="/HomePage">
+                                    @*<a class="dropdown-item d-flex align-items-center justify-content-center" style="color:blue" href="/HomePage">
                                         <i class="bi bi-person"></i>
                                         <span>Thông Tin Cá Nhân</span>
-                                    </a>
+                                    </a>*@
+                                    @if (Session["Role"].ToString() == "1")
+                                    {
+                                        <a class="dropdown-item d-flex align-items-center justify-content-center" style="color:blue" href="/Admin/Home">
+                                            <i class="bi bi-person"></i>
+                                            <span>Xem Thông Tin Admin</span>
+                                        </a>
+                                    }
+                                    @if (Session["Role"].ToString() == "2")
+                                    {
+                                        <a class="dropdown-item d-flex align-items-center justify-content-center" style="color:blue" href="/Admin/HomeHost">
+                                            <i class="bi bi-person"></i>
+                                            <span>Xem Thông Tin Host</span>
+                                        </a>
+                                    }
                                 </li>
                                 <li>
                                     <hr class="dropdown-divider">
@@ -238,8 +278,8 @@ LaLaHome đặt mình làm cầu nối giữa chủ nhà, người thuê, và c�
                                         <h4>CÔNG TY CỔ PHẨN GIẢI PHÁP THUÊ PHÒNG TRỰC TUYẾN LALAHOME</h4>
                                         <ul>
                                             <li><b>&#10031; Địa chỉ: </b>40 Trường Sa, P17, Bình Thạnh</li>
-                                            <li><b>&#10031; Điện thoại: </b>0987654321</li>
-                                            <li><b>&#10031; Email: </b>abc123@gmail.com</li>
+                                            <li><b>&#10031; Điện thoại: </b>0906613087</li>
+                                            <li><b>&#10031; Email: </b>cqt17112003@gmail.com</li>
                                         </ul>
                                     </div>
                                     @*<div class="social-links">
@@ -315,7 +355,7 @@ LaLaHome đặt mình làm cầu nối giữa chủ nhà, người thuê, và c�
     <script src="/Content/js/jquery.validate.min.js"></script>
     <script src="/Content/js/bootstrap-notify.js"></script>
     <link rel="stylesheet" href="/Content/css/flatpickr.min.css">
-    <script src="/Content/flatpickr"></script>
+    @*<script src="/Content/flatpickr"></script>*@
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>  <!-- Or a specific version -->
     <script>
         $('.select').select2();
@@ -356,12 +396,12 @@ LaLaHome đặt mình làm cầu nối giữa chủ nhà, người thuê, và c�
                 });
             }
         });
-        $(document).ready(function () {
-            $('.additional-filters').hide();
-            $('#toggle-filters').click(function () {
-                $('.additional-filters').slideToggle();
-            });
-        });
+        //$(document).ready(function () {
+        //    $('.additional-filters').hide();
+        //    $('#toggle-filters').click(function () {
+        //        $('.additional-filters').slideToggle();
+        //    });
+        //});
 
         $('.btnbooking').on('click', function (e) {
             var dataItem = $(this).attr('data-item');

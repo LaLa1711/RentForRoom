@@ -1,4 +1,4 @@
-﻿@model List<dynamic>
+﻿﻿@model List<dynamic>
 
 <section class="feature-property-sec">
     <div class="container">
@@ -20,52 +20,48 @@
                                 <div class="slider-col">
                                     <div class="product-custom">
                                         <div class="profile-widget">
-                                            <a class="property-img btnbooking" data-item='{
-                                                            "RoomId": "@item.IDPhong",
-                                                            "PropCode": "",
-                                                            "PropAvatar": "@item.HinhAnh",
-                                                            "IsEmpty": 1,
-                                                            "IsHot": 1,
-                                                            "PropPrice": @item.GiaThue,
-                                                            "updated_at": "2024-12-17 10:30:04",
-                                                            "PropType": 4,
-                                                            "PQL": "@item.TienDichVụ",
-                                                            "PropTypeName": "Căn hộ mini",
-                                                            "PropName": "@item.TieuDe",
-                                                            "ElectricityPrice": @item.TienDien,
-                                                            "ElectricityUnit": "KWH",
-                                                            "WaterPrice": @(@item.TienNuoc * 1000),
-                                                            "Nuoc": "@item.TienNuoc",
-                                                            "Dien": "@item.TienDien",
-                                                            "WaterUnit": "Người",
-                                                            "AreaSEOUrl": "quan-go-vap",
-                                                            "PropAddress": "@item.DiaChi",
-                                                            "WC": "@item.WC",
-                                                            "DP": "@item.CuaSoBanCong",
-                                                            "KB": "@item.KeBep",
-                                                            "ML": "@item.MayLanh",
-                                                            "TD": "@item.TuDo",
-                                                            "TL": "@item.TuLanh",
-                                                            "SF": "@item.Sofa",
-                                                            "Giuong": "@item.Giuong",
-                                                            "Nem": "@item.Nem",
-                                                            "BG": "@item.BanGhe",
-                                                            "SPN": "@item.SoPhongNgu",
-                                                            "PT": "@item.PhuongTien",
-                                                            "Thang": "@item.Thang",
-                                                            "MG": "@item.MayGiat",
-                                                            "TC": "@item.ThuCung",
-                                                            "Coc": "@item.TienCoc",
-                                                            "Gio": "@item.GioGiac",
-                                                            "Map": "@item.LinkMap",
-                                                            "v_house_street": "",
-                                                            "v_house_ward_name": "Phường 8",
-                                                            "v_house_district_name": "Quận Gò Vấp",
-                                                            "v_house_id": 5192
-                                                        }'
+                                            <a class="property-img btnbooking" data-item='@Html.Raw(Json.Encode(new {
+                                                            RoomId = item.IDPhong,
+                                                            PropCode = "",
+                                                            PropAvatar = item.HinhAnh,
+                                                            IsEmpty = 1,
+                                                            IsHot = 1,
+                                                            PropPrice = item.GiaThue,
+                                                            updated_at = "2024-12-17 10:30:04",
+                                                            PropType = 4,
+                                                            PropTypeName = "Căn hộ mini",
+                                                            PropName = item.TieuDe,
+                                                            ElectricityPrice = item.TienDien,
+                                                            ElectricityUnit = "KWH",
+                                                            WaterPrice = item.TienNuoc * 1000,
+                                                            Nuoc = item.TienNuoc,
+                                                            Dien = item.TienDien,
+                                                            PQL = item.TienDichVụ,
+                                                            WaterUnit = "Người",
+                                                            AreaSEOUrl = "quan-go-vap",
+                                                            PropAddress = item.DiaChi,
+                                                            WC = item.WC,
+                                                            DP = item.CuaSoBanCong,
+                                                            KB = item.KeBep,
+                                                            ML = item.MayLanh,
+                                                            TD = item.TuDo,
+                                                            TL = item.TuLanh,
+                                                            SF = item.Sofa,
+                                                            Giuong = item.Giuong,
+                                                            Nem = item.Nem,
+                                                            BG = item.BanGhe,
+                                                            SPN = item.SoPhongNgu,
+                                                            PT = item.PhuongTien,
+                                                            Thang = item.Thang,
+                                                            MG = item.MayGiat,
+                                                            TC = item.ThuCung,
+                                                            Coc = item.TienCoc,
+                                                            Gio = item.GioGiac,
+                                                            Map = item.LinkMap
+                                                        }))'
                                                data-bs-toggle="modal"
                                                data-bs-target="#make-an-appointment">
-                                                <div class="doc-img" style="background-image:url(@item.HinhAnh)">
+                                                <div class="doc-img" style="background-image:url('@item.HinhAnh')">
                                                     <div class="product-amount" style="display:none">
                                                         <span>@(@item.GiaThue / 1000000) <small>triệu/tháng</small></span>
                                                     </div>
@@ -95,44 +91,44 @@
                                             </a>
                                             <div class="pro-content">
                                                 <h3 class="title">
-                                                    <a class="btnbooking" data-item='{
-                                                                "RoomId": "@item.IDPhong",
-                                                                "PropCode": "",
-                                                                "PropAvatar": "@item.HinhAnh",
-                                                                "IsEmpty": 1,
-                                                                "IsHot": 1,
-                                                                "PropPrice": @item.GiaThue,
-                                                                "updated_at": "2024-12-17 10:30:04",
-                                                                "PropType": 4,
-                                                                "PropTypeName": "Căn hộ mini",
-                                                                "PropName": "@item.TieuDe",
-                                                                "ElectricityPrice": @item.TienDien,
-                                                                "ElectricityUnit": "KWH",
-                                                                "Nuoc": "@item.TienNuoc",
-                                                                "Dien": "@item.TienDien",
-                                                                "PQL": "@item.TienDichVụ",
-                                                                "WaterUnit": "Người",
-                                                                "AreaSEOUrl": "quan-go-vap",
-                                                                "PropAddress": "@item.DiaChi",
-                                                                "WC": "@item.WC",
-                                                                "DP": "@item.CuaSoBanCong",
-                                                                "KB": "@item.KeBep",
-                                                                "ML": "@item.MayLanh",
-                                                                "TD": "@item.TuDo",
-                                                                "TL": "@item.TuLanh",
-                                                                "SF": "@item.Sofa",
-                                                                "Giuong": "@item.Giuong",
-                                                                "Nem": "@item.Nem",
-                                                                "BG": "@item.BanGhe",
-                                                                "SPN": "@item.SoPhongNgu",
-                                                                "PT": "@item.PhuongTien",
-                                                                "Thang": "@item.Thang",
-                                                                "MG": "@item.MayGiat",
-                                                                "TC": "@item.ThuCung",
-                                                                "Coc": "@item.TienCoc",
-                                                                "Gio": "@item.GioGiac",
-                                                                "Map": "@item.LinkMap"
-                                                            }'
+                                                    <a class="btnbooking" data-item='@Html.Raw(Json.Encode(new {
+                                                                RoomId = item.IDPhong,
+                                                                PropCode = "",
+                                                                PropAvatar = item.HinhAnh,
+                                                                IsEmpty = 1,
+                                                                IsHot = 1,
+                                                                PropPrice = item.GiaThue,
+                                                                updated_at = "2024-12-17 10:30:04",
+                                                                PropType = 4,
+                                                                PropTypeName = "Căn hộ mini",
+                                                                PropName = item.TieuDe,
+                                                                ElectricityPrice = item.TienDien,
+                                                                ElectricityUnit = "KWH",
+                                                                Nuoc = item.TienNuoc,
+                                                                Dien = item.TienDien,
+                                                                PQL = item.TienDichVụ,
+                                                                WaterUnit = "Người",
+                                                                AreaSEOUrl = "quan-go-vap",
+                                                                PropAddress = item.DiaChi,
+                                                                WC = item.WC,
+                                                                DP = item.CuaSoBanCong,
+                                                                KB = item.KeBep,
+                                                                ML = item.MayLanh,
+                                                                TD = item.TuDo,
+                                                                TL = item.TuLanh,
+                                                                SF = item.Sofa,
+                                                                Giuong = item.Giuong,
+                                                                Nem = item.Nem,
+                                                                BG = item.BanGhe,
+                                                                SPN = item.SoPhongNgu,
+                                                                PT = item.PhuongTien,
+                                                                Thang = item.Thang,
+                                                                MG = item.MayGiat,
+                                                                TC = item.ThuCung,
+                                                                Coc = item.TienCoc,
+                                                                Gio = item.GioGiac,
+                                                                Map = item.LinkMap
+                                                            }))'
                                                        data-bs-toggle="modal"
                                                        data-bs-target="#make-an-appointment">
                                                         @item.TieuDe
@@ -147,7 +143,7 @@
                                                 <div class="q-action cach-le-tren">
                                                     <span class="price-mb giatien">
                                                         <span>@(@item.GiaThue / 1000000) <small>triệu/tháng</small></span>
-                                                        <button type="button" class="btn btn-success btnbooking float-end" data-item='@Json.Encode(item)' data-bs-toggle="modal" data-bs-target="#make-an-appointment">
+                                                        <button type="button" class="btn btn-success btnbooking float-end" data-item='@Html.Raw(Json.Encode(item))' data-bs-toggle="modal" data-bs-target="#make-an-appointment">
                                                             Đặt Lịch Hẹn
                                                         </button>
                                                     </span>

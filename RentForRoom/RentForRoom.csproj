@@ -232,6 +232,7 @@
     <Content Include="Areas\Admin\Content\assets\img\apple-touch-icon.png" />
     <Content Include="Areas\Admin\Content\assets\img\card.jpg" />
     <Content Include="Areas\Admin\Content\assets\img\favicon.png" />
+    <Content Include="Areas\Admin\Content\assets\img\lala.jpg" />
     <Content Include="Areas\Admin\Content\assets\img\logo.png" />
     <Content Include="Areas\Admin\Content\assets\img\messages-1.jpg" />
     <Content Include="Areas\Admin\Content\assets\img\messages-2.jpg" />
@@ -2862,13 +2863,17 @@
     <Content Include="Content\css\select2.min.css" />
     <Content Include="Content\css\style.css" />
     <Content Include="Content\img\404.png" />
+    <Content Include="Content\img\about-1.jpg" />
+    <Content Include="Content\img\about.jpg" />
     <Content Include="Content\img\avatarfb.jpg" />
     <Content Include="Content\img\banner.jpg" />
+    <Content Include="Content\img\bg_2.jpg" />
     <Content Include="Content\img\blue-circle.svg" />
     <Content Include="Content\img\city-1.jpg" />
     <Content Include="Content\img\fontawesome-webfont.svg" />
     <Content Include="Content\img\lala.jpg" />
     <Content Include="Content\img\line-bg.png" />
+    <Content Include="Content\img\person_4.jpg" />
     <Content Include="Content\img\price-bg.png" />
     <Content Include="Content\img\red-circle.svg" />
     <Content Include="Content\img\work-icon-1.svg" />
@@ -3145,6 +3150,7 @@
     <Content Include="Views\XemPhong\Index.cshtml" />
     <Content Include="Views\Search\Index.cshtml" />
     <Content Include="Views\Search\SearchResults.cshtml" />
+    <Content Include="Views\Search\SearchUsers.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

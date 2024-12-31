@@ -21,86 +21,86 @@
             <div class="col-md-12">
                 <div class="pro-home">
                     <div class="row">
-                        @foreach (var item in Model.Take(12))
+                        @foreach (var item in Model)
                         {
                             <div class="col-md-3 col-12">
                                 <div class="slider-col">
                                     <div class="product-custom">
                                         <div class="profile-widget">
                                             @*<a class="property-img btnbooking"  data-item='{
-                                                            "RoomId": "@item.IDPhong",
-                                                            "PropCode": "",
-                                                            "PropAvatar": "@item.HinhAnh",
-                                                            "IsEmpty": 1,
-                                                            "IsHot": 1,
-                                                            "PropPrice": @item.GiaThue,
-                                                            "updated_at": "2024-12-17 10:30:04",
-                                                            "PropType": 4,
-                                                            "PQL": "@item.TienDichVụ",
-                                                            "PropTypeName": "Căn hộ mini",
-                                                            "PropName": "@item.TieuDe",
-                                                            "ElectricityPrice": @item.TienDien,
-                                                            "ElectricityUnit": "@q",
-                                                            "WaterPrice": @(@item.TienNuoc * 1000),
-                                                            "Nuoc": "@item.TienNuoc",
-                                                            "Dien": "@item.TienDien",
-                                                            "WaterUnit": "@r",
-                                                            "AreaSEOUrl": "quan-go-vap",
-                                                            "PropAddress": "@item.DiaChi, c, b, a",
-                                                            "WC": "@(item.WC.HasValue && item.WC.Value ? $"chung" : $"riêng")",
-                                                            "DP": "@(item.CuaSoBanCong.HasValue ? (item.CuaSoBanCong.Value ? $"Cửa Sổ" : $"Ban Công") : $"Phòng Kín")",
-                                                            "KB": "@(item.KeBep.HasValue && item.KeBep.Value ? $"chung" : $"riêng")",
-                                                            "ML": "@item.MayLanh",
-                                                            "TD": "@item.TuDo",
-                                                            "TL": "@item.TuLanh",
-                                                            "SF": "@item.Sofa",
-                                                            "Giuong": "@item.Giuong",
-                                                            "Nem": "@item.Nem",
-                                                            "BG": "@item.BanGhe",
-                                                            "SPN": "@item.SoPhongNgu",
-                                                            "PT": "@item.PhuongTien",
-                                                            "Thang": "@(item.Thang.HasValue && item.Thang.Value ? $"bộ" : $"máy")",
-                                                            "MG": "@(item.MayGiat.HasValue && item.MayGiat.Value ? $"chung" : $"riêng")",
-                                                            "TC": "@(item.ThuCung.HasValue && item.ThuCung.Value ? $"được nuôi" : $"không được nuôi")",
-                                                            "Coc": "@(item.TienCoc.HasValue && item.TienCoc.Value ? $"có" : $"không")",
-                                                            "Gio": "@item.GioGiac",
-                                                            "Map": "@item.LinkMap",
-                                                            "v_house_street": "",
-                                                            "v_house_ward_name": "Phường 8",
-                                                            "v_house_district_name": "Quận Gò Vấp",
-                                                            "v_house_id": 5192
-                                                        }'
-                                                        data-bs-toggle="modal"
-                                                        data-bs-target="#make-an-appointment"> </a>*@
-                                                <div class="doc-img" style="background-image:url(@item.HinhAnh)">
-                                                    <div class="product-amount" style="display:none">
-                                                        <span>@(@item.GiaThue / 1000000) <small>triệu/tháng</small></span>
-                                                         
-                                                    </div>
-                                                    <div class="feature-rating ">
-                                                        <div>
-                                                            @if (@item.Hide == false)
-                                                            {
-                                                                <div class="featured is--green">
-                                                                    <span><i class="fa fa-fw fa-circle"></i> Còn phòng</span>
-                                                                </div>
-                                                            }
-                                                            @if (@item.Hide == true)
-                                                            {
-                                                                <div class="featured is--orange">
-                                                                    <span><i class="fa fa-fw fa-circle"></i> Tạm hết</span>
-                                                                </div>
-                                                            }
-                                                            @if (@item.NoiBat == true)
-                                                            {
-                                                                <div class="new-featured item__hot">
-                                                                    <span><i class="animated infinite rubberBand">HOT</i> Nổi bật</span>
-                                                                </div>
-                                                            }
-                                                        </div>
+                                                "RoomId": "@item.IDPhong",
+                                                "PropCode": "",
+                                                "PropAvatar": "@item.HinhAnh",
+                                                "IsEmpty": 1,
+                                                "IsHot": 1,
+                                                "PropPrice": @item.GiaThue,
+                                                "updated_at": "2024-12-17 10:30:04",
+                                                "PropType": 4,
+                                                "PQL": "@item.TienDichVụ",
+                                                "PropTypeName": "Căn hộ mini",
+                                                "PropName": "@item.TieuDe",
+                                                "ElectricityPrice": @item.TienDien,
+                                                "ElectricityUnit": "@q",
+                                                "WaterPrice": @(@item.TienNuoc * 1000),
+                                                "Nuoc": "@item.TienNuoc",
+                                                "Dien": "@item.TienDien",
+                                                "WaterUnit": "@r",
+                                                "AreaSEOUrl": "quan-go-vap",
+                                                "PropAddress": "@item.DiaChi, c, b, a",
+                                                "WC": "@(item.WC.HasValue && item.WC.Value ? $"chung" : $"riêng")",
+                                                "DP": "@(item.CuaSoBanCong.HasValue ? (item.CuaSoBanCong.Value ? $"Cửa Sổ" : $"Ban Công") : $"Phòng Kín")",
+                                                "KB": "@(item.KeBep.HasValue && item.KeBep.Value ? $"chung" : $"riêng")",
+                                                "ML": "@item.MayLanh",
+                                                "TD": "@item.TuDo",
+                                                "TL": "@item.TuLanh",
+                                                "SF": "@item.Sofa",
+                                                "Giuong": "@item.Giuong",
+                                                "Nem": "@item.Nem",
+                                                "BG": "@item.BanGhe",
+                                                "SPN": "@item.SoPhongNgu",
+                                                "PT": "@item.PhuongTien",
+                                                "Thang": "@(item.Thang.HasValue && item.Thang.Value ? $"bộ" : $"máy")",
+                                                "MG": "@(item.MayGiat.HasValue && item.MayGiat.Value ? $"chung" : $"riêng")",
+                                                "TC": "@(item.ThuCung.HasValue && item.ThuCung.Value ? $"được nuôi" : $"không được nuôi")",
+                                                "Coc": "@(item.TienCoc.HasValue && item.TienCoc.Value ? $"có" : $"không")",
+                                                "Gio": "@item.GioGiac",
+                                                "Map": "@item.LinkMap",
+                                                "v_house_street": "",
+                                                "v_house_ward_name": "Phường 8",
+                                                "v_house_district_name": "Quận Gò Vấp",
+                                                "v_house_id": 5192
+                                            }'
+                                            data-bs-toggle="modal"
+                                            data-bs-target="#make-an-appointment"> </a>*@
+                                            <div class="doc-img" style="background-image:url(@item.HinhAnh)">
+                                                <div class="product-amount" style="display:none">
+                                                    <span>@(@item.GiaThue / 1000000) <small>triệu/tháng</small></span>
+
+                                                </div>
+                                                <div class="feature-rating ">
+                                                    <div>
+                                                        @if (@item.Hide == false)
+                                                        {
+                                                            <div class="featured is--green">
+                                                                <span><i class="fa fa-fw fa-circle"></i> Còn phòng</span>
+                                                            </div>
+                                                        }
+                                                        @if (@item.Hide == true)
+                                                        {
+                                                            <div class="featured is--orange">
+                                                                <span><i class="fa fa-fw fa-circle"></i> Tạm hết</span>
+                                                            </div>
+                                                        }
+                                                        @if (@item.NoiBat == true)
+                                                        {
+                                                            <div class="new-featured item__hot">
+                                                                <span><i class="animated infinite rubberBand">HOT</i> Nổi bật</span>
+                                                            </div>
+                                                        }
                                                     </div>
                                                 </div>
-                                            
+                                            </div>
+
                                             <div class="pro-content">
                                                 <h3 class="title">
                                                     @*<a class="btnbooking" data-item='{
@@ -171,7 +171,7 @@
                                                         Căn hộ mini
                                                     </li>
                                                     <li>
-                                                        
+
                                                         <span name="MaTaiKhoan">
                                                             @{ Html.RenderAction("GetMaTaiKhoanName", "Phong", new { id = item.MaTaiKhoan }); }
                                                         </span>
@@ -180,7 +180,7 @@
                                                 </ul>
                                                 <div class="q-action cach-le-tren">
                                                     <span class="price-mb giatien">
-                                                        <span >@(@item.GiaThue / 1000000) <small>triệu/tháng</small></span>
+                                                        <span>@(@item.GiaThue / 1000000) <small>triệu/tháng</small></span>
                                                         <button type="button" class="btn btn-success btnbooking float-end"
                                                                 data-item='{
                                                             "RoomId": "@item.IDPhong",
@@ -229,9 +229,11 @@
                                                             "v_house_id": 5192
     }'
                                                                 data-bs-toggle="modal"
-                                                                data-bs-target="#make-an-appointment">
+                                                                data-bs-target="#make-an-appointment"
+                                                                @(item.Hide.HasValue && item.Hide.Value ? "disabled" : "")>
                                                             Đặt Lịch Hẹn
                                                         </button>
+                                                        
                                                     </span>
                                                 </div>
                                             </div>
@@ -246,6 +248,38 @@
                 </div>
             </div>
         </div>
+        <!-- Phân trang -->
+        <div class="pagination-area mt-15 mb-sm-5 mb-lg-0">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                    @if (ViewBag.CurrentPage > 1)
+                    {
+                        <li class="page-item">
+                            <a class="page-link" href="?page=@(ViewBag.CurrentPage - 1)" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                    }
+
+                    @for (int i = 1; i <= ViewBag.TotalPages; i++)
+                    {
+                        <li class="page-item @(i == ViewBag.CurrentPage ? "active" : "")">
+                            <a class="page-link" href="?page=@i">@i</a>
+                        </li>
+                    }
+
+                    @if (ViewBag.CurrentPage < ViewBag.TotalPages)
+                    {
+                        <li class="page-item">
+                            <a class="page-link" href="?page=@(ViewBag.CurrentPage + 1)" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    }
+                </ul>
+            </nav>
+        </div>
+
     </div>
     <div class="bg-imgs">
         <img src="/Content/img/price-bg.png" class="bg-01" alt="icon">

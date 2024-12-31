@@ -18,7 +18,71 @@
     }
     .giatien{font-size: 20px}
 }
+.center-bold-italic {
+    text-align: center; /* Canh giữa văn bản */
+    font-weight: bold; /* In đậm */
+    font-style: italic; /* In nghiêng */
+}
 
+
+.image-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Canh giữa các hình ảnh */
+    align-items: center;
+    max-width: 1600px; /* Giới hạn chiều rộng tối đa của grid */
+    margin: 0 auto; /* Đảm bảo grid được canh giữa */
+}
+
+
+.image-wrapper {
+    width: 200px; /* Kích thước nhỏ hơn */
+    height: 200px; /* Kích thước nhỏ hơn */
+    position: relative;
+    overflow: hidden;
+    border-radius: 30%; /* Tạo khung hình tròn */
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+}
+
+    .image-wrapper img {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        height: auto;
+    }
+
+        .image-wrapper img:hover {
+            transform: translate(-50%, -50%) scale(1.09);
+        }
+
+@media (max-width: 991px) {
+    .image-grid .col-md-4 {
+        flex: 0 0 33.33%;
+        max-width: 33.33%;
+    }
+}
+
+@media (max-width: 767px) {
+    .image-grid .col-sm-6 {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+}
+
+@media (max-width: 575px) {
+    .image-grid .col-6 {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+    .image-wrapper {
+        width: 150px; /* Kích thước nhỏ hơn */
+        height: 150px; /* Kích thước nhỏ hơn */
+    }
+}
 
 .gallery-property ul li a, .cart-section .product-group .product-content .social-links a, .shop-page .product-custom .profile-widget .doc-img-view ul li a, .blog-banner .blog-detailset, .blog-banner, .bloglistleft-widget .post-author, .bloggrid-sidebar .post-author, .blog-section .blog-content .blog-list-date .meta-item-list, .blog-section .blog-content .meta-item li .post-author, .blog-section .blog-content .meta-item, .blog-section .blog-content .date-icon .post-author, .blog-section .blog-content .date-icon, .our-team-section .our-team .team-prof .footer-social-links ul li a, .our-team-section .our-team .team-prof .footer-social-links ul, .contact-info-sec .contact-info-details span, .details-wrap.agency .detail-user-img, .service-area li::before, .agent-list.agency .agent-img, .login-wrapper, .modal-succeess .success-popup h4, .modal-succeess .success-popup, .booking-details .payment-icon ul li span, .booking-details .payment-icon ul li, .success-div span, .grid-list-view ul li a, .connect-us li a, .sidebar-card .contact-btn.contact-btn-new a, .collapse-card .sample-video .play-icon, .compare-head .compare-action a, .grid-pagination .pagination li a, .blog-card .blog-content .property-category a span, .product-custom .favourite, .testimonial-card .user-icon, .single-property-card .buy-property .arrow, .cities-list-sec .city-list .arrow-overlay a, .property-card, .howit-work-card .work-card-icon span, .howit-work-card, .section-heading, .banner-search .banner-tab-property .banner-property-info .banner-property-grid:last-child a, .banner-search .banner-tab-property .banner-property-info, .banner-search .banner-tab .nav-tabs .nav-item .nav-link, .serve-form .form-group .button-notific, .serve-form .form-group, .error-page .main-wrapper, .error-page, .header .header-navbar-rht li .btn, .header .main-menu-wrapper .main-nav li .btn.sign-btn, .header .header-top .template-ad, .login-body .footer-social-links .nav li a, .login-body .footer-social-links .nav, .social-links ul li a, .avatar .avatar-title, .btn-lightred, .btn-secondary, .btn-primary, .align-center {
   display: -webkit-box;

@@ -63,10 +63,11 @@ namespace RentForRoom.Controllers
                 return "";
             }
         }
-        public ActionResult Index()
+        public ActionResult Index( int page = 1)
         {
             try
             {
+                int pageSize = 12;
                 List<PhongModel> ban = (from ab in db.tbChiTietPhongs
                                         where ab.TrangThaiXuLy == true
                                         join album in
@@ -112,7 +113,17 @@ namespace RentForRoom.Controllers
                                            Hide = (bool)ab.Hide,
                                            NoiBat = (bool)ab.NoiBat
                                             })).ToList();
-                return PartialView(ban);
+                // Tính số trang
+                int totalProducts = ban.Count(); // Tổng số phòng
+                int totalPages = (int)Math.Ceiling((double)totalProducts / pageSize); // Số trang
+                // Phân trang: chọn sản phẩm trong phạm vi trang hiện tại
+                var paginatedItems = ban.Skip((page - 1) * pageSize).Take(pageSize).ToList();
+
+                // Truyền dữ liệu phân trang vào View
+                ViewBag.TotalPages = totalPages;
+                ViewBag.CurrentPage = page;
+                return PartialView(paginatedItems);
+                //return PartialView(ban);
             }
             catch (Exception ex)
             {

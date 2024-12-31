@@ -16,6 +16,33 @@
                         <div class="col-lg-6">
                             <div class="room-info">
                                 <img class="pro-img" src="" alt=" ">
+                                @*<div class="slider">
+                                    <div class="slides" id="sliderImages">
+                                        <img class="pro-img" src="" alt=" ">
+
+
+                                    </div>
+                                    <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
+                                    <button class="next" onclick="changeSlide(1)">&#10095;</button>
+                                </div>*@
+                                <!--<div class="image-gallery">-->
+                                    <!-- Các hình ảnh sẽ được thêm vào đây sau khi nhận dữ liệu từ AJAX -->
+                                <!--</div>-->
+
+                                @*<input type="hidden" name="roomid" id="roomid" value="@Request.QueryString["roomid"]" readonly>*@ <!-- Ví dụ roomid -->
+
+                                <!--<div class="slider">
+                                    <div class="slides" id="sliderImages">
+                                        @@foreach (var imageUrl in Model.TieuDe)
+                                        {
+                                            <p>@@imageUrl</p>-->
+                                            @*<img src="@imageUrl" alt="Image" style="max-width: 100%; height: auto;">*@
+                                        <!--}
+                                    </div>
+                                    <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
+                                    <button class="next" onclick="changeSlide(1)">&#10095;</button>
+                                </div>-->
+
                                 <h3 class="pro-name"></h3>
 
                                 <p class="price"><b>GIÁ THUÊ PHÒNG: </b><b class="pro-price"></b> <span>/ tháng</span></p>
@@ -112,7 +139,7 @@
                                 </div>
                                 <div class="col-lg-6 col-6">
                                     <div class="form-group">
-                                        <label>Điện thoại </label>
+                                        <label>Điện thoại di động</label>
                                         <input required type="number" name="SDT" id="SDT" class="form-control" placeholder="Nhập tên số điện thoại">
                                     </div>
                                 </div>
@@ -128,6 +155,8 @@
                                             <option value="6">6</option>
                                             <option value="7">7</option>
                                             <option value="8">8</option>
+                                            <option value="9">9</option>
+                                            <option value="10">10</option>
                                         </select>
                                     </div>
                                 </div>
@@ -143,6 +172,8 @@
                                             <option value="6">6</option>
                                             <option value="7">7</option>
                                             <option value="8">8</option>
+                                            <option value="9">9</option>
+                                            <option value="10">10</option>
                                         </select>
                                     </div>
                                 </div>
@@ -194,6 +225,12 @@
                 </form>
             </div>
         </div>
+    </div>
+</div>
+<!-- Loading Spinner -->
+<div id="loading-spinner" style="display:none; position:fixed; top:50%; left:50%; transform:translate(-50%, -50%); z-index:1050;">
+    <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Loading...</span>
     </div>
 </div>
 
@@ -295,6 +332,7 @@
         // Kiểm tra xem form có hợp lệ hay không
         if (frmbooking.valid()) {
             // Tạo đối tượng dữ liệu để gửi lên server
+            $('#loading-spinner').show();
             var data = {
                 IDPhong: IDPhong,
                 District: frmbooking.find('#District').val(),
@@ -321,6 +359,7 @@
                 },
                 contentType: "application/json",  // Sửa contentType thành application/json
                 success: function (result) {
+                    $('#loading-spinner').hide(); 
                     if (result != null && result.Success) {
                         alert(result.Message); // Hiển thị thông báo từ server
                         $('#make-an-appointment').modal('hide');
@@ -331,6 +370,7 @@
                     }
                 },
                 error: function (e) {
+                    $('#loading-spinner').hide(); 
                     console.log(e);  // In ra lỗi nếu có
                     alert('Có lỗi xảy ra, vui lòng thử lại!');
                 }
@@ -344,3 +384,79 @@
 </script>
 
 
+
+
+
+@*<script>
+    let currentIndex = 0;
+
+    function changeSlide(direction) {
+        const slides = document.querySelector('.slides');
+        const totalSlides = slides.children.length;
+
+        currentIndex = (currentIndex + direction + totalSlides) % totalSlides;
+        const offset = -currentIndex * slides.children[0].clientWidth;
+
+        slides.style.transform = `translateX(${offset}px)`;
+    }
+
+    window.addEventListener('resize', () => {
+        changeSlide(0); // Reset slide position khi thay đổi kích thước màn hình
+    });
+
+    // Hiển thị slide đầu tiên khi trang được tải
+    document.addEventListener('DOMContentLoaded', () => {
+        changeSlide(0);
+    });
+</script>*@
+
+<script>
+    // Gửi roomid về server
+    // Gửi roomid về server để lấy hình ảnh
+    //function fetchImages() {
+    //    var roomid = $('#roomid').val(); // Lấy giá trị roomid từ input ẩn
+
+    //    if (roomid) {
+    //        $.ajax({
+    //            url: '/DatLichHen/GetImages', // Endpoint xử lý
+    //            type: 'POST',
+    //            data: { roomid: roomid }, // Gửi roomid
+    //            success: function (response) {
+    //                if (response.success) {
+    //                    // Xóa các hình ảnh cũ
+    //                    $('.image-gallery').empty();
+
+    //                    // Hiển thị hình ảnh mới
+    //                    response.images.forEach(function (imageUrl) {
+    //                        var imgTag = '<div><img src="' + imageUrl + '" class="img-fluid" alt="Room Image"></div>';
+    //                        $('.image-gallery').append(imgTag);
+    //                    });
+
+    //                    // Khởi tạo Slick Slider sau khi thêm hình ảnh
+    //                    $('.image-gallery').slick({
+    //                        infinite: true,
+    //                        slidesToShow: 1,
+    //                        slidesToScroll: 1,
+    //                        arrows: true, // Hiển thị mũi tên qua lại
+    //                        dots: true,   // Hiển thị dots (chấm) điều hướng
+    //                        autoplay: true,
+    //                        autoplaySpeed: 3000 // Tự động chuyển ảnh mỗi 3 giây
+    //                    });
+    //                } else {
+    //                    alert('Không tìm thấy hình ảnh cho phòng này.');
+    //                }
+    //            },
+    //            error: function () {
+    //                alert('Có lỗi xảy ra khi lấy hình ảnh.');
+    //            }
+    //        });
+    //    }
+    //}
+
+    //// Gọi hàm khi giá trị roomid thay đổi (hoặc sau khi render trang)
+    //$('#roomid').on('change', fetchImages);
+
+
+
+
+</script>

@@ -1,74 +1,24 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="QLNhaTroModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-  <EntityType Name="tbGioiThieu">
-    <Key>
-      <PropertyRef Name="IDGioiThieu" />
-    </Key>
-    <Property Name="IDGioiThieu" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="TieuDe" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-    <Property Name="NoiDung" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="HinhAnh" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-    <Property Name="TieuDeDanhSach" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-    <Property Name="NoiDungDanhSach" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-    <Property Name="Hide" Type="Boolean" />
-  </EntityType>
   <EntityContainer Name="QLNhaTroEntities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="tbGioiThieux" EntityType="Self.tbGioiThieu" />
-    <EntitySet Name="tbQuanHuyens" EntityType="QLNhaTroModel.tbQuanHuyen" />
-    <EntitySet Name="tbTinhThanhPhoes" EntityType="QLNhaTroModel.tbTinhThanhPho" />
-    <EntitySet Name="tbXaPhuongs" EntityType="QLNhaTroModel.tbXaPhuong" />
-    <EntitySet Name="tbQuyens" EntityType="QLNhaTroModel.tbQuyen" />
-    <EntitySet Name="tbUsers" EntityType="QLNhaTroModel.tbUser" />
-    <EntitySet Name="tbBanners" EntityType="QLNhaTroModel.tbBanner" />
-    <EntitySet Name="tbDatLiches" EntityType="QLNhaTroModel.tbDatLich" />
     <EntitySet Name="tbAlbums" EntityType="QLNhaTroModel.tbAlbum" />
+    <EntitySet Name="tbBanners" EntityType="QLNhaTroModel.tbBanner" />
     <EntitySet Name="tbChiTietPhongs" EntityType="QLNhaTroModel.tbChiTietPhong" />
+    <EntitySet Name="tbDatLiches" EntityType="QLNhaTroModel.tbDatLich" />
+    <EntitySet Name="tbGioiThieux" EntityType="QLNhaTroModel.tbGioiThieu" />
+    <EntitySet Name="tbQuanHuyens" EntityType="QLNhaTroModel.tbQuanHuyen" />
+    <EntitySet Name="tbQuyens" EntityType="QLNhaTroModel.tbQuyen" />
+    <EntitySet Name="tbTinhThanhPhoes" EntityType="QLNhaTroModel.tbTinhThanhPho" />
+    <EntitySet Name="tbUsers" EntityType="QLNhaTroModel.tbUser" />
+    <EntitySet Name="tbXaPhuongs" EntityType="QLNhaTroModel.tbXaPhuong" />
   </EntityContainer>
-  <EntityType Name="tbQuanHuyen">
+  <EntityType Name="tbAlbum">
     <Key>
-      <PropertyRef Name="IDQuan" />
+      <PropertyRef Name="IDAlbum" />
     </Key>
-    <Property Name="IDTP" Type="Int32" />
-    <Property Name="TenQuan" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-    <Property Name="IDQuan" Type="Int32" Nullable="false" />
-    <Property Name="Hide" Type="Boolean" />
-  </EntityType>
-  <EntityType Name="tbTinhThanhPho">
-    <Key>
-      <PropertyRef Name="IDTP" />
-    </Key>
-    <Property Name="IDTP" Type="Int32" Nullable="false" />
-    <Property Name="TenTP" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-    <Property Name="Hide" Type="Boolean" />
-  </EntityType>
-  <EntityType Name="tbXaPhuong">
-    <Key>
-      <PropertyRef Name="IDPhuong" />
-    </Key>
-    <Property Name="IDQuan" Type="Int32" />
-    <Property Name="TenPhuong" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-    <Property Name="IDPhuong" Type="Int32" Nullable="false" />
-    <Property Name="Hide" Type="Boolean" />
-  </EntityType>
-  <EntityType Name="tbQuyen">
-    <Key>
-      <PropertyRef Name="IDQuyen" />
-    </Key>
-    <Property Name="IDQuyen" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="TenQuyen" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-    <Property Name="Hide" Type="Boolean" />
-  </EntityType>
-  <EntityType Name="tbUser">
-    <Key>
-      <PropertyRef Name="IDUser" />
-    </Key>
-    <Property Name="IDUser" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="MaTaiKhoan" Type="Int32" />
-    <Property Name="Role" Type="Int32" />
-    <Property Name="SDT" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-    <Property Name="MatKhau" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="HoTen" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-    <Property Name="Gmail" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="IDAlbum" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IDPhong" Type="Int32" />
+    <Property Name="TieuDe" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
     <Property Name="HinhAnh" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
     <Property Name="Hide" Type="Boolean" />
   </EntityType>
@@ -80,33 +30,6 @@
     <Property Name="TieuDe" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
     <Property Name="NoiDung" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
     <Property Name="HinhBanner" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-    <Property Name="Hide" Type="Boolean" />
-  </EntityType>
-  <EntityType Name="tbDatLich">
-    <Key>
-      <PropertyRef Name="IDDatLich" />
-    </Key>
-    <Property Name="IDDatLich" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="IDPhong" Type="Int32" />
-    <Property Name="SoNguoiO" Type="Int32" />
-    <Property Name="SoLuongXe" Type="Int32" />
-    <Property Name="NgayXemPhong" Type="DateTime" Precision="3" />
-    <Property Name="NgayChuyenVao" Type="DateTime" Precision="0" />
-    <Property Name="GhiChu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="ThuCung" Type="Boolean" />
-    <Property Name="HoTen" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-    <Property Name="SDT" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
-    <Property Name="Email" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-    <Property Name="Hide" Type="Boolean" />
-  </EntityType>
-  <EntityType Name="tbAlbum">
-    <Key>
-      <PropertyRef Name="IDAlbum" />
-    </Key>
-    <Property Name="IDAlbum" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="IDPhong" Type="Int32" />
-    <Property Name="TieuDe" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-    <Property Name="HinhAnh" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
     <Property Name="Hide" Type="Boolean" />
   </EntityType>
   <EntityType Name="tbChiTietPhong">
@@ -147,5 +70,82 @@
     <Property Name="Hide" Type="Boolean" />
     <Property Name="NoiBat" Type="Boolean" />
     <Property Name="TrangThaiXuLy" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="tbDatLich">
+    <Key>
+      <PropertyRef Name="IDDatLich" />
+    </Key>
+    <Property Name="IDDatLich" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IDPhong" Type="Int32" />
+    <Property Name="SoNguoiO" Type="Int32" />
+    <Property Name="SoLuongXe" Type="Int32" />
+    <Property Name="NgayXemPhong" Type="DateTime" Precision="3" />
+    <Property Name="NgayChuyenVao" Type="DateTime" Precision="0" />
+    <Property Name="GhiChu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ThuCung" Type="Boolean" />
+    <Property Name="HoTen" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="SDT" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="Hide" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="tbGioiThieu">
+    <Key>
+      <PropertyRef Name="IDGioiThieu" />
+    </Key>
+    <Property Name="IDGioiThieu" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TieuDe" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="NoiDung" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="HinhAnh" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="TieuDeDanhSach" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="NoiDungDanhSach" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="Hide" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="tbQuanHuyen">
+    <Key>
+      <PropertyRef Name="IDQuan" />
+    </Key>
+    <Property Name="IDTP" Type="Int32" />
+    <Property Name="TenQuan" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="IDQuan" Type="Int32" Nullable="false" />
+    <Property Name="Hide" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="tbQuyen">
+    <Key>
+      <PropertyRef Name="IDQuyen" />
+    </Key>
+    <Property Name="IDQuyen" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenQuyen" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="Hide" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="tbTinhThanhPho">
+    <Key>
+      <PropertyRef Name="IDTP" />
+    </Key>
+    <Property Name="IDTP" Type="Int32" Nullable="false" />
+    <Property Name="TenTP" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="Hide" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="tbUser">
+    <Key>
+      <PropertyRef Name="IDUser" />
+    </Key>
+    <Property Name="IDUser" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MaTaiKhoan" Type="Int32" />
+    <Property Name="Role" Type="Int32" />
+    <Property Name="SDT" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="MatKhau" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="HoTen" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="Gmail" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="HinhAnh" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Hide" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="tbXaPhuong">
+    <Key>
+      <PropertyRef Name="IDPhuong" />
+    </Key>
+    <Property Name="IDQuan" Type="Int32" />
+    <Property Name="TenPhuong" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="IDPhuong" Type="Int32" Nullable="false" />
+    <Property Name="Hide" Type="Boolean" />
   </EntityType>
 </Schema>

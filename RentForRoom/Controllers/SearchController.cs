@@ -1,4 +1,5 @@
-﻿using RentForRoom.DBContext;
+﻿using OfficeOpenXml.FormulaParsing.Excel.Functions.Math;
+using RentForRoom.DBContext;
 using RentForRoom.Models;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,47 @@ namespace RentForRoom.Controllers
     {
         // GET: Search
         private QLNhaTroEntities db = new QLNhaTroEntities();
+        //public string GetThanhPho(int? id)
+        //{
+        //    string html = "";
+
+        //    List<ThanhPhoModel> lst = new List<ThanhPhoModel>();
+        //    lst = (from grpo in db.tbTinhThanhPhoes
+        //           where grpo.Hide != true
+        //           select (new ThanhPhoModel
+        //           {
+        //               Id = grpo.IDTP,
+        //               Name = grpo.TenTP
+        //           })).ToList();
+        //    int tong = lst.Count;
+
+        //    if (id != null)
+        //    {
+        //        html = "<option value= ''>--- Chọn Thành Phố ---</option>";
+        //        for (int i = 0; i < tong; i++)
+        //        {
+        //            if (id == lst[i].Id)
+        //            {
+        //                html += "<option selected value='" + lst[i].Id + "'>" + lst[i].Name + "</option>";
+        //            }
+        //            else
+        //            {
+        //                html += "<option value='" + lst[i].Id + "'>" + lst[i].Name + "</option>";
+
+        //            }
+        //        }
+        //    }
+        //    else
+        //    {
+        //        html = "<option selected value= ''>--- Chọn Thành Phố ---</option>";
+        //        for (int i = 0; i < tong; i++)
+        //        {
+        //            html += "<option value='" + lst[i].Id + "'>" + lst[i].Name + "</option>";
+        //        }
+        //    }
+        //    return html;
+
+        //}
         public string GetThanhPho(int? id)
         {
             string html = "<option value=''>----- Chọn Thành Phố -----</option>";
@@ -115,89 +157,262 @@ namespace RentForRoom.Controllers
 
             return PartialView(new PhongModel());
         }
-        public ActionResult SearchUsers(string k, string idThanhPho, string idQuan, string idPhuong)
+        public ActionResult SearchUsers(string k, string IDThanhPho, string idQuan, string idPhuong, string p, string st, int page = 1)
         {
             try
             {
-                
-                var usersQuery = db.tbChiTietPhongs.AsQueryable();
+                int pageSize = 12; // Số lượng phòng mỗi trang
+
+                // Bắt đầu truy vấn các phòng từ cơ sở dữ liệu
+                var usersQuery = db.tbChiTietPhongs
+                    .Join(db.tbAlbums.GroupBy(a => a.IDPhong).Select(g => g.FirstOrDefault()), ab => ab.IDPhong, album => album.IDPhong, (ab, album) => new { ab, album.HinhAnh })
+                    .Join(db.tbUsers, ab => ab.ab.MaTaiKhoan, user => user.MaTaiKhoan, (ab, u) => new { ab, u.HoTen })
+                    .AsQueryable();
+
+                // Bộ lọc theo Thành phố (nếu có IDThanhPho)
+                if (!string.IsNullOrEmpty(IDThanhPho) && int.TryParse(IDThanhPho, out int idThanhPhoValue))
+                {
+                    usersQuery = usersQuery.Where(u => u.ab.ab.IDTP == idThanhPhoValue);
+                }
+
+                // Bộ lọc theo từ khóa (nếu có)
                 if (!string.IsNullOrEmpty(k))
                 {
-                    usersQuery = usersQuery.Where(r => r.TieuDe.Contains(k) || r.DiaChi.Contains(k));
+                    usersQuery = usersQuery.Where(r => r.ab.ab.TieuDe.Contains(k) || r.ab.ab.DiaChi.Contains(k) || (r.HoTen != null && r.HoTen.Contains(k)));
                 }
 
-                if (!string.IsNullOrEmpty(idThanhPho) && int.TryParse(idThanhPho, out int idThanhPhoValue))
-                {
-                    usersQuery = usersQuery.Where(u => u.IDTP == idThanhPhoValue);
-                }
+
+                // Bộ lọc theo Quận/Huyện (nếu có idQuan)
                 if (!string.IsNullOrEmpty(idQuan) && int.TryParse(idQuan, out int idQuanValue))
                 {
-                    usersQuery = usersQuery.Where(u => u.IDQuan == idQuanValue);
+                    usersQuery = usersQuery.Where(u => u.ab.ab.IDQuan == idQuanValue);
                 }
+
+                // Bộ lọc theo Phường/Xã (nếu có idPhuong)
                 if (!string.IsNullOrEmpty(idPhuong) && int.TryParse(idPhuong, out int idPhuongValue))
                 {
-                    usersQuery = usersQuery.Where(u => u.IDPhuong == idPhuongValue);
+                    usersQuery = usersQuery.Where(u => u.ab.ab.IDPhuong == idPhuongValue);
                 }
-                var filteredUsers = usersQuery.Select(u => new
+
+                // Bộ lọc theo khoảng giá (nếu có)
+                if (!string.IsNullOrEmpty(p))
                 {
-                    u.MaTaiKhoan,
-                    u.TieuDe,
-                    u.DiaChi,
-                    ThanhPho = db.tbTinhThanhPhoes.FirstOrDefault(t => t.IDTP == u.IDTP) != null
-                        ? db.tbTinhThanhPhoes.FirstOrDefault(t => t.IDTP == u.IDTP).TenTP
-                        : "Không xác định",
-                    Quan = db.tbQuanHuyens.FirstOrDefault(q => q.IDQuan == u.IDQuan) != null
-                        ? db.tbQuanHuyens.FirstOrDefault(q => q.IDQuan == u.IDQuan).TenQuan
-                        : "Không xác định",
-                    Phuong = db.tbXaPhuongs.FirstOrDefault(p => p.IDPhuong == u.IDPhuong) != null
-                        ? db.tbXaPhuongs.FirstOrDefault(p => p.IDPhuong == u.IDPhuong).TenPhuong
-                        : "Không xác định",
-                    u.GiaThue,
-                    u.MoTa,
-                    u.LinkBai,
-                    u.GioGiac,
-                    u.LinkMap,
-                    u.TienDien,
-                    u.TienNuoc,
-                    u.TienDichVụ,
-                    
-                    WC = u.WC.HasValue ? (u.WC.Value ? "chung" : "riêng") : "Không xác định",
-                    CuaSoBanCong = u.CuaSoBanCong.HasValue ? (u.CuaSoBanCong.Value ? "Cửa Sổ" : "Ban Công") : "Phòng Kín",
-                    KeBep = u.KeBep.HasValue ? (u.KeBep.Value ? "chung" : "riêng") : "Không xác định",
-                    Thang = u.Thang.HasValue ? (u.Thang.Value ? "bộ" : "máy") : "Không xác định",
-                    MayGiat = u.MayGiat.HasValue ? (u.MayGiat.Value ? "chung" : "riêng") : "Không xác định",
-                    ThuCung = u.ThuCung.HasValue ? (u.ThuCung.Value ? "được nuôi" : "không được nuôi") : "Không xác định",
-                    TienCoc = u.TienCoc.HasValue ? (u.TienCoc.Value ? "có" : "không") : "Không xác định",
-                    u.MayLanh,
-                    u.Giuong,
-                    u.TuDo,
-                    u.Nem,
-                    u.TuLanh,
-                    u.BanGhe,
-                    
-                    u.Sofa,
-                    u.SoPhongNgu,
-                    
-                    u.PhuongTien,
-                    
-                    u.TrangThaiXuLy,
-                    u.NoiBat,
+                    switch (p)
+                    {
+                        case "1": usersQuery = usersQuery.Where(r => r.ab.ab.GiaThue < 3000000); break;
+                        case "2": usersQuery = usersQuery.Where(r => r.ab.ab.GiaThue >= 3000000 && r.ab.ab.GiaThue <= 5000000); break;
+                        case "3": usersQuery = usersQuery.Where(r => r.ab.ab.GiaThue > 5000000 && r.ab.ab.GiaThue <= 7000000); break;
+                        case "4": usersQuery = usersQuery.Where(r => r.ab.ab.GiaThue > 7000000); break;
+                    }
+                }
+
+                // Bộ lọc theo trạng thái (nếu có)
+                if (!string.IsNullOrEmpty(st))
+                {
+                    if (st == "1") usersQuery = usersQuery.Where(r => (bool)r.ab.ab.NoiBat); // Nổi bật
+                    if (st == "2") usersQuery = usersQuery.Where(r => !(bool)r.ab.ab.Hide);
+                   // if (st == "2") usersQuery = usersQuery.Where(r => r.ab.ab.TrangThaiXuLy == false); // Phòng trống
+                }
+
+                // Lấy kết quả đã lọc
+                var filteredRooms = usersQuery.Select(r => new PhongModel
+                {
+                    IDPhong = r.ab.ab.IDPhong,
+                    MaTaiKhoan = r.ab.ab.MaTaiKhoan,
+                    TieuDe = r.ab.ab.TieuDe,
+                    DiaChi = r.ab.ab.DiaChi,
+                    IDPhuong = r.ab.ab.IDPhuong,
+                    IDQuan = r.ab.ab.IDQuan,
+                    IDTP = r.ab.ab.IDTP,
+                    GiaThue = (float)r.ab.ab.GiaThue,
+                    MoTa = r.ab.ab.MoTa,
+                    LinkBai = r.ab.ab.LinkBai,
+                    GioGiac = r.ab.ab.GioGiac,
+                    LinkMap = r.ab.ab.LinkMap,
+                    TienDien = r.ab.ab.TienDien,
+                    TienNuoc = r.ab.ab.TienNuoc,
+                    TienDichVụ = r.ab.ab.TienDichVụ,
+                    CuaSoBanCong = r.ab.ab.CuaSoBanCong,
+                    WC = r.ab.ab.WC,
+                    KeBep = r.ab.ab.KeBep,
+                    MayLanh = r.ab.ab.MayLanh,
+                    Giuong = r.ab.ab.Giuong,
+                    TuDo = r.ab.ab.TuDo,
+                    Nem = r.ab.ab.Nem,
+                    TuLanh = r.ab.ab.TuLanh,
+                    BanGhe = r.ab.ab.BanGhe,
+                    MayGiat = r.ab.ab.MayGiat,
+                    Sofa = r.ab.ab.Sofa,
+                    SoPhongNgu = r.ab.ab.SoPhongNgu,
+                    PhuongTien = r.ab.ab.PhuongTien,
+                    ThuCung = r.ab.ab.ThuCung,
+                    TienCoc = r.ab.ab.TienCoc,
+                    Hide = r.ab.ab.Hide,
+                    NoiBat = r.ab.ab.NoiBat,
+                    TrangThaiXuLy = r.ab.ab.TrangThaiXuLy,
+                    HinhAnh = r.ab.HinhAnh
                 }).ToList();
 
-                if (!filteredUsers.Any())
-                {
-                    return Json(new { message = "Không tìm thấy phòng nào phù hợp." }, JsonRequestBehavior.AllowGet);
-                }
+                // Tính số trang
+                int totalProducts = filteredRooms.Count();
+                int totalPages = (int)Math.Ceiling((double)totalProducts / pageSize);
+                var paginatedRooms = filteredRooms.Skip((page - 1) * pageSize).Take(pageSize).ToList();
 
-                return PartialView("SearchResults", filteredUsers);
+                // Truyền dữ liệu phân trang vào View
+                ViewBag.TotalPages = totalPages;
+                ViewBag.CurrentPage = page;
+
+                // Trả về View với dữ liệu đã phân trang
+                return View(paginatedRooms);
             }
             catch (Exception ex)
-            { 
-                Console.WriteLine(ex.Message);
-                return Json(new { error = "Đã xảy ra lỗi khi xử lý yêu cầu." }, JsonRequestBehavior.AllowGet);
+            {
+                // Xử lý lỗi
+                return Json(new { success = false, message = "Đã xảy ra lỗi khi xử lý yêu cầu." }, JsonRequestBehavior.AllowGet);
             }
         }
 
+        //public ActionResult SearchUsers(string k, string IDThanhPho, string idQuan, string idPhuong, string p, string st, int page = 1)
+        //{
+        //    try
+        //    {
+        //        int pageSize = 12; // Kích thước mỗi trang
+        //        var usersQuery = (from ab in db.tbChiTietPhongs
+        //                          join album in
+        //                              (from a in db.tbAlbums
+        //                               group a by a.IDPhong into g
+        //                               select g.FirstOrDefault())
+        //                          on ab.IDPhong equals album.IDPhong into albums
+        //                          from album in albums.DefaultIfEmpty()
+        //                          join user in db.tbUsers on ab.MaTaiKhoan equals user.MaTaiKhoan into userJoin
+        //                          from u in userJoin.DefaultIfEmpty()  // Join với bảng tbUser
+        //                          select new
+        //                          {
+        //                              ab,           // Thông tin phòng
+        //                              album.HinhAnh, // Hình ảnh album
+        //                              u.HoTen       // Tên người dùng từ bảng tbUser
+        //                          }).AsQueryable();
+
+        //        // Bộ lọc theo từ khóa
+        //        if (!string.IsNullOrEmpty(k))
+        //        {
+        //            usersQuery = usersQuery.Where(r => r.ab.TieuDe.Contains(k) ||
+        //                                                r.ab.DiaChi.Contains(k) ||
+        //                                                (r.HoTen != null && r.HoTen.Contains(k))); // Kiểm tra tên người dùng (host)
+        //        }
+
+        //        // Bộ lọc theo Thành phố
+        //        if (!string.IsNullOrEmpty(IDThanhPho) && int.TryParse(IDThanhPho, out int idThanhPhoValue))
+        //        {
+        //            usersQuery = usersQuery.Where(u => u.ab.IDTP == idThanhPhoValue);
+        //        }
+
+        //        // Bộ lọc theo Quận/Huyện chỉ khi có idQuan
+        //        if (!string.IsNullOrEmpty(idQuan) && int.TryParse(idQuan, out int idQuanValue))
+        //        {
+        //            usersQuery = usersQuery.Where(u => u.ab.IDQuan == idQuanValue);
+        //        }
+
+        //        // Bộ lọc theo Phường/Xã chỉ khi có idPhuong
+        //        if (!string.IsNullOrEmpty(idPhuong) && int.TryParse(idPhuong, out int idPhuongValue))
+        //        {
+        //            usersQuery = usersQuery.Where(u => u.ab.IDPhuong == idPhuongValue);
+        //        }
+
+
+        //        // Bộ lọc theo khoảng giá
+        //        if (!string.IsNullOrEmpty(p))
+        //        {
+        //            switch (p)
+        //            {
+        //                case "1": // Dưới 3 triệu
+        //                    usersQuery = usersQuery.Where(r => r.ab.GiaThue < 3000000);
+        //                    break;
+        //                case "2": // Từ 3 triệu đến 5 triệu
+        //                    usersQuery = usersQuery.Where(r => r.ab.GiaThue >= 3000000 && r.ab.GiaThue <= 5000000);
+        //                    break;
+        //                case "3": // Từ 5 triệu đến 7 triệu
+        //                    usersQuery = usersQuery.Where(r => r.ab.GiaThue > 5000000 && r.ab.GiaThue <= 7000000);
+        //                    break;
+        //                case "4": // Trên 7 triệu
+        //                    usersQuery = usersQuery.Where(r => r.ab.GiaThue > 7000000);
+        //                    break;
+        //            }
+        //        }
+
+        //        // Bộ lọc theo trạng thái
+        //        if (!string.IsNullOrEmpty(st))
+        //        {
+        //            switch (st)
+        //            {
+        //                case "1": // Nổi bật
+        //                    usersQuery = usersQuery.Where(r => r.ab.NoiBat == true);
+        //                    break;
+        //                case "2": // Phòng trống
+        //                    usersQuery = usersQuery.Where(r => r.ab.TrangThaiXuLy == true);
+        //                    break;
+        //            }
+        //        }
+
+        //        // Lấy kết quả đã lọc
+        //        var filteredRooms = usersQuery.Select(r => new PhongModel
+        //        {
+        //            IDPhong = r.ab.IDPhong,
+        //            MaTaiKhoan = r.ab.MaTaiKhoan,
+        //            TieuDe = r.ab.TieuDe,
+        //            DiaChi = r.ab.DiaChi,
+        //            IDPhuong = r.ab.IDPhuong,
+        //            IDQuan = r.ab.IDQuan,
+        //            IDTP = r.ab.IDTP,
+        //            GiaThue = (float)r.ab.GiaThue,
+        //            MoTa = r.ab.MoTa,
+        //            LinkBai = r.ab.LinkBai,
+        //            GioGiac = r.ab.GioGiac,
+        //            LinkMap = r.ab.LinkMap,
+        //            TienDien = r.ab.TienDien,
+        //            TienNuoc = r.ab.TienNuoc,
+        //            TienDichVụ = r.ab.TienDichVụ,
+        //            CuaSoBanCong = r.ab.CuaSoBanCong,
+        //            WC = r.ab.WC,
+        //            KeBep = r.ab.KeBep,
+        //            MayLanh = r.ab.MayLanh,
+        //            Giuong = r.ab.Giuong,
+        //            TuDo = r.ab.TuDo,
+        //            Nem = r.ab.Nem,
+        //            TuLanh = r.ab.TuLanh,
+        //            BanGhe = r.ab.BanGhe,
+        //            MayGiat = r.ab.MayGiat,
+        //            Sofa = r.ab.Sofa,
+        //            SoPhongNgu = r.ab.SoPhongNgu,
+        //            PhuongTien = r.ab.PhuongTien,
+        //            ThuCung = r.ab.ThuCung,
+        //            TienCoc = r.ab.TienCoc,
+        //            Hide = r.ab.Hide,
+        //            NoiBat = r.ab.NoiBat,
+        //            TrangThaiXuLy = r.ab.TrangThaiXuLy,
+        //            HinhAnh = r.HinhAnh
+        //        }).ToList();
+
+        //        // Tính số trang
+        //        int totalProducts = filteredRooms.Count(); // Tổng số phòng đã lọc
+        //        int totalPages = (int)Math.Ceiling((double)totalProducts / pageSize); // Số trang
+
+        //        // Phân trang: chọn phòng trong phạm vi trang hiện tại
+        //        var paginatedRooms = filteredRooms.Skip((page - 1) * pageSize).Take(pageSize).ToList();
+
+        //        // Truyền dữ liệu phân trang vào View
+        //        ViewBag.TotalPages = totalPages;
+        //        ViewBag.CurrentPage = page;
+
+        //        // Trả về kết quả View
+        //        return View(paginatedRooms);  // Trả về View với dữ liệu tìm kiếm
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Console.WriteLine(ex.Message);
+        //        return Json(new { success = false, message = "Đã xảy ra lỗi khi xử lý yêu cầu." }, JsonRequestBehavior.AllowGet);
+        //    }
+        //}
 
     }
 }
