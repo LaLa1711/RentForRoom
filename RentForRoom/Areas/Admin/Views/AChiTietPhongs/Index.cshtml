@@ -137,12 +137,12 @@
     $(document).ready(function () {
         $('.toggle-status').change(function () {
             var userId = $(this).data('id');
-            var newStatus = $(this).is(':checked') ? false : true; // Trạng thái mới
+            var newStatus = $(this).is(':checked') ? true : false; // Trạng thái mới
 
             $.ajax({
                 url: '/Admin/AChiTietPhongs/UpdateStatus',
                 type: 'POST',
-                data: { id: userId, hide: newStatus },
+                data: { id: userId, trangthaixuly: newStatus },
                 success: function (response) {
                     // Không làm gì nếu thành công
                 },

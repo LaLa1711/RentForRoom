@@ -28,12 +28,12 @@ namespace RentForRoom.DBContext
         public virtual DbSet<tbAlbum> tbAlbums { get; set; }
         public virtual DbSet<tbBanner> tbBanners { get; set; }
         public virtual DbSet<tbChiTietPhong> tbChiTietPhongs { get; set; }
-        public virtual DbSet<tbDatLich> tbDatLiches { get; set; }
         public virtual DbSet<tbGioiThieu> tbGioiThieux { get; set; }
         public virtual DbSet<tbQuanHuyen> tbQuanHuyens { get; set; }
         public virtual DbSet<tbQuyen> tbQuyens { get; set; }
         public virtual DbSet<tbTinhThanhPho> tbTinhThanhPhoes { get; set; }
-        public virtual DbSet<tbUser> tbUsers { get; set; }
         public virtual DbSet<tbXaPhuong> tbXaPhuongs { get; set; }
+        public virtual DbSet<tbUser> tbUsers { get; set; }
+        public virtual DbSet<tbDatLich> tbDatLiches { get; set; }
     }
 }

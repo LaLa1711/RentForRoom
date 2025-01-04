@@ -44,7 +44,7 @@
                                                             @*<select class="form-control" name="IDTP" id="IDThanhPho" onchange="loadQuanHuyen()">
                                                                 @Html.Raw(ViewBag.ThanhPhoList)
                                                             </select>*@
-                                                            <select class="form-control" name="IDTP" id="IDThanhPho" onchange="loadQuanHuyen()">
+                                                            <select class="form-control" name="IDThanhPho" id="IDThanhPho" onchange="loadQuanHuyen()">
                                                                 @Html.Raw(Html.Action("GetThanhPho", "Search", new { id = @Model.IDTP }))
 
                                                             </select>

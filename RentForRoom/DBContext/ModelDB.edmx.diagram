@@ -8,13 +8,13 @@
         <EntityTypeShape EntityType="QLNhaTroModel.tbAlbum" Width="1.5" PointX="0.75" PointY="0.75" />
         <EntityTypeShape EntityType="QLNhaTroModel.tbBanner" Width="1.5" PointX="2.75" PointY="0.75" />
         <EntityTypeShape EntityType="QLNhaTroModel.tbChiTietPhong" Width="1.5" PointX="0.75" PointY="3.75" />
-        <EntityTypeShape EntityType="QLNhaTroModel.tbDatLich" Width="1.5" PointX="2.75" PointY="3.75" />
         <EntityTypeShape EntityType="QLNhaTroModel.tbGioiThieu" Width="1.5" PointX="4.75" PointY="0.75" />
         <EntityTypeShape EntityType="QLNhaTroModel.tbQuanHuyen" Width="1.5" PointX="4.75" PointY="4.75" />
         <EntityTypeShape EntityType="QLNhaTroModel.tbQuyen" Width="1.5" PointX="6.75" PointY="0.75" />
         <EntityTypeShape EntityType="QLNhaTroModel.tbTinhThanhPho" Width="1.5" PointX="6.75" PointY="3.75" />
-        <EntityTypeShape EntityType="QLNhaTroModel.tbUser" Width="1.5" PointX="6.75" PointY="6.75" />
         <EntityTypeShape EntityType="QLNhaTroModel.tbXaPhuong" Width="1.5" PointX="8.75" PointY="0.75" />
+        <EntityTypeShape EntityType="QLNhaTroModel.tbUser" Width="1.5" PointX="5.375" PointY="7.75" />
+        <EntityTypeShape EntityType="QLNhaTroModel.tbDatLich" Width="1.5" PointX="7.375" PointY="6.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -263,6 +263,7 @@ namespace RentForRoom.Areas.Admin.Controllers
             if (user != null)
             {
                 user.TrangThaiXuLy = trangthaixuly;
+                db.Entry(user).State = EntityState.Modified;
                 db.SaveChanges();
             }
             return Json(new { success = false });

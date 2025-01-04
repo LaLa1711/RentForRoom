@@ -63,24 +63,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="tbDatLiches">
-      <EntityTypeMapping TypeName="QLNhaTroModel.tbDatLich">
-        <MappingFragment StoreEntitySet="tbDatLich">
-          <ScalarProperty Name="Hide" ColumnName="Hide" />
-          <ScalarProperty Name="Email" ColumnName="Email" />
-          <ScalarProperty Name="SDT" ColumnName="SDT" />
-          <ScalarProperty Name="HoTen" ColumnName="HoTen" />
-          <ScalarProperty Name="ThuCung" ColumnName="ThuCung" />
-          <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
-          <ScalarProperty Name="NgayChuyenVao" ColumnName="NgayChuyenVao" />
-          <ScalarProperty Name="NgayXemPhong" ColumnName="NgayXemPhong" />
-          <ScalarProperty Name="SoLuongXe" ColumnName="SoLuongXe" />
-          <ScalarProperty Name="SoNguoiO" ColumnName="SoNguoiO" />
-          <ScalarProperty Name="IDPhong" ColumnName="IDPhong" />
-          <ScalarProperty Name="IDDatLich" ColumnName="IDDatLich" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="tbGioiThieux">
       <EntityTypeMapping TypeName="QLNhaTroModel.tbGioiThieu">
         <MappingFragment StoreEntitySet="tbGioiThieu">
@@ -122,6 +104,16 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="tbXaPhuongs">
+      <EntityTypeMapping TypeName="QLNhaTroModel.tbXaPhuong">
+        <MappingFragment StoreEntitySet="tbXaPhuong">
+          <ScalarProperty Name="Hide" ColumnName="Hide" />
+          <ScalarProperty Name="IDPhuong" ColumnName="IDPhuong" />
+          <ScalarProperty Name="TenPhuong" ColumnName="TenPhuong" />
+          <ScalarProperty Name="IDQuan" ColumnName="IDQuan" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="tbUsers">
       <EntityTypeMapping TypeName="QLNhaTroModel.tbUser">
         <MappingFragment StoreEntitySet="tbUser">
@@ -137,13 +129,21 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="tbXaPhuongs">
-      <EntityTypeMapping TypeName="QLNhaTroModel.tbXaPhuong">
-        <MappingFragment StoreEntitySet="tbXaPhuong">
+    <EntitySetMapping Name="tbDatLiches">
+      <EntityTypeMapping TypeName="QLNhaTroModel.tbDatLich">
+        <MappingFragment StoreEntitySet="tbDatLich">
           <ScalarProperty Name="Hide" ColumnName="Hide" />
-          <ScalarProperty Name="IDPhuong" ColumnName="IDPhuong" />
-          <ScalarProperty Name="TenPhuong" ColumnName="TenPhuong" />
-          <ScalarProperty Name="IDQuan" ColumnName="IDQuan" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="SDT" ColumnName="SDT" />
+          <ScalarProperty Name="HoTen" ColumnName="HoTen" />
+          <ScalarProperty Name="ThuCung" ColumnName="ThuCung" />
+          <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+          <ScalarProperty Name="NgayChuyenVao" ColumnName="NgayChuyenVao" />
+          <ScalarProperty Name="NgayXemPhong" ColumnName="NgayXemPhong" />
+          <ScalarProperty Name="SoLuongXe" ColumnName="SoLuongXe" />
+          <ScalarProperty Name="SoNguoiO" ColumnName="SoNguoiO" />
+          <ScalarProperty Name="IDPhong" ColumnName="IDPhong" />
+          <ScalarProperty Name="IDDatLich" ColumnName="IDDatLich" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
